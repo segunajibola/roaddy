@@ -42,7 +42,7 @@ header .site-logo {
     margin-right: auto;
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 header a {
@@ -740,3 +740,14 @@ img.graph {
     color: #ff8c38;
     margin-right: 5px;
 }
+
+@media (min-width: 480px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 1024px) {
+}
+@media (min-width: 1280px) {
+}
+
+
