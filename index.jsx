@@ -1,35 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Vans from "./pages/Vans/Vans"
-import VanDetail from "./pages/Vans/VanDetail"
-import Login from "./pages/Login"
-import Dashboard from "./pages/Host/Dashboard"
-import Income from "./pages/Host/Income"
-import Reviews from "./pages/Host/Reviews"
-import HostVans from "./pages/Host/HostVans"
-import HostVanDetail from "./pages/Host/HostVanDetail"
-import HostVanInfo from "./pages/Host/HostVanInfo"
-import HostVanPricing from "./pages/Host/HostVanPricing"
-import HostVanPhotos from "./pages/Host/HostVanPhotos"
-import NotFound from "./pages/NotFound"
-import Layout from "./components/Layout"
-import HostLayout from "./components/HostLayout"
-import AuthRequired from "./components/AuthRequired"
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Vans from "./pages/Vans/Vans";
+import VanDetail from "./pages/Vans/VanDetail";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Host/Dashboard";
+import Income from "./pages/Host/Income";
+import Reviews from "./pages/Host/Reviews";
+import HostVans from "./pages/Host/HostVans";
+import HostVanDetail from "./pages/Host/HostVanDetail";
+import HostVanInfo from "./pages/Host/HostVanInfo";
+import HostVanPricing from "./pages/Host/HostVanPricing";
+import HostVanPhotos from "./pages/Host/HostVanPhotos";
+// import NotFound from "./pages/NotFound";
+import Layout from "./components/Layout";
+import HostLayout from "./components/HostLayout";
+import AuthRequired from "./components/AuthRequired";
+import { onAuthStateChanged } from "firebase/auth";
 
-import "./server"
+import { auth } from "./api";
+
+import "./server";
 
 function App() {
-  /**
-   * Challenge: Create the AuthRequired Layout Route to protect
-   * all the /host routes.
-   * 
-   * For now, just use `const authenticated = false`
-   * to determine the authenticated status of the user, and
-   * either send them to the /login route, or render the Outlet
-   */
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        // setIsFetching(false);
+        return;
+      }
+      setUser(null);
+      // setIsFetching(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -39,12 +47,9 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
-          <Route
-            path="login"
-            element={<Login />}
-          />
+          <Route path="auth" element={<Auth />} />
 
-          <Route element={<AuthRequired />}>
+          <Route element={<AuthRequired user={user} />}>
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
@@ -58,13 +63,11 @@ function App() {
             </Route>
           </Route>
 
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-ReactDOM
-  .createRoot(document.getElementById('root'))
-  .render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
