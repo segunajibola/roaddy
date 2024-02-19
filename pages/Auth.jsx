@@ -66,7 +66,8 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (error) {
       setError(error.message);
-      console.log(error.code, error.message);
+      console.log("errorMessage", error.message);
+      console.log("errorCode", error.code);
       setStatus("idle");
     }
   };
@@ -87,7 +88,8 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (error) {
       setError(error.message);
-      console.log(error.code, error.message);
+      console.log("errorMessage", error.message);
+      console.log("errorCode", error.code);
       setStatus("idle");
     }
   };
@@ -111,6 +113,7 @@ export default function Login() {
           : "Create a new account"}
       </h1>
       {error?.message && <h3 className="login-error">{error.message}</h3>}
+      {error && <h3 className="login-error">{error}</h3>}
 
       <div className="login-form">
         <input

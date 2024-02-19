@@ -13,13 +13,13 @@ import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCq17cU4UcJ6gPK76p8IenclXIwjpfy9O8",
-  authDomain: "roader-ca2e9.firebaseapp.com",
-  projectId: "roader-ca2e9",
-  storageBucket: "roader-ca2e9.appspot.com",
-  messagingSenderId: "209878965826",
-  appId: "1:209878965826:web:83f9b141fc34347b65d7db",
-};
+    apiKey: "AIzaSyBTlNTKUbgbWbj3IGsD5wQ5f5u7tI53WmQ",
+    authDomain: "roaddy-4b3cf.firebaseapp.com",
+    projectId: "roaddy-4b3cf",
+    storageBucket: "roaddy-4b3cf.appspot.com",
+    messagingSenderId: "188361902639",
+    appId: "1:188361902639:web:1e4efab11a261aaf4494da"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
