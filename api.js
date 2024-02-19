@@ -8,10 +8,9 @@ import {
   query,
   where,
   documentId,
-} from "firebase/firestore";
-import {
-  getAuth,
-} from "firebase/auth";
+} from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCq17cU4UcJ6gPK76p8IenclXIwjpfy9O8",
@@ -24,9 +23,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 export const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
+// Refactoring the fetching functions below
 const vehiclesCollectionRef = collection(db, "vehicles");
 
 export async function getVans() {
@@ -35,7 +37,7 @@ export async function getVans() {
     ...doc.data(),
     id: doc.id,
   }));
-  console.log("vehicles", vehicles);
+  console.log(vehicles);
   return vehicles;
 }
 
@@ -63,7 +65,7 @@ export async function getVan(id) {
 }
 
 export async function getHostVans() {
-  const q = query(vehiclesCollectionRef, where("hostId", "==", "1"));
+  const q = query(vehiclesCollectionRef, where("hostId", "==", "123"));
   const snapshot = await getDocs(q);
   const vans = snapshot.docs.map((doc) => ({
     ...doc.data(),
@@ -102,20 +104,20 @@ It also shows how you can chain together multiple `where` filter calls
 //     return vans[0]
 // }
 
-// export async function loginUser(creds) {
-//   const res = await fetch("/api/login", {
-//     method: "post",
-//     body: JSON.stringify(creds),
-//   });
-//   const data = await res.json();
+export async function loginUser(creds) {
+  const res = await fetch("/api/login", {
+    method: "post",
+    body: JSON.stringify(creds),
+  });
+  const data = await res.json();
 
-//   if (!res.ok) {
-//     throw {
-//       message: data.message,
-//       statusText: res.statusText,
-//       status: res.status,
-//     };
-//   }
+  if (!res.ok) {
+    throw {
+      message: data.message,
+      statusText: res.statusText,
+      status: res.status,
+    };
+  }
 
-//   return data;
-// }
+  return data;
+}

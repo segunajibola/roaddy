@@ -2,10 +2,7 @@ import React from "react";
 import { Outlet, Navigate, useLocation } from "react-router-dom";
 
 export default function AuthRequired({ user }) {
-//   const isLoggedIn = localStorage.getItem("loggedin")
   const location = useLocation();
-
-  console.log("user", user)
 
   if (!user) {
     return (
@@ -19,5 +16,8 @@ export default function AuthRequired({ user }) {
       />
     );
   }
-  return <Outlet />;
+
+  console.log("user",user, user.email, user.displayName);
+
+  return <Outlet context={user} />;
 }

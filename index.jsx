@@ -22,7 +22,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "./api";
 
-import "./server";
+// import "./server";
 
 function App() {
   const [user, setUser] = useState(null);

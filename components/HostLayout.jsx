@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useOutletContext } from "react-router-dom";
 
 export default function HostLayout() {
   const activeStyles = {
@@ -7,6 +7,10 @@ export default function HostLayout() {
     textDecoration: "underline",
     color: "#161616",
   };
+
+  const context = useOutletContext();
+  console.log("contextinhostlayout", context);
+
 
   return (
     <>
@@ -40,7 +44,7 @@ export default function HostLayout() {
           Reviews
         </NavLink>
       </nav>
-      <Outlet />
+      <Outlet context={context} />
     </>
   );
 }

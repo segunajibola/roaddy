@@ -4,9 +4,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
-
 import { auth } from "../api";
+import { FaGoogle } from "react-icons/fa";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -28,6 +30,26 @@ export default function Login() {
 
   const from = location.state?.from || "/host";
 
+  const provider = new GoogleAuthProvider();
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      const res = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(res);
+      const token = credential.accessToken;
+      const user = res.user;
+      console.log("googleUser", user);
+      navigate(from, { replace: true });
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    }
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) return;
@@ -41,7 +63,7 @@ export default function Login() {
       );
       console.log("userCredential", userCredential);
       setStatus("idle");
-      navigate(from, { replace: true })
+      navigate(from, { replace: true });
     } catch (error) {
       setError(error.message);
       console.log(error.code, error.message);
@@ -62,13 +84,13 @@ export default function Login() {
       );
       console.log("userCredential", userCredential);
       setStatus("idle");
-      navigate(from, { replace: true })
+      navigate(from, { replace: true });
     } catch (error) {
       setError(error.message);
       console.log(error.code, error.message);
       setStatus("idle");
     }
-  }
+  };
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -124,6 +146,10 @@ export default function Login() {
           {variant === "login" ? "Create an account" : "Login"}
         </span>
       </p>
+      <div>Sign in with</div>
+      <div>
+        <FaGoogle onClick={handleSignInWithGoogle} />
+      </div>
     </div>
   );
 }
