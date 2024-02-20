@@ -6,7 +6,7 @@ export default function About() {
   return (
     <div className="about-page-container">
       <img src={bgImg} className="max-w-full" />
-      <div className="about-page-content text-[#161616] mb-14">
+      <div className="about-page-content px-6 text-[#161616] mb-14">
         <h1 className="leading-9">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>
