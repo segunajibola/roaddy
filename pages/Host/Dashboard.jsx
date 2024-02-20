@@ -5,7 +5,7 @@ import { getHostVans } from "../../api";
 
 export default function Dashboard() {
   const context = useOutletContext();
-  console.log("contextindash", context, context.email, context.displayName);
+  console.log("contextindash", context, context.email, context.displayName, context.photoURL);
   const [vans, setVans] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -48,9 +48,7 @@ export default function Dashboard() {
     <>
       <section className="host-dashboard-earnings">
         <div className="info">
-          <h1>
-            Welcome {context.displayName.split(" ")[0]}
-          </h1>
+          <h1>Welcome {context.displayName.split(" ")[0]}</h1>
           <p>
             Income last <span>30 days</span>
           </p>
