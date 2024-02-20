@@ -29,7 +29,7 @@ export default function Header({ user }) {
   return (
     <header>
       <Link className="site-logo" to="/">
-        #Roaddy
+        Roaddy
       </Link>
       <nav>
         <NavLink
@@ -53,9 +53,9 @@ export default function Header({ user }) {
         {user && (
           <>
             <Link to="auth" className="login-link">
-              <img src={user.photoURL} className="login-icon" />
+              <img src={user.photoURL} className="login-photo" />
             </Link>
-            <button onClick={handleSignOut}>Log out</button>
+            <button onClick={handleSignOut} className="logout-icon">Log out</button>
           </>
         )}
       </nav>
