@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { getVans } from "../../api";
 
-export default function Vans() {
+export default function Vehicles() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [vans, setVans] = React.useState([]);
   const [loading, setLoading] = React.useState(false);

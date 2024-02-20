@@ -350,6 +350,9 @@ i[class*="van-type-"] {
 .van-detail img {
   border-radius: 5px;
   margin-block: 47px;
+  height: 60vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .van-detail h2 {
@@ -357,18 +360,31 @@ i[class*="van-type-"] {
   margin-bottom: 10px;
 }
 
+.van-detail > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.van-detail > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+}
+
 .van-detail > i {
   align-self: flex-start;
 }
 
 .van-detail .van-price {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
+  /* font-size: 1.25rem; */
+  /* margin-bottom: 10px; */
 }
 
 .van-detail .van-price span {
-  font-weight: 700;
-  font-size: 1.5rem;
+  /* font-weight: 700; */
+  /* font-size: 1.5rem; */
 }
 
 .van-detail .link-button {
@@ -774,13 +790,4 @@ img.graph {
 .host-reviews .review-star {
   color: #ff8c38;
   margin-right: 5px;
-}
-
-@media (min-width: 480px) {
-}
-@media (min-width: 768px) {
-}
-@media (min-width: 1024px) {
-}
-@media (min-width: 1280px) {
 }

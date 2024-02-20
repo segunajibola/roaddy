@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Vans from "./pages/Vans/Vans";
-import VanDetail from "./pages/Vans/VanDetail";
+import Vehicles from "./pages/Vehicles/Vehicles";
+import VanDetail from "./pages/Vehicles/VehiclesDetail";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Layout user={user} />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
+          <Route path="vehicles" element={<Vehicles />} />
           <Route path="vans/:id" element={<VanDetail />} />
           <Route path="auth" element={<Auth />} />
 
