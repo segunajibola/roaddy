@@ -1,5 +1,6 @@
 {
   "name": "project",
+  "type": "module",
   "dependencies": {
     "firebase": "^10.8.0",
     "react": "18.2.0",

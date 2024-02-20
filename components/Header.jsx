@@ -52,9 +52,9 @@ export default function Header({ user }) {
         </NavLink>
         {user && (
           <>
-            <Link to="auth" className="login-link">
+            {user.photoURL ? <Link to="auth" className="login-link">
               <img src={user.photoURL} className="login-photo" />
-            </Link>
+            </Link> : ""}
             <button onClick={handleSignOut} className="logout-icon">Log out</button>
           </>
         )}

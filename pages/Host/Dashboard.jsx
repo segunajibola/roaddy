@@ -48,7 +48,7 @@ export default function Dashboard() {
     <>
       <section className="host-dashboard-earnings">
         <div className="info">
-          <h1>Welcome {context.displayName.split(" ")[0]}</h1>
+          <h1>Welcome {context.email || context.displayName.split(" ")[0]}</h1>
           <p>
             Income last <span>30 days</span>
           </p>
