@@ -42,7 +42,7 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
+      setError(error.message)
       // The email of the user's account used.
       const email = error.customData.email;
       // The AuthCredential type that was used.
