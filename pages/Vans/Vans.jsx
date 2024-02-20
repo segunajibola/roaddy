@@ -9,6 +9,7 @@ export default function Vans() {
   const [error, setError] = React.useState(null);
 
   const typeFilter = searchParams.get("type");
+
   console.log("searchParams", searchParams);
   console.log("typeFilter", typeFilter);
 
@@ -34,7 +35,7 @@ export default function Vans() {
     : vans;
 
   const vanElements = displayedVans.map((van) => (
-    <div key={van.id} className="van-tile">
+    <div key={van.id} className="van-title">
       <Link
         to={van.id}
         state={{
@@ -45,12 +46,14 @@ export default function Vans() {
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
-          <p>
-            ${van.price}
-            <span>/day</span>
-          </p>
+          <div>
+            <p className="van-price">
+              ${van.price}
+              <span>/day</span>
+            </p>
+            <i className={`van-type ${van.type} selected`}>{van.type}</i>
+          </div>
         </div>
-        <i className={`van-type ${van.type} selected`}>{van.type}</i>
       </Link>
     </div>
   ));

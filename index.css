@@ -225,18 +225,43 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  gap: 34px;
+  gap: 20px;
   margin-top: 57px;
 }
 
-.van-tile a {
+.van-title {
+  width: 100%;
+}
+
+.van-title a {
   color: #161616;
   text-decoration: none;
 }
 
-.van-tile img {
-  max-width: 100%;
-  border-radius: 5px;
+.van-title img {
+  width: 100%;
+  border-radius: 10px;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.van-info,
+.van-info > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.van-price {
+  border-radius: 10px;
+  background-color: #bd3737;
+  color: white;
+  padding: 5px 6px;
+}
+
+.van-info > div {
+  column-gap: 5px;
 }
 
 .van-list-container button {
