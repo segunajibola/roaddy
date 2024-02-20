@@ -42,7 +42,7 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (error) {
       const errorCode = error.code;
-      setError(error.message)
+      setError(error.message);
       // The email of the user's account used.
       const email = error.customData.email;
       // The AuthCredential type that was used.
@@ -151,7 +151,7 @@ export default function Login() {
             {variant === "login" ? "Create an account" : "Login"}
           </span>
         </p>
-        <div>Sign in with</div>
+        <div>Sign in using:</div>
         <div>
           <FaGoogle onClick={handleSignInWithGoogle} />
         </div>
