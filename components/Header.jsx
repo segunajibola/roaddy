@@ -44,7 +44,7 @@ export default function Header({ user }) {
           About
         </NavLink>
         <NavLink
-          to="/vans"
+          to="/vehicles"
           style={({ isActive }) => (isActive ? activeStyles : null)}
         >
           Vans
