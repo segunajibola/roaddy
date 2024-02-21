@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <div className="about-page-container">
+    <div className="about-page-container mx-[2%]">
       <img src={bgImg} className="max-w-full" />
-      <div className="about-page-content px-6 text-[#161616] mb-14">
+      <div className="about-page-content px-6 text-[#161616] my-8">
         <h1 className="leading-6">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>
@@ -24,7 +24,7 @@ export default function About() {
         <h2 className="py-8">
           Your destination is waiting.
           <br />
-          Your van is ready.
+          Your vehicle is ready.
         </h2>
         <Link
           className="py-4 px-5 bg-[#161616] text-white rounded-[10px]"
