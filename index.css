@@ -68,21 +68,14 @@ header a:hover {
 }
 
 header .login-photo {
-  height: 20px;
-  width: 20px;
+  height: 22.5px;
+  width: 22.5px;
   border-radius: 50%;
 }
 
 header .login-link {
   display: inline-flex;
   align-items: center;
-}
-
-header .logout-icon {
-  border: 1px solid;
-  padding: 3px;
-  background-color: rgb(220, 93, 30);
-  color: white;
 }
 
 main {
