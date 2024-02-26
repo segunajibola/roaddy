@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Vehicles from "./pages/Vehicles/Vehicles";
-import VanDetail from "./pages/Vehicles/VehiclesDetail";
+import VehiclesDetail from "./pages/Vehicles/VehiclesDetail";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
@@ -46,7 +46,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vehicles" element={<Vehicles />} />
-          <Route path="vans/:id" element={<VanDetail />} />
+          <Route path="vehicles/:id" element={<VehiclesDetail />} />
           <Route path="auth" element={<Auth />} />
 
           <Route element={<AuthRequired user={user} />}>

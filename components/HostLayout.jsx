@@ -9,8 +9,6 @@ export default function HostLayout() {
   };
 
   const context = useOutletContext();
-  console.log("contextinhostlayout", context);
-
 
   return (
     <>
