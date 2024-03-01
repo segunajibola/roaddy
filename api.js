@@ -121,3 +121,25 @@ export async function loginUser(creds) {
 
   return data;
 }
+
+const getCollectionName(context) {
+  const pre = context.displayName ? context.displayName.split(" ")[0] : context.email.substring(0,6)
+  return `${pre}col`
+}
+
+
+const addUser = async () => {
+  const usersCollectionRef = collection(db, 'users')
+    const document = await addDoc(usersCollectionRef, {
+      name: newName,
+      grade: Number(newGrade),
+      role: newRole,
+      hours: Number(newHours),
+    })
+
+    const newCollectionRef = collection(db, 'users', document.id, 'name of new subcollection')
+
+    await addDoc(newCollectionRef, {
+        data: 'Hello there World',
+    })
+  }
