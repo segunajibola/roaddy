@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { getHostVehicle } from "../../api";
-import PostVehicle from "../PostVehicle";
+import PostVehicle from "../../components/PostVehicle";
 
 export default function HostVans() {
   const context = useOutletContext();

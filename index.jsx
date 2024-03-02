@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import PostVehicle from "./pages/PostVehicle";
+import PostVehicle from "./components/PostVehicle";
 import Vehicles from "./pages/Vehicles/Vehicles";
 import VehiclesDetail from "./pages/Vehicles/VehiclesDetail";
 import Auth from "./pages/Auth";
