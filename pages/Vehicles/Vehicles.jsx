@@ -83,8 +83,9 @@ export default function Vehicles() {
       <div className="van-list-filter-buttons">
         <button
           onClick={() => handleFilterChange("type", "simple")}
-          className={`van-type simple 
-                        ${typeFilter === "simple" ? "selected" : ""}`}
+          className={`van-type simple ${
+            typeFilter === "simple" ? "selected" : ""
+          }`}
         >
           Simple
         </button>

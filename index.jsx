@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import PostVehicle from "./pages/PostVehicle";
 import Vehicles from "./pages/Vehicles/Vehicles";
 import VehiclesDetail from "./pages/Vehicles/VehiclesDetail";
 import Auth from "./pages/Auth";
@@ -50,6 +51,7 @@ function App() {
           <Route path="auth" element={<Auth />} />
 
           <Route element={<AuthRequired user={user} />}>
+            <Route path="post" element={<PostVehicle />} />
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
