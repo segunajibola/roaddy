@@ -51,11 +51,11 @@ function App() {
           <Route path="auth" element={<Auth />} />
 
           <Route element={<AuthRequired user={user} />}>
+            <Route path="post" element={<PostVehicle />} />
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
               <Route path="reviews" element={<Reviews />} />
-              <Route path="post" element={<PostVehicle />} />
               <Route path="vans" element={<HostVans />} />
               <Route path="vans/:id" element={<HostVanDetail />}>
                 <Route index element={<HostVanInfo />} />

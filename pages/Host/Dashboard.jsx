@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
-import { getHostVans } from "../../api";
+import { getHostVehicle } from "../../api";
 
 export default function Dashboard() {
   const context = useOutletContext();
@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [error, setError] = React.useState(null);
   React.useEffect(() => {
     setLoading(true);
-    getHostVans()
+    getHostVehicle()
       .then((data) => setVans(data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
