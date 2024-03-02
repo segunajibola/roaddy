@@ -14,9 +14,10 @@ const CollectionCreator = ({ onPostSuccess }) => {
     type: "",
   });
 
-  const handleCreateCollection = async () => {
+  const handleCreateCollection = async (e) => {
+    e.preventDefault()
     try {
-      createCollection(context, collection);
+      await createCollection(context, collection);
       onPostSuccess();
       console.log("Collection created successfully");
     } catch (error) {

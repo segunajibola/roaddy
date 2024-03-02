@@ -9,6 +9,7 @@ import {
   where,
   documentId,
   addDoc,
+  deleteDoc
 } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -134,6 +135,8 @@ export const createCollection = async (context, data) => {
     type: data.type,
   });
 
+  localStorage.setItem(document.id, JSON.stringify(document.id));
+
   // const newCollectionRef = collection(db, 'users', document.id, 'name of new subcollection')
 
   // await addDoc(newCollectionRef, {
@@ -163,3 +166,13 @@ export async function getHostVehicle(context) {
   console.log(vehicles);
   return vehicles;
 }
+
+export const deleteDocument = async (context, documentId) => {
+  try {
+    const documentRef = doc(db, getCollectionName(context), documentId);
+    await deleteDoc(documentRef);
+    console.log("Document successfully deleted!");
+  } catch (error) {
+    console.error("Error deleting document: ", error);
+  }
+};
