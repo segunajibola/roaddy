@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { getHostVehicle, deleteDocument } from "../../api";
 import AddVehicle from "../../components/AddVehicle";
 import { MdOutlineDeleteForever } from "react-icons/md";
+import { FcEmptyTrash } from "react-icons/fc";
 
 export default function HostVehicles() {
   const context = useOutletContext();
 
-  const [vans, setVans] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
+  const [vans, setVans] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [addVehicleVisible, setAddVehicleVisible] = useState(false);
 
   const loadVans = async () => {
     setLoading(true);
@@ -34,14 +36,12 @@ export default function HostVehicles() {
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         await deleteDocument(context, parsedData);
-        console.log(parsedData); // Output: { name: "John", age: 30 }
+        console.log(parsedData); 
       } else {
         console.log("No data found in localStorage");
       }
 
-      // Remove something from localStorage
       localStorage.removeItem(id);
-      loadVans();
       setVans((prevVans) => prevVans.filter((van) => van.id !== id));
     } catch (error) {}
   };
@@ -96,14 +96,29 @@ export default function HostVehicles() {
 
   return (
     <>
-      <AddVehicle onPostSuccess={handlePost} />
+      {!loading && !error && (
+        <>
+          {!addVehicleVisible && (
+            <button
+              onClick={() => setAddVehicleVisible(true)}
+              className="p-2 bg-[#8e775b] text-white rounded-md ml-4"
+            >
+              Add Vehicle
+            </button>
+          )}
+          {addVehicleVisible && <AddVehicle onPostSuccess={handlePost} setAddVehicleVisible={setAddVehicleVisible} />}
+        </>
+      )}
       <section>
         <h1 className="p-4 font-semibold text-xl tect-center">
           Your hosted vehicles
         </h1>
         <div className="host-vans-list">
           {vans.length === 0 ? (
-            <h2>You have not hosted any vehicle...</h2>
+            <div className="flex flex-col items-center my-5">
+              <h2>You hosted vehicles list is empty</h2>
+              <FcEmptyTrash size={50} />
+            </div>
           ) : vans.length > 0 ? (
             <section>{hostVansEls}</section>
           ) : (

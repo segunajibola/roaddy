@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createCollection } from "../api";
 import { useOutletContext } from "react-router-dom";
 
-const AddVehicle = ({ onPostSuccess }) => {
+const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
   const context = useOutletContext();
 
   const [collection, setCollection] = useState({
@@ -138,6 +138,7 @@ const AddVehicle = ({ onPostSuccess }) => {
         <button className="col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-blue-600">
           Add
         </button>
+        <div onClick={() => setAddVehicleVisible(false)}>close form</div>
       </form>
     </div>
   );
