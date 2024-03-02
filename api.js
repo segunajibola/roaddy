@@ -9,6 +9,7 @@ import {
   where,
   documentId,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -57,7 +58,17 @@ export async function getVans() {
 //     return data.vans
 // }
 
-export async function getVan(id) {
+export async function getVan(id, context) {
+  if (context) {
+    const hostId = getCollectionName(context);
+    const docRef = doc(db, hostId, id);
+    const snapshot = await getDoc(docRef);
+    return {
+      ...snapshot.data(),
+      id: snapshot.id,
+    };
+  }
+
   const docRef = doc(db, "vehicles", id);
   const snapshot = await getDoc(docRef);
   return {
@@ -122,7 +133,6 @@ function getCollectionName(context) {
 }
 
 export const createCollection = async (context, data) => {
-  
   const usersCollectionRef = collection(db, getCollectionName(context));
 
   const document = await addDoc(usersCollectionRef, {
@@ -133,6 +143,8 @@ export const createCollection = async (context, data) => {
     price: data.price,
     type: data.type,
   });
+
+  localStorage.setItem(document.id, JSON.stringify(document.id));
 
   // const newCollectionRef = collection(db, 'users', document.id, 'name of new subcollection')
 
@@ -152,7 +164,6 @@ export const createCollection = async (context, data) => {
 // }
 
 export async function getHostVehicle(context) {
-
   const usersCollectionRef = collection(db, getCollectionName(context));
 
   const snapshot = await getDocs(usersCollectionRef);
@@ -163,3 +174,13 @@ export async function getHostVehicle(context) {
   console.log(vehicles);
   return vehicles;
 }
+
+export const deleteDocument = async (context, documentId) => {
+  try {
+    const documentRef = doc(db, getCollectionName(context), documentId);
+    await deleteDoc(documentRef);
+    console.log("Document successfully deleted!");
+  } catch (error) {
+    console.error("Error deleting document: ", error);
+  }
+};

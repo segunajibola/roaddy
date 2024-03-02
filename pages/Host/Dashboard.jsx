@@ -5,15 +5,27 @@ import { getHostVehicle } from "../../api";
 
 export default function Dashboard() {
   const context = useOutletContext();
-  console.log("contextindash", context, context.email, context.displayName, context.photoURL);
+  console.log(
+    "contextindash",
+    "context",
+    context,
+    "context.email",
+    context.email,
+    "context.displayName",
+    context.displayName,
+    "context.photoURL",
+    context.photoURL
+  );
   const [vans, setVans] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   React.useEffect(() => {
     setLoading(true);
-    getHostVehicle()
+    getHostVehicle(context)
       .then((data) => setVans(data))
-      .catch((err) => setError(err))
+      .catch((err) => {
+        console.log(err)
+        setError(err)})
       .finally(() => setLoading(false));
   }, []);
 
@@ -25,7 +37,7 @@ export default function Dashboard() {
           <h3>{van.name}</h3>
           <p>${van.price}/day</p>
         </div>
-        <Link to={`vans/${van.id}`}>View</Link>
+        <Link to={`vehicles/${van.id}`}>View</Link>
       </div>
     ));
 
@@ -48,7 +60,12 @@ export default function Dashboard() {
     <>
       <section className="host-dashboard-earnings">
         <div className="info">
-          <h1>Welcome {context.displayName ? context.displayName.split(" ")[0] : context.email}</h1>
+          <h1>
+            Welcome{" "}
+            {context.displayName
+              ? context.displayName.split(" ")[0]
+              : context.email}
+          </h1>
           <p>
             Income last <span>30 days</span>
           </p>

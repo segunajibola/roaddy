@@ -29,7 +29,7 @@ export default function VanDetail() {
   }
 
   if (error) {
-    return <h1>There was an error: {error.message}</h1>;
+    return <h1>There was ane error: {error.message}</h1>;
   }
 
   const search = location.state?.search || "";
