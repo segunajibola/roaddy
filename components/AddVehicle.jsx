@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { createCollection } from "../api";
-import { NavLink, Outlet, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
-const CollectionCreator = ({ onPostSuccess }) => {
+const AddVehicle = ({ onPostSuccess }) => {
   const context = useOutletContext();
 
   const [collection, setCollection] = useState({
@@ -15,7 +15,7 @@ const CollectionCreator = ({ onPostSuccess }) => {
   });
 
   const handleCreateCollection = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       await createCollection(context, collection);
       onPostSuccess();
@@ -27,7 +27,7 @@ const CollectionCreator = ({ onPostSuccess }) => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Create Collection</h2>
+      <h2 className="text-xl font-bold mb-4">Add new vehicle</h2>
 
       <form
         onSubmit={handleCreateCollection}
@@ -136,11 +136,11 @@ const CollectionCreator = ({ onPostSuccess }) => {
           />
         </div>
         <button className="col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-blue-600">
-          Create Collection
+          Add
         </button>
       </form>
     </div>
   );
 };
 
-export default CollectionCreator;
+export default AddVehicle;

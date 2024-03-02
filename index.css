@@ -349,10 +349,6 @@ i[class*="van-type-"] {
   padding-inline: 26px;
 }
 
-.host-vans-title {
-  padding-inline: 26px;
-}
-
 .host-van-single {
   display: flex;
   align-items: center;

@@ -3,14 +3,13 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import PostVehicle from "./components/PostVehicle";
 import Vehicles from "./pages/Vehicles/Vehicles";
 import VehiclesDetail from "./pages/Vehicles/VehiclesDetail";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
-import HostVans from "./pages/Host/HostVans";
+import HostVehicles from "./pages/Host/HostVehicles";
 import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import HostVanPricing from "./pages/Host/HostVanPricing";
@@ -51,13 +50,12 @@ function App() {
           <Route path="auth" element={<Auth />} />
 
           <Route element={<AuthRequired user={user} />}>
-            <Route path="post" element={<PostVehicle />} />
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
               <Route path="reviews" element={<Reviews />} />
-              <Route path="vans" element={<HostVans />} />
-              <Route path="vans/:id" element={<HostVanDetail />}>
+              <Route path="vehicles" element={<HostVehicles />} />
+              <Route path="vehicles/:id" element={<HostVanDetail />}>
                 <Route index element={<HostVanInfo />} />
                 <Route path="pricing" element={<HostVanPricing />} />
                 <Route path="photos" element={<HostVanPhotos />} />

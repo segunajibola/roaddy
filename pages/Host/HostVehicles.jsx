@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { getHostVehicle, deleteDocument } from "../../api";
-import PostVehicle from "../../components/PostVehicle";
+import AddVehicle from "../../components/AddVehicle";
 
-export default function HostVans() {
+export default function HostVehicles() {
   const context = useOutletContext();
 
   const [vans, setVans] = React.useState([]);
@@ -41,11 +41,11 @@ export default function HostVans() {
       // Remove something from localStorage
       localStorage.removeItem(id);
       loadVans();
-      setVans(prevVans => prevVans.filter(van => van.id !== id));
+      setVans((prevVans) => prevVans.filter((van) => van.id !== id));
     } catch (error) {}
   };
 
-  //   const hostVansEls = vans.map((van) => (
+  //   conVehiclesEls = vans.map((van) => (
   //     <Link to={van.id} key={van.id} className="host-van-link-wrapper">
   //       <div className="host-van-single" key={van.id}>
   //         <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
@@ -85,12 +85,13 @@ export default function HostVans() {
 
   return (
     <>
-      <div>Host van</div>
-      <PostVehicle onPostSuccess={handlePost} />
+      <AddVehicle onPostSuccess={handlePost} />
       <section>
-        <h1 className="host-vans-title">Your listed vans</h1>
+        <h1 className="p-4 font-semibold text-2xl tect-center">Your hosted vehicles</h1>
         <div className="host-vans-list">
-          {vans.length > 0 ? (
+          {vans.length === 0 ? (
+            <h2>You have not hosted any vehicle...</h2>
+          ) : vans.length > 0 ? (
             <section>{hostVansEls}</section>
           ) : (
             <h2>Loading...</h2>

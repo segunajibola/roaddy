@@ -9,7 +9,7 @@ import {
   where,
   documentId,
   addDoc,
-  deleteDoc
+  deleteDoc,
 } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -58,7 +58,17 @@ export async function getVans() {
 //     return data.vans
 // }
 
-export async function getVan(id) {
+export async function getVan(id, context) {
+  if (context) {
+    const hostId = getCollectionName(context);
+    const docRef = doc(db, hostId, id);
+    const snapshot = await getDoc(docRef);
+    return {
+      ...snapshot.data(),
+      id: snapshot.id,
+    };
+  }
+
   const docRef = doc(db, "vehicles", id);
   const snapshot = await getDoc(docRef);
   return {
@@ -123,7 +133,6 @@ function getCollectionName(context) {
 }
 
 export const createCollection = async (context, data) => {
-  
   const usersCollectionRef = collection(db, getCollectionName(context));
 
   const document = await addDoc(usersCollectionRef, {
@@ -155,7 +164,6 @@ export const createCollection = async (context, data) => {
 // }
 
 export async function getHostVehicle(context) {
-
   const usersCollectionRef = collection(db, getCollectionName(context));
 
   const snapshot = await getDocs(usersCollectionRef);
