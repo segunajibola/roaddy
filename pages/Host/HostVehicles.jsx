@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { getHostVehicle, deleteDocument } from "../../api";
 import AddVehicle from "../../components/AddVehicle";
+import { MdOutlineDeleteForever } from "react-icons/md";
 
 export default function HostVehicles() {
   const context = useOutletContext();
@@ -59,15 +60,25 @@ export default function HostVehicles() {
   //   ));
 
   const hostVansEls = vans.map((van) => (
-    <div key={van.id} className="host-van-link-wrapper">
-      <Link to={van.id} className="host-van-single">
-        <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
+    <div key={van.id} className="flex justify-between bg-white">
+      <Link to={van.id} className="flex items-center p-3">
+        <img
+          src={van.imageUrl}
+          alt={`Photo of ${van.name}`}
+          className="h-32 rounded-lg mr-4"
+        />
         <div className="host-van-info">
           <h3>{van.name}</h3>
           <p>${van.price}/day</p>
+          <p>{van.description}</p>
         </div>
       </Link>
-      <div onClick={() => deleteVehicle(van.id)}>Delete data</div>
+      <div
+        onClick={() => deleteVehicle(van.id)}
+        className="flex items-end cursor-pointer p-2"
+      >
+        <MdOutlineDeleteForever size={30} color="red" />
+      </div>
     </div>
   ));
 
@@ -87,7 +98,9 @@ export default function HostVehicles() {
     <>
       <AddVehicle onPostSuccess={handlePost} />
       <section>
-        <h1 className="p-4 font-semibold text-2xl tect-center">Your hosted vehicles</h1>
+        <h1 className="p-4 font-semibold text-xl tect-center">
+          Your hosted vehicles
+        </h1>
         <div className="host-vans-list">
           {vans.length === 0 ? (
             <h2>You have not hosted any vehicle...</h2>
