@@ -29,6 +29,8 @@ export default function HostVehicles() {
     loadVans();
   }, []);
 
+  // 
+
   const deleteVehicle = async (id) => {
     console.log(id);
     try {
