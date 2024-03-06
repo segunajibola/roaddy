@@ -29,23 +29,31 @@ export default function HostVehicles() {
     loadVans();
   }, []);
 
-  // 
+
+  // delete vehicle that checks if you created it from browser, it fails if data was added on firebase 
+
+  // const deleteVehicle = async (id) => {
+  //   console.log(id);
+  //   try {
+  //     const storedData = localStorage.getItem(id);
+  //     if (storedData) {
+  //       const parsedData = JSON.parse(storedData);
+  //       await deleteDocument(context, parsedData);
+  //       console.log(parsedData); 
+  //     } else {
+  //       console.log("No data found in localStorage");
+  //     }
+
+  //     localStorage.removeItem(id);
+  //     setVans((prevVans) => prevVans.filter((van) => van.id !== id));
+  //   } catch (error) {}
+  // };
 
   const deleteVehicle = async (id) => {
-    console.log(id);
-    try {
-      const storedData = localStorage.getItem(id);
-      if (storedData) {
-        const parsedData = JSON.parse(storedData);
-        await deleteDocument(context, parsedData);
-        console.log(parsedData); 
-      } else {
-        console.log("No data found in localStorage");
-      }
-
-      localStorage.removeItem(id);
-      setVans((prevVans) => prevVans.filter((van) => van.id !== id));
-    } catch (error) {}
+    const parsedData = JSON.parse(localStorage.getItem(id));
+    await deleteDocument(context, parsedData);
+    localStorage.removeItem(id);
+    setVans((prevVans) => prevVans.filter((van) => van.id !== id));
   };
 
   //   conVehiclesEls = vans.map((van) => (
