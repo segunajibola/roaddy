@@ -263,8 +263,6 @@ i[class*="van-type-"] {
   text-decoration: none;
 }
 
-.van-detail-container .back-button:visited {
-}
 
 .van-detail-container .back-button span {
   text-decoration: underline;
@@ -306,16 +304,6 @@ i[class*="van-type-"] {
   align-self: flex-start;
 }
 
-.van-detail .van-price {
-  /* font-size: 1.25rem; */
-  /* margin-bottom: 10px; */
-}
-
-.van-detail .van-price span {
-  /* font-weight: 700; */
-  /* font-size: 1.5rem; */
-}
-
 .van-detail .link-button {
   background-color: #ff8c38;
   color: white;
@@ -338,14 +326,6 @@ i[class*="van-type-"] {
   color: #161616;
   text-decoration: underline;
   font-weight: 600;
-}
-
-.host-vans-list {
-  padding-inline: 26px;
-}
-
-.host-van-info {
-  margin-right: auto;
 }
 
 .host-van-info h3 {
@@ -572,9 +552,7 @@ i[class*="van-type-"] {
   align-items: center;
 }
 
-.host-dashboard-vans .host-vans-list {
-  padding-inline: 0;
-}
+
 
 .host-income {
   padding-inline: 26px;
@@ -697,5 +675,3 @@ img.graph {
   color: #ff8c38;
   margin-right: 5px;
 }
-
-/* 784 */

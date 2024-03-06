@@ -16,8 +16,6 @@ export default function AuthRequired({ user }) {
       />
     );
   }
-
-  console.log("user",user, user.email, user.displayName);
-
+  
   return <Outlet context={user} />;
 }
