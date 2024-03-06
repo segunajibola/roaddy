@@ -5,6 +5,7 @@ import { useOutletContext } from "react-router-dom";
 const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
   const { authUser, vans, error, loading } = useOutletContext();
   const [imgLink, setImgLink] = useState();
+  const [images, setImages] = useState([]);
   const [collection, setCollection] = useState({
     name: "",
     description: "",
@@ -24,9 +25,10 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
       try {
         const response = await fetch(PIXABAY_API_URL);
         const data = await response.json();
-        console.log("data", data);
+        setImages(data);
+        console.log("images", images);
 
-        const num = Math.floor(Math.random() * data.hits.length);
+        const num = Math.floor(Math.random() * (data.hits.length + 1));
         console.log("num", num);
         if (data.hits && data.hits.length > 0) {
           setImgLink(data.hits[num].largeImageURL);
@@ -41,7 +43,7 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
       }
     }
     getRandomVehicleImage();
-  }, [collection]);
+  }, []);
 
   // Usage example
   // getRandomVehicleImage().then((imageUrl) => {
@@ -83,23 +85,44 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
   };
 
   const handleCopyImgLink = () => {
-    // Create a temporary textarea element
     const tempTextarea = document.createElement("textarea");
     tempTextarea.value = imgLink;
     document.body.appendChild(tempTextarea);
-
-    // Select the text in the textarea
     tempTextarea.select();
     tempTextarea.setSelectionRange(0, 99999); /* For mobile devices */
-
     // Copy the selected text
     const copiedText = tempTextarea.value;
-
-    // Remove the temporary textarea
     document.body.removeChild(tempTextarea);
-
-    // Alert the user with the copied text
     console.log(`Copied: ${copiedText}`);
+  };
+
+  const getRandomPixabayImage = async () => {
+    // const PIXABAY_API_KEY = "YOUR_PIXABAY_API_KEY";
+    // const PIXABAY_API_URL = `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=vehicle&image_type=photo&orientation=horizontal&per_page=1`;
+
+    const PIXABAY_API_KEY = "24194223-7c2f2d1f20c592a1f12e67655";
+    const PIXABAY_API_URL = `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
+
+    try {
+      const response = await fetch(PIXABAY_API_URL);
+      const data = await response.json();
+      const num = Math.floor(Math.random() * (data.hits.length + 1));
+
+      if (data.hits && data.hits.length > 0) {
+        setCollection((prev) => ({
+          ...prev,
+          imageUrl: `${data.hits[num].largeImageURL}`,
+        }));
+      } else {
+        throw new Error("Image not found");
+      }
+    } catch (error) {
+      console.error("Error fetching random Pixabay image:", error);
+    }
+  };
+
+  const handleGenerateLink = () => {
+    getRandomPixabayImage();
   };
 
   return (
@@ -168,8 +191,11 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
           <label htmlFor="imageUrl" className="block">
             Image Link
             {/* <span className="text-[4px]">{imgLink}</span> */}
-            <span onClick={handleCopyImgLink} className="cursor-pointer ml-2">
-              copy
+            <span
+              onClick={handleGenerateLink}
+              className="cursor-pointer ml-2 p-.5 rounded-lg bg-gray-300"
+            >
+              generate link
             </span>
           </label>
           <input
