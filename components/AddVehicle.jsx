@@ -245,7 +245,7 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
             placeholder="Enter vehicle type"
           />
         </div>
-        <button className="col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1">
+        <button className="col-span-full bg-[#645d53] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1">
           Add
         </button>
         <div
