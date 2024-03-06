@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet, useOutletContext } from "react-router-dom";
+import { getHostVehicle } from "../api";
 
 export default function HostLayout() {
   const activeStyles = {
@@ -8,7 +9,28 @@ export default function HostLayout() {
     color: "#161616",
   };
 
-  const context = useOutletContext();
+  const authUser = useOutletContext();
+
+  const [vans, setVans] = React.useState([]);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    getHostVehicle(authUser)
+      .then((data) => {
+        setVans(data);
+        console.log("vans in hostlayout", data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      })
+  }, []);
+
+  if (error) {
+    return <h1>Error: {error.message}</h1>;
+  }
+
+  const contextData = { authUser, vans, setVans, error, setError };
 
   return (
     <>
@@ -42,7 +64,7 @@ export default function HostLayout() {
           Reviews
         </NavLink>
       </nav>
-      <Outlet context={context} />
+      <Outlet context={contextData} />
     </>
   );
 }

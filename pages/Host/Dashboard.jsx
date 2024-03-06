@@ -1,60 +1,10 @@
 import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
-import { getHostVehicle } from "../../api";
 
 export default function Dashboard() {
-  const context = useOutletContext();
-  console.log(
-    "contextindash",
-    "context",
-    context,
-    "context.email",
-    context.email,
-    "context.displayName",
-    context.displayName,
-    "context.photoURL",
-    context.photoURL
-  );
-  const [vans, setVans] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-  React.useEffect(() => {
-    setLoading(true);
-    getHostVehicle(context)
-      .then((data) => setVans(data))
-      .catch((err) => {
-        console.log(err)
-        setError(err)})
-      .finally(() => setLoading(false));
-  }, []);
-
-  function renderVanElements(vans) {
-    const hostVansEls = vans.map((van) => (
-      <div className="host-van-single" key={van.id}>
-        <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
-        <div className="host-van-info">
-          <h3>{van.name}</h3>
-          <p>${van.price}/day</p>
-        </div>
-        <Link to={`vehicles/${van.id}`}>View</Link>
-      </div>
-    ));
-
-    return (
-      <div className="host-vans-list">
-        <section>{hostVansEls}</section>
-      </div>
-    );
-  }
-
-  // if (loading) {
-  //     return <h1>Loading...</h1>
-  // }
-
-  if (error) {
-    return <h1>Error: {error.message}</h1>;
-  }
+  const { authUser, vans, error, setError } = useOutletContext();
+  console.log("dashboard", authUser, vans, error, setError);
 
   return (
     <>
@@ -62,9 +12,9 @@ export default function Dashboard() {
         <div className="info">
           <h1>
             Welcome{" "}
-            {context.displayName
-              ? context.displayName.split(" ")[0]
-              : context.email}
+            {authUser.displayName
+              ? authUser.displayName.split(" ")[0]
+              : authUser.email}
           </h1>
           <p>
             Income last <span>30 days</span>
@@ -85,14 +35,10 @@ export default function Dashboard() {
       </section>
       <section className="host-dashboard-vans">
         <div className="top">
-          <h2>Your listed vans</h2>
-          <Link to="vans">View all</Link>
+          <h2>Your listed vans {vans.length}</h2>
+          <Link to="vehicles">View all</Link>
         </div>
-        {loading && !vans ? (
-          <h1>Loading...</h1>
-        ) : (
-          <>{renderVanElements(vans)}</>
-        )}
+
         {/*<React.Suspense fallback={<h3>Loading...</h3>}>
                     <Await resolve={loaderData.vans}>{renderVanElements}</Await>
                 </React.Suspense>*/}

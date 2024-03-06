@@ -1,28 +1,105 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createCollection } from "../api";
 import { useOutletContext } from "react-router-dom";
 
-const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
-  const context = useOutletContext();
-
+const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
+  const { authUser, vans, error, loading } = useOutletContext();
+  const [imgLink, setImgLink] = useState();
   const [collection, setCollection] = useState({
     name: "",
     description: "",
-    hostId: "",
+    vehicleId: "",
     imageUrl: "",
     price: "",
     type: "",
   });
 
+  useEffect(() => {
+    async function getRandomVehicleImage() {
+      const ACCESS_KEY = "ibfaUbRWlQSc0xV36DVgNxpTmxhfBBudxiSHyX3q7BQ";
+      const query = "vehicle";
+      const PIXABAY_API_KEY = "24194223-7c2f2d1f20c592a1f12e67655";
+      const PIXABAY_API_URL = `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
+
+      try {
+        const response = await fetch(PIXABAY_API_URL);
+        const data = await response.json();
+        console.log("data", data);
+
+        const num = Math.floor(Math.random() * data.hits.length);
+        console.log("num", num);
+        if (data.hits && data.hits.length > 0) {
+          setImgLink(data.hits[num].largeImageURL);
+          console.log("imgLink", imgLink);
+          return;
+        } else {
+          throw new Error("Image data not found");
+        }
+      } catch (error) {
+        console.error("Error fetching random vehicle image:", error);
+        return null;
+      }
+    }
+    getRandomVehicleImage();
+  }, [collection]);
+
+  // Usage example
+  // getRandomVehicleImage().then((imageUrl) => {
+  //   if (imageUrl) {
+  //     console.log("Random vehicle image URL:", imageUrl);
+  //     // Render the image using the obtained URL
+  //   } else {
+  //     console.log("Failed to fetch random vehicle image.");
+  //   }
+  // });
+
   const handleCreateCollection = async (e) => {
     e.preventDefault();
+
+    const isCollectionEmpty = Object.values(collection).every(
+      (value) => value === ""
+    );
+
+    if (isCollectionEmpty) {
+      console.error("Please fill out at least one field in the collection.");
+      return;
+    }
+
     try {
-      await createCollection(context, collection);
-      onPostSuccess();
+      await createCollection(authUser, collection);
+      loadVans();
+      setCollection({
+        name: "",
+        description: "",
+        vehicleId: "",
+        imageUrl: "",
+        price: "",
+        type: "",
+      });
       console.log("Collection created successfully");
     } catch (error) {
       console.error("Error creating collection:", error);
     }
+  };
+
+  const handleCopyImgLink = () => {
+    // Create a temporary textarea element
+    const tempTextarea = document.createElement("textarea");
+    tempTextarea.value = imgLink;
+    document.body.appendChild(tempTextarea);
+
+    // Select the text in the textarea
+    tempTextarea.select();
+    tempTextarea.setSelectionRange(0, 99999); /* For mobile devices */
+
+    // Copy the selected text
+    const copiedText = tempTextarea.value;
+
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextarea);
+
+    // Alert the user with the copied text
+    console.log(`Copied: ${copiedText}`);
   };
 
   return (
@@ -46,7 +123,7 @@ const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
             onChange={(e) =>
               setCollection((prev) => ({ ...prev, ["name"]: e.target.value }))
             }
-            placeholder="Enter collection name"
+            placeholder="Enter car name e.g Tesla"
           />
         </div>
         <div className="mb-4">
@@ -65,28 +142,35 @@ const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
                 ["description"]: e.target.value,
               }))
             }
-            placeholder="Enter collection description"
+            placeholder="Describe your car"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="hostId" className="block">
-            Host ID
+          <label htmlFor="vehicleId" className="block">
+            Vehicle ID
           </label>
           <input
             className="border border-gray-300 rounded-md px-3 py-2 w-full"
             type="text"
-            id="hostId"
-            name="hostId"
-            value={collection.hostId}
+            id="vehicleId"
+            name="vehicleId"
+            value={collection.vehicleId}
             onChange={(e) =>
-              setCollection((prev) => ({ ...prev, ["hostId"]: e.target.value }))
+              setCollection((prev) => ({
+                ...prev,
+                ["vehicleId"]: e.target.value,
+              }))
             }
-            placeholder="Enter collection hostId"
+            placeholder="Enter vehicle id"
           />
         </div>
         <div className="mb-4">
           <label htmlFor="imageUrl" className="block">
             Image Link
+            {/* <span className="text-[4px]">{imgLink}</span> */}
+            <span onClick={handleCopyImgLink} className="cursor-pointer ml-2">
+              copy
+            </span>
           </label>
           <input
             className="border border-gray-300 rounded-md px-3 py-2 w-full"
@@ -100,7 +184,7 @@ const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
                 ["imageUrl"]: e.target.value,
               }))
             }
-            placeholder="Enter collection imageUrl"
+            placeholder="Enter vehicle image link"
           />
         </div>
         <div className="mb-4">
@@ -116,7 +200,7 @@ const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
             onChange={(e) =>
               setCollection((prev) => ({ ...prev, ["price"]: e.target.value }))
             }
-            placeholder="Enter collection price"
+            placeholder="Enter vehicle price($)"
           />
         </div>
         <div className="mb-4">
@@ -132,13 +216,18 @@ const AddVehicle = ({ onPostSuccess, setAddVehicleVisible }) => {
             onChange={(e) =>
               setCollection((prev) => ({ ...prev, ["type"]: e.target.value }))
             }
-            placeholder="Enter collection type"
+            placeholder="Enter vehicle type"
           />
         </div>
-        <button className="col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        <button className="col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1">
           Add
         </button>
-        <div onClick={() => setAddVehicleVisible(false)}>close form</div>
+        <div
+          className="text-center col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1"
+          onClick={() => setAddVehicleVisible(false)}
+        >
+          Hide form
+        </div>
       </form>
     </div>
   );

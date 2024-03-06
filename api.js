@@ -5,11 +5,14 @@ import {
   doc,
   getDocs,
   getDoc,
-  query,
   where,
   documentId,
   addDoc,
   deleteDoc,
+  query,
+  orderBy,
+  limit,
+  Timestamp,
 } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -125,27 +128,27 @@ export async function loginUser(creds) {
   return data;
 }
 
-function getCollectionName(context) {
-  const pre = context.displayName
-    ? context.displayName.split(" ")[0]
-    : context.email.substring(0, 6);
+function getCollectionName(authUser) {
+  const pre = authUser.displayName
+    ? authUser.displayName.split(" ")[0]
+    : authUser.email.substring(0, 6);
   return `${pre}col`;
 }
 
-export const createCollection = async (context, data) => {
-  const usersCollectionRef = collection(db, getCollectionName(context));
+export const createCollection = async (authUser, data) => {
+  const usersCollectionRef = collection(db, getCollectionName(authUser));
 
   const document = await addDoc(usersCollectionRef, {
     name: data.name,
     description: data.description,
-    hostId: data.hostId,
+    vehicleId: data.vehicleId,
     imageUrl: data.imageUrl,
     price: data.price,
     type: data.type,
+    createdAt: Timestamp.now(),
   });
 
   localStorage.setItem(document.id, JSON.stringify(document.id));
-
   // const newCollectionRef = collection(db, 'users', document.id, 'name of new subcollection')
 
   // await addDoc(newCollectionRef, {
@@ -163,10 +166,15 @@ export const createCollection = async (context, data) => {
 //   return vans;
 // }
 
-export async function getHostVehicle(context) {
-  const usersCollectionRef = collection(db, getCollectionName(context));
+export async function getHostVehicle(authUser) {
+  const usersCollectionRef = collection(db, getCollectionName(authUser));
 
-  const snapshot = await getDocs(usersCollectionRef);
+  const q = query(usersCollectionRef, orderBy("createdAt", "asc"));
+  const snapshot = await getDocs(q);
+  // const snapshot = await getDocs(
+  //   orderBy(usersCollectionRef, "createdAt", "desc")
+  // );
+
   const vehicles = snapshot.docs.map((doc) => ({
     ...doc.data(),
     id: doc.id,
@@ -175,9 +183,9 @@ export async function getHostVehicle(context) {
   return vehicles;
 }
 
-export const deleteDocument = async (context, documentId) => {
+export const deleteDocument = async (authUser, documentId) => {
   try {
-    const documentRef = doc(db, getCollectionName(context), documentId);
+    const documentRef = doc(db, getCollectionName(authUser), documentId);
     await deleteDoc(documentRef);
     console.log("Document successfully deleted!");
   } catch (error) {
