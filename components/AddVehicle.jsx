@@ -17,10 +17,9 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
 
   useEffect(() => {
     async function getRandomVehicleImage() {
-      const ACCESS_KEY = "ibfaUbRWlQSc0xV36DVgNxpTmxhfBBudxiSHyX3q7BQ";
+      const ACCESS_KEY = "";
       const query = "vehicle";
-      const PIXABAY_API_KEY = "24194223-7c2f2d1f20c592a1f12e67655";
-      const PIXABAY_API_URL = `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
+      const PIXABAY_API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
 
       try {
         const response = await fetch(PIXABAY_API_URL);
@@ -44,16 +43,6 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
     }
     getRandomVehicleImage();
   }, []);
-
-  // Usage example
-  // getRandomVehicleImage().then((imageUrl) => {
-  //   if (imageUrl) {
-  //     console.log("Random vehicle image URL:", imageUrl);
-  //     // Render the image using the obtained URL
-  //   } else {
-  //     console.log("Failed to fetch random vehicle image.");
-  //   }
-  // });
 
   const handleCreateCollection = async (e) => {
     e.preventDefault();
@@ -97,11 +86,7 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
   };
 
   const getRandomPixabayImage = async () => {
-    // const PIXABAY_API_KEY = "YOUR_PIXABAY_API_KEY";
-    // const PIXABAY_API_URL = `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=vehicle&image_type=photo&orientation=horizontal&per_page=1`;
-
-    const PIXABAY_API_KEY = "24194223-7c2f2d1f20c592a1f12e67655";
-    const PIXABAY_API_URL = `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
+    const PIXABAY_API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
 
     try {
       const response = await fetch(PIXABAY_API_URL);
@@ -190,7 +175,6 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
         <div className="mb-4">
           <label htmlFor="imageUrl" className="block">
             Image Link
-            {/* <span className="text-[4px]">{imgLink}</span> */}
             <span
               onClick={handleGenerateLink}
               className="cursor-pointer ml-2 p-.5 rounded-lg bg-gray-300"
