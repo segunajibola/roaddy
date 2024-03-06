@@ -5,7 +5,6 @@ import { useOutletContext } from "react-router-dom";
 const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
   const { authUser, vans, error, loading } = useOutletContext();
   const [imgLink, setImgLink] = useState();
-  const [images, setImages] = useState([]);
   const [collection, setCollection] = useState({
     name: "",
     description: "",
@@ -19,19 +18,18 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
     async function getRandomVehicleImage() {
       const ACCESS_KEY = "";
       const query = "vehicle";
-      const PIXABAY_API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
+      const PIXABAY_API_URL = `https://pixabay.com/api/?key=${
+        import.meta.env.VITE_PIXABAY_API_KEY
+      }&q=vehicle&image_type=photo`;
 
       try {
         const response = await fetch(PIXABAY_API_URL);
         const data = await response.json();
-        setImages(data);
-        console.log("images", images);
 
         const num = Math.floor(Math.random() * (data.hits.length + 1));
-        console.log("num", num);
         if (data.hits && data.hits.length > 0) {
           setImgLink(data.hits[num].largeImageURL);
-          console.log("imgLink", imgLink);
+          console.log("num", num, data.hits, "imgLink", imgLink);
           return;
         } else {
           throw new Error("Image data not found");
@@ -86,7 +84,9 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
   };
 
   const getRandomPixabayImage = async () => {
-    const PIXABAY_API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}&q=vehicle&image_type=photo`;
+    const PIXABAY_API_URL = `https://pixabay.com/api/?key=${
+      import.meta.env.VITE_PIXABAY_API_KEY
+    }&q=vehicle&image_type=photo`;
 
     try {
       const response = await fetch(PIXABAY_API_URL);
