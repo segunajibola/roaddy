@@ -10,16 +10,18 @@ export default function HostLayout() {
   };
 
   const authUser = useOutletContext();
-
   const [vans, setVans] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
+    setLoading(true);
     const hostVehicle = async () => {
       try {
         const data = await getHostVehicle(authUser);
         console.log("vans in hostlayout", data);
         setVans(data);
+        setLoading(false);
       } catch (err) {
         console.log(err);
         setError(err);
@@ -33,7 +35,7 @@ export default function HostLayout() {
     return <h1>Error: {error.message}</h1>;
   }
 
-  const contextData = { authUser, vans, setVans, error, setError };
+  const contextData = { authUser, vans, setVans, loading, error, setError };
 
   return (
     <>

@@ -6,6 +6,10 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  setPersistence,
+  browserSessionPersistence,
+  browserLocalPersistence,
+  inMemoryPersistence,
 } from "firebase/auth";
 import { auth } from "../api";
 import { FaGoogle } from "react-icons/fa";
@@ -34,6 +38,20 @@ export default function Login() {
 
   const handleSignInWithGoogle = async () => {
     try {
+      // await setPersistence(auth, browserLocalPersistence);
+      await setPersistence(auth, inMemoryPersistence)
+        // .then(() => {
+          // const provider = new GoogleAuthProvider();
+          // In memory persistence will be applied to the signed in Google user
+          // even though the persistence was set to 'none' and a page redirect
+          // occurred.
+          // return signInWithRedirect(auth, provider);
+        // })
+        // .catch((error) => {
+          // Handle Errors here.
+        //   const errorCode = error.code;
+        //   const errorMessage = error.message;
+        // });
       const res = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(res);
       const token = credential.accessToken;

@@ -7,7 +7,7 @@ import { FcEmptyTrash } from "react-icons/fc";
 import { IoMdRefresh } from "react-icons/io";
 
 export default function HostVehicles() {
-  const { authUser, vans, setVans, error, setError } = useOutletContext();
+  const { authUser, vans, setVans, loading, error, setError } = useOutletContext();
   const [addVehicleVisible, setAddVehicleVisible] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
 
@@ -79,6 +79,10 @@ export default function HostVehicles() {
       </div>
     </div>
   ));
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   if (error) {
     return <h1>There was an error: {error.message}</h1>;

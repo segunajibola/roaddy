@@ -14,8 +14,13 @@ import {
   limit,
   Timestamp,
 } from "firebase/firestore/lite";
-import { getAuth } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  setPersistence,
+  browserSessionPersistence,
+  inMemoryPersistence,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -31,7 +36,22 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 export const auth = getAuth(app);
+// export const firebase = firebase
 const provider = new GoogleAuthProvider();
+
+setPersistence(auth, inMemoryPersistence)
+  .then(() => {
+    const provider = new GoogleAuthProvider();
+    // In memory persistence will be applied to the signed in Google user
+    // even though the persistence was set to 'none' and a page redirect
+    // occurred.
+    return signInWithRedirect(auth, provider);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 
 // Refactoring the fetching functions below
 const vehiclesCollectionRef = collection(db, "vehicles");

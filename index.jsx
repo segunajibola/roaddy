@@ -27,6 +27,7 @@ import { auth } from "./api";
 function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
+    // auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -37,6 +38,7 @@ function App() {
       // setIsFetching(false);
     });
     return () => unsubscribe();
+    // });
   }, []);
 
   return (

@@ -41,8 +41,9 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
       console.error("Error creating collection:", error);
     }
   };
-
+const [red, setRed] = useState(false)
   const getRandomPixabayImage = async () => {
+    setRed(!red)
     const PIXABAY_API_URL = `https://pixabay.com/api/?key=${
       import.meta.env.VITE_PIXABAY_API_KEY
     }&q=vehicle&image_type=photo`;
@@ -133,7 +134,7 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
             Image Link
             <span
               onClick={() => getRandomPixabayImage()}
-              className="cursor-pointer ml-2 p-.5 rounded-lg bg-gray-300"
+              className={`cursor-pointer ml-2 p-.5 rounded-lg ${red? "text-red-500" : ""}  bg-gray-300`}
             >
               generate link
             </span>
