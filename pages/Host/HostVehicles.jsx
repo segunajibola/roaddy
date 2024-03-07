@@ -22,6 +22,7 @@ export default function HostVehicles() {
   };
 
   useEffect(() => {
+    loadVans();
     if (vans) {
       vans.forEach((van) => {
         if (!localStorage.getItem(van.id)) {
@@ -30,6 +31,20 @@ export default function HostVehicles() {
       });
     }
   }, []);
+
+  const handleRefresh = () => {
+    setIsRotated(true);
+    loadVans();
+    localStorage.clear();
+
+    if (vans) {
+      vans.forEach((van) => {
+        if (!localStorage.getItem(van.id)) {
+          localStorage.setItem(van.id, JSON.stringify(van.id));
+        }
+      });
+    }
+  };
 
   const deleteVehicle = async (id) => {
     const parsedData = JSON.parse(localStorage.getItem(id));
@@ -68,31 +83,6 @@ export default function HostVehicles() {
   if (error) {
     return <h1>There was an error: {error.message}</h1>;
   }
-
-  useEffect(() => {
-    // Function to run when component mounts or updates
-    console.log("Component mounted or updated");
-    loadVans();
-    // Clean-up function (optional)
-    return () => {
-      console.log("Clean-up function executed");
-    };
-  }, []);
-
-  const handleRefresh = () => {
-    console.log(localStorage.length, "begin");
-    setIsRotated(true);
-    loadVans();
-    localStorage.clear();
-
-    if (vans) {
-      vans.forEach((van) => {
-        if (!localStorage.getItem(van.id)) {
-          localStorage.setItem(van.id, JSON.stringify(van.id));
-        }
-      });
-    }
-  };
 
   return (
     <>
