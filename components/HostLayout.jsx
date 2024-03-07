@@ -15,15 +15,18 @@ export default function HostLayout() {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    getHostVehicle(authUser)
-      .then((data) => {
-        setVans(data);
+    const hostVehicle = async () => {
+      try {
+        const data = await getHostVehicle(authUser);
         console.log("vans in hostlayout", data);
-      })
-      .catch((err) => {
+        setVans(data);
+      } catch (err) {
         console.log(err);
         setError(err);
-      })
+      }
+    };
+
+    hostVehicle();
   }, []);
 
   if (error) {

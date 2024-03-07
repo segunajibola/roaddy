@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { getHostVehicle, deleteDocument } from "../../api";
 import AddVehicle from "../../components/AddVehicle";
@@ -14,16 +14,31 @@ export default function HostVehicles() {
     try {
       const data = await getHostVehicle(authUser);
       setVans(data);
+      // console.log("dataid", data.id)
+      // if (vans && !localStorage.getItem(data.id)) {
+      //   vans.forEach((van) => {
+      //     localStorage.setItem(van.id, JSON.stringify(van.id));
+      //   });
     } catch (err) {
-      setError(err)
+      setError(err);
     }
   };
 
+  useEffect(() => {
+    if(vans) {
+      vans.forEach(van => {
+        if(!localStorage.getItem(van.id)){
+          localStorage.setItem(van.id, JSON.stringify(van.id));
+        }
+      })
+    }
+  }, [vans]);
+
   const deleteVehicle = async (id) => {
     const parsedData = JSON.parse(localStorage.getItem(id));
-    if(!parsedData) {
-      console.log("No data found in localStorage")
-      return
+    if (!parsedData) {
+      console.log("No data found in localStorage");
+      return;
     }
     await deleteDocument(authUser, parsedData);
     localStorage.removeItem(id);
