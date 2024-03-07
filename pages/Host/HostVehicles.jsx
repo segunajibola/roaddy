@@ -4,35 +4,32 @@ import { getHostVehicle, deleteDocument } from "../../api";
 import AddVehicle from "../../components/AddVehicle";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { FcEmptyTrash } from "react-icons/fc";
+import { IoMdRefresh } from "react-icons/io";
 
 export default function HostVehicles() {
   const { authUser, vans, setVans, error, setError } = useOutletContext();
-
   const [addVehicleVisible, setAddVehicleVisible] = useState(false);
+  const [isRotated, setIsRotated] = useState(false);
 
   const loadVans = async () => {
     try {
       const data = await getHostVehicle(authUser);
       setVans(data);
-      // console.log("dataid", data.id)
-      // if (vans && !localStorage.getItem(data.id)) {
-      //   vans.forEach((van) => {
-      //     localStorage.setItem(van.id, JSON.stringify(van.id));
-      //   });
+      setIsRotated(false);
     } catch (err) {
       setError(err);
     }
   };
 
-  useEffect(() => {
-    if(vans) {
-      vans.forEach(van => {
-        if(!localStorage.getItem(van.id)){
-          localStorage.setItem(van.id, JSON.stringify(van.id));
-        }
-      })
-    }
-  }, [vans]);
+  // useEffect(() => {
+  //   if (vans) {
+  //     vans.forEach((van) => {
+  //       if (!localStorage.getItem(van.id)) {
+  //         localStorage.setItem(van.id, JSON.stringify(van.id));
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   const deleteVehicle = async (id) => {
     const parsedData = JSON.parse(localStorage.getItem(id));
@@ -72,12 +69,53 @@ export default function HostVehicles() {
     return <h1>There was an error: {error.message}</h1>;
   }
 
+  useEffect(() => {
+    // Function to run when component mounts or updates
+    console.log("Component mounted or updated");
+    loadVans();
+    // Clean-up function (optional)
+    return () => {
+      console.log("Clean-up function executed");
+    };
+  }, []);
+
+  const handleRefresh = () => {
+    console.log(localStorage.length, "begin");
+    setIsRotated(true);
+    loadVans();
+    localStorage.clear();
+
+    if (vans) {
+      vans.forEach((van) => {
+        if (!localStorage.getItem(van.id)) {
+          localStorage.setItem(van.id, JSON.stringify(van.id));
+        }
+      });
+    }
+  };
+
   return (
     <>
       <section>
-        <h1 className="p-4 font-semibold text-xl tect-center">
-          Your hosted vehicles
-        </h1>
+        <div className="flex justify-between items-center">
+          <h1 className="p-4 font-semibold text-xl tect-center">
+            Your hosted vehicles
+          </h1>
+          <span
+            className="mr-5 bg-[#8e775b] p-1 text-white rounded-md flex items-center justify-center"
+            onClick={handleRefresh}
+          >
+            Refresh database{" "}
+            <IoMdRefresh
+              className={`ml-1 p-0 ${
+                isRotated
+                  ? "transform rotate-180 transition-transform duration-500"
+                  : ""
+              }`}
+              size={25}
+            />
+          </span>
+        </div>
         <div className="host-vans-list">
           {!vans.length ? (
             <div className="flex flex-col items-center my-5">
