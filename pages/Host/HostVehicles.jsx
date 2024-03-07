@@ -21,15 +21,15 @@ export default function HostVehicles() {
     }
   };
 
-  useEffect(() => {
-    if (vans) {
-      vans.forEach((van) => {
-        if (!localStorage.getItem(van.id)) {
-          localStorage.setItem(van.id, JSON.stringify(van.id));
-        }
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (vans) {
+  //     vans.forEach((van) => {
+  //       if (!localStorage.getItem(van.id)) {
+  //         localStorage.setItem(van.id, JSON.stringify(van.id));
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   const deleteVehicle = async (id) => {
     const parsedData = JSON.parse(localStorage.getItem(id));
