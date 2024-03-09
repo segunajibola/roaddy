@@ -3,8 +3,8 @@ import { Link, useOutletContext } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
 
 export default function Dashboard() {
-  const { authUser, vans, error, setError } = useOutletContext();
-  console.log("dashboard", authUser, vans, error, setError);
+  const { user, vans, error, setError } = useOutletContext();
+  console.log("dashboard", user, vans, error, setError);
 
   return (
     <>
@@ -12,9 +12,9 @@ export default function Dashboard() {
         <div className="info">
           <h1>
             Welcome{" "}
-            {authUser.displayName
-              ? authUser.displayName.split(" ")[0]
-              : authUser.email}
+            {user.displayName
+              ? user.displayName.split(" ")[0]
+              : user.email}
           </h1>
           <p>
             Income last <span>30 days</span>

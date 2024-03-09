@@ -17,59 +17,126 @@ import HostVanPhotos from "./pages/Host/HostVanPhotos";
 // import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import HostLayout from "./components/HostLayout";
-import AuthRequired from "./components/AuthRequired";
-import { onAuthStateChanged } from "firebase/auth";
-
+// import AuthRequired from "./components/AuthRequired";
 import { auth } from "./api";
+import {
+  onAuthStateChanged,
+  setPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // import "./server";
 
 function App() {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    // auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-        // setIsFetching(false);
-        return;
-      }
-      setUser(null);
-      // setIsFetching(false);
-    });
-    return () => unsubscribe();
-    // });
-  }, []);
+  const [user, setUser] = useState();
+
+  onAuthStateChanged(
+    auth,
+    (currentUser) => {
+      setUser(currentUser);
+    }
+    // Unsubscribe from the listener when the component unmounts
+    // return () => unsubscribe();
+  );
+
+  // useEffect(() => {
+  //   // Configure persistence (e.g., LOCAL or SESSION)
+  //   // setPersistence(auth, browserLocalPersistence)
+  //     .then(() => {
+  //       // Listen for authentication state changes
+  //       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //         setUser(currentUser);
+  //       });
+  //       // Unsubscribe from the listener when the component unmounts
+  //       return () => unsubscribe();
+  //     })
+  //     .catch((error) => {
+  //       // Handle any errors that occur during persistence configuration
+  //       console.error("Error setting persistence:", error);
+  //     });
+  // }, []);
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout user={user} />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="vehicles" element={<Vehicles />} />
-          <Route path="vehicles/:id" element={<VehiclesDetail />} />
-          <Route path="auth" element={<Auth />} />
-
-          <Route element={<AuthRequired user={user} />}>
-            <Route path="host" element={<HostLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="income" element={<Income />} />
-              <Route path="reviews" element={<Reviews />} />
-              <Route path="vehicles" element={<HostVehicles />} />
-              <Route path="vehicles/:id" element={<HostVanDetail />}>
-                <Route index element={<HostVanInfo />} />
-                <Route path="pricing" element={<HostVanPricing />} />
-                <Route path="photos" element={<HostVanPhotos />} />
-              </Route>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="vehicles" element={<Vehicles />} />
+            <Route path="vehicles/:id" element={<VehiclesDetail />} />
+            <Route path="auth" element={<Auth />} />
+            <Route
+              path="host"
+              element={
+                <ProtectedRoute>
+                  <HostLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
             </Route>
-          </Route>
 
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Route>
-      </Routes>
+            {/* <Route element={<AuthRequired user={user} />}> */}
+
+            {/* <Route
+              path="host"
+              element={
+                <ProtectedRoute>
+                  <HostLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="income"
+                element={
+                  <ProtectedRoute>
+                    <Income />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="reviews"
+                element={
+                  <ProtectedRoute>
+                    <Reviews />
+                  </ProtectedRoute>
+                }
+              /> */}
+            {/* <Route path="vehicles" element={<HostVehicles />} /> */}
+            {/* <Route path="vehicles/:id" element={<HostVanDetail />}>
+                  <Route index element={<HostVanInfo />} />
+                  <Route path="pricing" element={<HostVanPricing />} />
+                  <Route path="photos" element={<HostVanPhotos />} />
+                </Route> */}
+            {/* </Route> */}
+            {/* </Route> */}
+
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Route>
+        </Routes>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+// ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);

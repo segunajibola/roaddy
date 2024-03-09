@@ -38,31 +38,23 @@ export default function Login() {
 
   const handleSignInWithGoogle = async () => {
     try {
+      // const res = await signInWithPopup(auth, provider);
+
       // await setPersistence(auth, browserLocalPersistence);
-      await setPersistence(auth, inMemoryPersistence)
-        // .then(() => {
-          // const provider = new GoogleAuthProvider();
-          // In memory persistence will be applied to the signed in Google user
-          // even though the persistence was set to 'none' and a page redirect
-          // occurred.
-          // return signInWithRedirect(auth, provider);
-        // })
-        // .catch((error) => {
-          // Handle Errors here.
-        //   const errorCode = error.code;
-        //   const errorMessage = error.message;
-        // });
-      const res = await signInWithPopup(auth, provider);
-      const credential = GoogleAuthProvider.credentialFromResult(res);
-      const token = credential.accessToken;
-      const user = res.user;
-      console.log("googleUser", user);
+      await signInWithPopup(auth, provider);
+      // Set session persistence to browser session
+      // await setPersistence(auth, browserSessionPersistence);
+      // const res = await signInWithPopup(auth, provider);
+      //ss const credential = GoogleAuthProvider.credentialFromResult(res);
+      //ss const token = credential.accessToken;
+      //ss const user = res.user;
+      //ss console.log("googleUser", user);
       navigate(from, { replace: true });
     } catch (error) {
       const errorCode = error.code;
       setError(error.message);
       // The email of the user's account used.
-      const email = error.customData.email;
+      // const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
     }
