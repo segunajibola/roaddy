@@ -77,25 +77,6 @@ function App() {
               }
             >
               <Route
-              index
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } />
-            </Route>
-
-            {/* <Route element={<AuthRequired user={user} />}> */}
-
-            {/* <Route
-              path="host"
-              element={
-                <ProtectedRoute>
-                  <HostLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route
                 index
                 element={
                   <ProtectedRoute>
@@ -118,13 +99,53 @@ function App() {
                     <Reviews />
                   </ProtectedRoute>
                 }
-              /> */}
-            {/* <Route path="vehicles" element={<HostVehicles />} /> */}
-            {/* <Route path="vehicles/:id" element={<HostVanDetail />}>
-                  <Route index element={<HostVanInfo />} />
-                  <Route path="pricing" element={<HostVanPricing />} />
-                  <Route path="photos" element={<HostVanPhotos />} />
-                </Route> */}
+              />
+              <Route
+                path="vehicles"
+                element={
+                  <ProtectedRoute>
+                    <HostVehicles />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="vehicles/:id"
+                element={
+                  <ProtectedRoute>
+                    <HostVanDetail />
+                  </ProtectedRoute>
+                }
+              >
+                <Route
+                  index
+                  element={
+                    <ProtectedRoute>
+                      <HostVanInfo />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="pricing"
+                  element={
+                    <ProtectedRoute>
+                      <HostVanPricing />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="photos"
+                  element={
+                    <ProtectedRoute>
+                      <HostVanPhotos />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
+            </Route>
+
+            {/* <Route element={<AuthRequired user={user} />}> */}
+
+            {/*  */}
             {/* </Route> */}
             {/* </Route> */}
 

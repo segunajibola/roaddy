@@ -7,13 +7,14 @@ import { FcEmptyTrash } from "react-icons/fc";
 import { IoMdRefresh } from "react-icons/io";
 
 export default function HostVehicles() {
-  const { authUser, vans, setVans, loading, error, setError } = useOutletContext();
+  const { user, vans, setVans, loading, error, setError } = useOutletContext();
+  console.log("vans in hostVehicle", vans);
   const [addVehicleVisible, setAddVehicleVisible] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
 
   const loadVans = async () => {
     try {
-      const data = await getHostVehicle(authUser);
+      const data = await getHostVehicle(user);
       setVans(data);
       setIsRotated(false);
     } catch (err) {
@@ -52,7 +53,7 @@ export default function HostVehicles() {
       console.log("No data found in localStorage");
       return;
     }
-    await deleteDocument(authUser, parsedData);
+    await deleteDocument(user, parsedData);
     localStorage.removeItem(id);
     setVans((prevVans) => prevVans.filter((van) => van.id !== id));
   };
