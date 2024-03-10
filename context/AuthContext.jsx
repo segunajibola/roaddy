@@ -11,13 +11,14 @@ import {
   browserLocalPersistence,
 } from "firebase/auth";
 import { auth } from "../api";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  console.log("user in auth before signing in", user)
+  console.log("user in auth before signing in", user);
   // const createUser = (email, password) => {
   //   return createUserWithEmailAndPassword(auth, email, password);
   // };
@@ -29,29 +30,108 @@ export const AuthContextProvider = ({ children }) => {
   // const logout = () => {
   //   return signOut(auth);
   // };
+  const provider = new GoogleAuthProvider();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || "/host";
+
+  const handleSignOut = () => {
+    try {
+      signOut(auth);
+      console.log("Sign Out");
+    } catch (error) {
+      console.log("Sign out error", error);
+    }
+  };
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      navigate(from, { replace: true });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    console.log("signup");
+    if (!formData.email || !formData.password) return;
+    console.log(formData.email, formData.password);
+    setStatus("creating");
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      console.log("userCredential", userCredential);
+      setStatus("idle");
+      navigate(from, { replace: true });
+    } catch (error) {
+      setError(error.message);
+      console.log("errorMessage", error.message);
+      console.log("errorCode", error.code);
+      setStatus("idle");
+    }
+  };
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    if (!formData.email || !formData.password) return;
+    console.log(formData.email, formData.password);
+    setStatus("logging-in");
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      console.log("userCredential", userCredential);
+      setStatus("idle");
+      navigate(from, { replace: true });
+    } catch (error) {
+      setError(error.message);
+      console.log("errorMessage", error.message);
+      console.log("errorCode", error.code);
+      setStatus("idle");
+    }
+  };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      setUser(currentUser);
-    });
+    try {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        console.log(currentUser);
+        setUser(currentUser);
+      });
 
-    setPersistence(auth, browserLocalPersistence)
-    .then(() => {
-      // This is optional: you can handle the persistence configuration success here
-      console.log("Persistence set to LOCAL");
-    })
-    .catch((error) => {
-      // Handle persistence configuration errors here
-      console.error("Error setting persistence:", error);
-    });
+      setPersistence(auth, browserLocalPersistence)
+        .then(() => {
+          console.log("Persistence set to LOCAL");
+        })
+        .catch((error) => {
+          console.error("Error setting persistence:", error);
+        });
 
-    return () => {unsubscribe()};
+      return () => {
+        unsubscribe();
+      };
+    } catch (error) {
+      console.log("error in authChanged", error);
+    }
   }, []);
 
   return (
-    // <UserContext.Provider value={{ createUser, user, logout, signIn }}>
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider
+      value={{
+        user,
+        handleSignOut,
+        handleSignInWithGoogle,
+        handleSignUp,
+        handleSignIn,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
   );
 };
-

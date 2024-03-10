@@ -23,8 +23,7 @@ export default function HostVehicles() {
     }
   };
 
-  useEffect(() => {
-    // loadVans();
+  function updateLocalStorage(vans) {
     if (vans) {
       vans.forEach((van) => {
         if (!localStorage.getItem(van.id)) {
@@ -32,20 +31,18 @@ export default function HostVehicles() {
         }
       });
     }
+  }
+
+  useEffect(() => {
+    // loadVans();
+    updateLocalStorage(vans)
   }, [vans]);
 
   const handleRefresh = () => {
     setIsRotated(true);
     loadVans();
     localStorage.clear();
-
-    if (vans) {
-      vans.forEach((van) => {
-        if (!localStorage.getItem(van.id)) {
-          localStorage.setItem(van.id, JSON.stringify(van.id));
-        }
-      });
-    }
+    updateLocalStorage(vans)
   };
 
   const deleteVehicle = async (id) => {

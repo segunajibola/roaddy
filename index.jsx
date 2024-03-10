@@ -30,16 +30,16 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import "./server";
 
 function App() {
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
 
-  onAuthStateChanged(
-    auth,
-    (currentUser) => {
-      setUser(currentUser);
-    }
-    // Unsubscribe from the listener when the component unmounts
-    // return () => unsubscribe();
-  );
+  // onAuthStateChanged(
+  //   auth,
+  //   (currentUser) => {
+  //     setUser(currentUser);
+  //   }
+  //   // Unsubscribe from the listener when the component unmounts
+  //   // return () => unsubscribe();
+  // );
 
   // useEffect(() => {
   //   // Configure persistence (e.g., LOCAL or SESSION)

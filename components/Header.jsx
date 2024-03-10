@@ -7,7 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { UserContext } from "../context/AuthContext"
 
 export default function Header() {
-  const { user } = useContext(UserContext)
+  const { user, handleSignOut } = useContext(UserContext)
   const [isHidden, setIsHidden] = useState(true);
   const activeStyles = {
     fontWeight: "bold",
@@ -19,14 +19,7 @@ export default function Header() {
   //   localStorage.removeItem("loggedin");
   // }
 
-  const handleSignOut = () => {
-    try {
-      signOut(auth);
-      console.log("Sign Out");
-    } catch (error) {
-      console.log("Sign out error", error);
-    }
-  };
+
 
   //   console.log("user.photoUrl", user.photoUrl)
 

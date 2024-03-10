@@ -1,20 +1,11 @@
-import React, { useState, useCallback } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-// import { loginUser, signInUser, createUser } from "../api";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  setPersistence,
-  browserSessionPersistence,
-  browserLocalPersistence,
-  inMemoryPersistence,
-} from "firebase/auth";
-import { auth } from "../api";
+import React, { useState, useCallback, useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
+import { UserContext } from "../context/AuthContext";
 
 export default function Login() {
+  const { handleSignInWithGoogle, handleSignUp, handleSignIn } =
+    useContext(UserContext);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,82 +19,6 @@ export default function Login() {
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
-
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const from = location.state?.from || "/host";
-
-  const provider = new GoogleAuthProvider();
-
-  const handleSignInWithGoogle = async () => {
-    try {
-      // const res = await signInWithPopup(auth, provider);
-
-      // await setPersistence(auth, browserLocalPersistence);
-      await signInWithPopup(auth, provider);
-      // Set session persistence to browser session
-      // await setPersistence(auth, browserSessionPersistence);
-      // const res = await signInWithPopup(auth, provider);
-      //ss const credential = GoogleAuthProvider.credentialFromResult(res);
-      //ss const token = credential.accessToken;
-      //ss const user = res.user;
-      //ss console.log("googleUser", user);
-      navigate(from, { replace: true });
-    } catch (error) {
-      const errorCode = error.code;
-      setError(error.message);
-      // The email of the user's account used.
-      // const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    }
-  };
-
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    console.log("signup");
-    if (!formData.email || !formData.password) return;
-    console.log(formData.email, formData.password);
-    setStatus("creating");
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
-      console.log("userCredential", userCredential);
-      setStatus("idle");
-      navigate(from, { replace: true });
-    } catch (error) {
-      setError(error.message);
-      console.log("errorMessage", error.message);
-      console.log("errorCode", error.code);
-      setStatus("idle");
-    }
-  };
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    if (!formData.email || !formData.password) return;
-    console.log(formData.email, formData.password);
-    setStatus("logging-in");
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
-      console.log("userCredential", userCredential);
-      setStatus("idle");
-      navigate(from, { replace: true });
-    } catch (error) {
-      setError(error.message);
-      console.log("errorMessage", error.message);
-      console.log("errorCode", error.code);
-      setStatus("idle");
-    }
-  };
 
   function handleChange(e) {
     const { name, value } = e.target;
