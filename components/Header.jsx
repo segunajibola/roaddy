@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../api";
 import { BiChevronDown } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
+import { UserContext } from "../context/AuthContext"
 
-export default function Header({ user }) {
+export default function Header() {
+  const { user } = useContext(UserContext)
   const [isHidden, setIsHidden] = useState(true);
   const activeStyles = {
     fontWeight: "bold",

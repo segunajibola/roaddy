@@ -5,7 +5,6 @@ import { UserContext } from "../context/AuthContext";
 
 export default function HostLayout() {
   const { user } = useContext(UserContext);
-  // const { user } = useContext(UserContext);
 
   //   console.js:213 Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
   // 1. You might have mismatching versions of React and the renderer (such as React DOM)
@@ -33,6 +32,7 @@ export default function HostLayout() {
   };
 
   // const authUser = useOutletContext();
+
   const [vans, setVans] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);

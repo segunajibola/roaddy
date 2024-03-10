@@ -13,6 +13,7 @@ export default function HostVehicles() {
   const [isRotated, setIsRotated] = useState(false);
 
   const loadVans = async () => {
+    console.log("loadVans func ran")
     try {
       const data = await getHostVehicle(user);
       setVans(data);
@@ -23,7 +24,7 @@ export default function HostVehicles() {
   };
 
   useEffect(() => {
-    loadVans();
+    // loadVans();
     if (vans) {
       vans.forEach((van) => {
         if (!localStorage.getItem(van.id)) {
@@ -31,7 +32,7 @@ export default function HostVehicles() {
         }
       });
     }
-  }, []);
+  }, [vans]);
 
   const handleRefresh = () => {
     setIsRotated(true);

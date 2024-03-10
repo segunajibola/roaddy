@@ -17,6 +17,7 @@ export const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
+  console.log("user in auth before signing in", user)
   // const createUser = (email, password) => {
   //   return createUserWithEmailAndPassword(auth, email, password);
   // };
