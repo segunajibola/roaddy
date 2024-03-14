@@ -35,15 +35,16 @@ export default function Vehicles() {
     : vans;
 
   const vanElements = displayedVans.map((van) => (
-    <div key={van.id} className="van-title">
+    <div key={van.id} className="w-full">
       <Link
         to={van.id}
         state={{
           search: `?${searchParams.toString()}`,
           type: typeFilter,
         }}
+        className="text-[#161616]  text-decoration: none"
       >
-        <img src={van.imageUrl} />
+        <img src={van.imageUrl} className="w-full rounded-[10px] h-[50vh] object-cover object-center"/>
         <div className="van-info">
           <h3>{van.name}</h3>
           <div>
@@ -78,9 +79,9 @@ export default function Vehicles() {
   }
 
   return (
-    <div className="van-list-container">
+    <div className="p-6">
       <h1>Explore our van options</h1>
-      <div className="van-list-filter-buttons">
+      <div className="flex wrap">
         <button
           onClick={() => handleFilterChange("type", "simple")}
           className={`van-type simple ${

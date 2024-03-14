@@ -61,7 +61,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextProvider>
-        <Routes>
+        <Routes className="bg-[#fff7ed]">
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />

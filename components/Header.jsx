@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { signOut } from "firebase/auth";
-import { auth } from "../api";
 import { BiChevronDown } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
 import { UserContext } from "../context/AuthContext"
@@ -15,20 +13,12 @@ export default function Header() {
     color: "#161616",
   };
 
-  // function fakeLogOut() {
-  //   localStorage.removeItem("loggedin");
-  // }
-
-
-
-  //   console.log("user.photoUrl", user.photoUrl)
-
   const handleOverlayClick = () => {
     !isHidden ? setIsHidden(true) : null;
   };
 
   return (
-    <header>
+    <header className="bg-[#fff7ed]">
       <Link className="site-logo" to="/">
         Roaddy
       </Link>
@@ -49,7 +39,7 @@ export default function Header() {
           to="/vehicles"
           style={({ isActive }) => (isActive ? activeStyles : null)}
         >
-          Vans
+          Vehicles
         </NavLink>
 
         <div
