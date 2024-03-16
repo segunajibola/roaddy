@@ -40,11 +40,12 @@ export default function HostLayout() {
 
   return (
     <>
-      <nav className="host-nav">
+      <nav className="flex mb-[30px]">
         <NavLink
           to="."
           end
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] font-medium px-5 py-1.5 hover:text-[#161616] hover:underline hover:font-semibold"
         >
           Dashboard
         </NavLink>
@@ -52,6 +53,7 @@ export default function HostLayout() {
         <NavLink
           to="income"
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] font-medium px-5 py-1.5 hover:text-[#161616] hover:underline hover:font-semibold"
         >
           Income
         </NavLink>
@@ -59,6 +61,7 @@ export default function HostLayout() {
         <NavLink
           to="vehicles"
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] font-medium px-5 py-1.5 hover:text-[#161616] hover:underline hover:font-semibold"
         >
           Vehicles
         </NavLink>
@@ -66,6 +69,7 @@ export default function HostLayout() {
         <NavLink
           to="reviews"
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] font-medium px-5 py-1.5 hover:text-[#161616] hover:underline hover:font-semibold"
         >
           Reviews
         </NavLink>

@@ -65,8 +65,8 @@ export default function HostVehicles() {
           className="h-32 rounded-lg mr-4"
         />
         <div className="host-van-info">
-          <h3>{van.name}</h3>
-          <p>${van.price}/day</p>
+          <h3 className="text-lg font-semibold m-2.5">{van.name}</h3>
+          <p className="m-2.5">${van.price}/day</p>
           <p>{van.description}</p>
         </div>
       </Link>

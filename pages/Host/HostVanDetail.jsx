@@ -1,90 +1,92 @@
-import React from "react"
-import { useParams, useOutletContext, Link, NavLink, Outlet } from "react-router-dom"
-import { getVan } from "../../api"
+import React from "react";
+import {
+  useParams,
+  useOutletContext,
+  Link,
+  NavLink,
+  Outlet,
+} from "react-router-dom";
+import { getVan } from "../../api";
 
 export default function HostVanDetail() {
-    const [currentVan, setCurrentVan] = React.useState(null)
-    const [loading, setLoading] = React.useState(false)
-    const [error, setError] = React.useState(null)
-    const { id } = useParams()
-    const context = useOutletContext();
+  const [currentVan, setCurrentVan] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const { id } = useParams();
+  const context = useOutletContext();
 
-
-    React.useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVan(id, context)
-                setCurrentVan(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        loadVans()
-    }, [id])
-
-    if (loading) {
-        return <h1>Loading...</h1>
+  React.useEffect(() => {
+    async function loadVans() {
+      setLoading(true);
+      try {
+        const data = await getVan(id, context);
+        setCurrentVan(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
     }
 
-    if (error) {
-        return <h1>There was an error: {error.message}</h1>
-    }
+    loadVans();
+  }, [id]);
 
-    const activeStyles = {
-        fontWeight: "bold",
-        textDecoration: "underline",
-        color: "#161616"
-    }
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
-    return (
-        <section>
-            <Link
-                to=".."
-                relative="path"
-                className="back-button"
-            >&larr; <span>Back to all vans</span></Link>
-            {currentVan &&
-                <div className="host-van-detail-layout-container">
-                    <div className="host-van-detail">
-                        <img src={currentVan.imageUrl} />
-                        <div className="host-van-detail-info-text">
-                            <i
-                                className={`van-type van-type-${currentVan.type}`}
-                            >
-                                {currentVan.type}
-                            </i>
-                            <h3>{currentVan.name}</h3>
-                            <h4>${currentVan.price}/day</h4>
-                        </div>
-                    </div>
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>;
+  }
 
-                    <nav className="host-van-detail-nav">
-                        <NavLink
-                            to="."
-                            end
-                            style={({ isActive }) => isActive ? activeStyles : null}
-                        >
-                            Details
-                    </NavLink>
-                        <NavLink
-                            to="pricing"
-                            style={({ isActive }) => isActive ? activeStyles : null}
-                        >
-                            Pricing
-                    </NavLink>
-                        <NavLink
-                            to="photos"
-                            style={({ isActive }) => isActive ? activeStyles : null}
-                        >
-                            Photos
-                    </NavLink>
-                    </nav>
-                    <Outlet context={{ currentVan }} />
-                </div>}
-        </section>
-    )
+  const activeStyles = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616",
+  };
+
+  return (
+    <section>
+      <Link to=".." relative="path" className="back-button">
+        &larr; <span>Back to all vans</span>
+      </Link>
+      {currentVan && (
+        <div className="bg-white p-6 mx-[26px] my-[30px]">
+          <div className="flex items-center">
+            <img src={currentVan.imageUrl} className="h-[160px] rounded-[5px] mr-5"/>
+            <div>
+              <i className={`van-type van-type-${currentVan.type}`}>
+                {currentVan.type}
+              </i>
+              <h3 className="mt-6 mb-1 text-[26px] font-bold">{currentVan.name}</h3>
+              <h4 className="text-lg">${currentVan.price}/day</h4>
+            </div>
+          </div>
+
+          <nav className="host-van-detail-nav">
+            <NavLink
+              to="."
+              end
+              style={({ isActive }) => (isActive ? activeStyles : null)}
+            >
+              Details
+            </NavLink>
+            <NavLink
+              to="pricing"
+              style={({ isActive }) => (isActive ? activeStyles : null)}
+            >
+              Pricing
+            </NavLink>
+            <NavLink
+              to="photos"
+              style={({ isActive }) => (isActive ? activeStyles : null)}
+            >
+              Photos
+            </NavLink>
+          </nav>
+          <Outlet context={{ currentVan }} />
+        </div>
+      )}
+    </section>
+  );
 }

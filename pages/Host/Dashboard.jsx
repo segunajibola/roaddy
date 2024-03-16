@@ -8,28 +8,28 @@ export default function Dashboard() {
 
   return (
     <>
-      <section className="host-dashboard-earnings">
+      <section className="bg-[#ffead0] px-[26px] py-[37px] flex justify-between items-center">
         <div className="info">
-          <h1>
+          <h1 className="text-[36px] text-[#161616]">
             Welcome{" "}
             {user.displayName
               ? user.displayName.split(" ")[0]
               : user.email}
           </h1>
-          <p>
-            Income last <span>30 days</span>
+          <p className="text-[#4d4d4d]">
+            Income last <span className="underline font-bold">30 days</span>
           </p>
-          <h2>$2,260</h2>
+          <h2 className="text-[38px] text-[#161616]font-black">$2,260</h2>
         </div>
         <Link to="income">Details</Link>
       </section>
-      <section className="host-dashboard-reviews">
+      <section className="bg-[#ffddb2] px-[26px] py-[25px] flex items-center">
         <h2>Review score</h2>
 
-        <BsStarFill className="star" />
+        <BsStarFill className="text-[#ff8c38] ml-[15px] text-[25px]" />
 
-        <p>
-          <span>5.0</span>/5
+        <p className="ml-1.5 text-[20px] text-[#4d4d4d] mr-auto">
+          <span className="font-bold text-[#161616]">5.0</span>/5
         </p>
         <Link to="reviews">Details</Link>
       </section>

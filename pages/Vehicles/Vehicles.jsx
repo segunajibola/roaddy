@@ -44,15 +44,22 @@ export default function Vehicles() {
         }}
         className="text-[#161616]  text-decoration: none"
       >
-        <img src={van.imageUrl} className="w-full rounded-[10px] h-[50vh] object-cover object-center"/>
-        <div className="van-info">
+        <img
+          src={van.imageUrl}
+          className="w-full rounded-[10px] h-[50vh] object-cover object-center"
+        />
+        <div className="flex justify-between items-center">
           <h3>{van.name}</h3>
-          <div>
-            <p className="van-price">
+          <div className="flex justify-between items-center gap-x-1">
+            <p className="rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
               ${van.price}
               <span>/day</span>
             </p>
-            <i className={`van-type ${van.type} selected`}>{van.type}</i>
+            <i
+              className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 ${van.type}`}
+            >
+              {van.type}
+            </i>
           </div>
         </div>
       </Link>
@@ -81,26 +88,26 @@ export default function Vehicles() {
   return (
     <div className="p-6">
       <h1>Explore our van options</h1>
-      <div className="flex wrap">
+      <div className="flex wrap gap-2">
         <button
           onClick={() => handleFilterChange("type", "simple")}
-          className={`van-type simple ${
-            typeFilter === "simple" ? "selected" : ""
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 simple ${
+            typeFilter === "simple" ? "bg-orange-900" : ""
           }`}
         >
           Simple
         </button>
         <button
           onClick={() => handleFilterChange("type", "luxury")}
-          className={`van-type luxury 
-                        ${typeFilter === "luxury" ? "selected" : ""}`}
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 luxury 
+                        ${typeFilter === "luxury" ? "bg-orange-900" : ""}`}
         >
           Luxury
         </button>
         <button
           onClick={() => handleFilterChange("type", "rugged")}
-          className={`van-type rugged 
-                        ${typeFilter === "rugged" ? "selected" : ""}`}
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 rugged 
+                        ${typeFilter === "rugged" ? "bg-orange-900" : ""}`}
         >
           Rugged
         </button>
@@ -108,13 +115,15 @@ export default function Vehicles() {
         {typeFilter ? (
           <button
             onClick={() => handleFilterChange("type", null)}
-            className="van-type clear-filters"
+            className="h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 clear-filters"
           >
             Clear filter
           </button>
         ) : null}
       </div>
-      <div className="van-list">{vanElements}</div>
+      <div className="grid grid-cols-2 justify-items-center gap-5 mt-14">
+        {vanElements}
+      </div>
     </div>
   );
 }

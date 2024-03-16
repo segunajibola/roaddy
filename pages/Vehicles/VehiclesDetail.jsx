@@ -36,19 +36,19 @@ export default function VanDetail() {
   const type = location.state?.type || "all";
 
   return (
-    <div className="van-detail-container">
-      <Link to={`..${search}`} relative="path" className="back-button">
-        &larr; <span>Back to {type} vans</span>
+    <div className="p-7">
+      <Link to={`..${search}`} relative="path" className="no-underline">
+        &larr; <span className="underline">Back to {type} vans</span>
       </Link>
 
       {van && (
-        <div className="van-detail">
-          <img src={van.imageUrl} />
+        <div className="flex flex-col text-[#161616]">
+          <img src={van.imageUrl} className="rounded-[5px] m-[47px] h-[60vh] object-cover object-center"/>
 
-          <div>
-            <h2>{van.name}</h2>
-            <div>
-              <i className={`van-type ${van.type} selected`}>{van.type}</i>
+          <div className="flex items-center justify-between">
+            <h2 className="text-[2rem] mb-2.5">{van.name}</h2>
+            <div className="flex items-center justify-between gap-x-[5px]">
+              <i className={`van-type ${van.type} selected self-start`}>{van.type}</i>
               <p className="van-price">
                 <span>${van.price}</span>/day
               </p>
@@ -56,7 +56,7 @@ export default function VanDetail() {
           </div>
 
           <p>{van.description}</p>
-          <button className="link-button">Rent this van</button>
+          <button className="text-white text-[1.125rem] bg-[#ff8c38]">Rent this van</button>
         </div>
       )}
     </div>
