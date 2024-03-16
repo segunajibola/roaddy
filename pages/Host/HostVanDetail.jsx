@@ -63,23 +63,26 @@ export default function HostVanDetail() {
             </div>
           </div>
 
-          <nav className="host-van-detail-nav">
+          <nav className="host-van-detail-nav flex m-[25px]">
             <NavLink
               to="."
               end
               style={({ isActive }) => (isActive ? activeStyles : null)}
+              className="no-underline text-[#4d4d4d] font-medium px-[15px] py-[5px] -ml-[15px] hover:text-[#161616] hover:underline hover:font-bold"
             >
               Details
             </NavLink>
             <NavLink
               to="pricing"
               style={({ isActive }) => (isActive ? activeStyles : null)}
+              className="no-underline text-[#4d4d4d] font-medium px-[20px] py-[5px] hover:text-[#161616] hover:underline hover:font-bold"
             >
               Pricing
             </NavLink>
             <NavLink
               to="photos"
               style={({ isActive }) => (isActive ? activeStyles : null)}
+              className="no-underline text-[#4d4d4d] font-medium px-[20px] py-[5px] hover:text-[#161616] hover:underline hover:font-bold"
             >
               Photos
             </NavLink>

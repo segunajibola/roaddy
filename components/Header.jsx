@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BiChevronDown } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
-import { UserContext } from "../context/AuthContext"
+import { UserContext } from "../context/AuthContext";
 
 export default function Header() {
-  const { user, handleSignOut } = useContext(UserContext)
+  const { user, handleSignOut } = useContext(UserContext);
   const [isHidden, setIsHidden] = useState(true);
   const activeStyles = {
     fontWeight: "bold",
@@ -18,11 +18,11 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-[#fff7ed]">
-      <Link className="site-logo" to="/">
+    <header className="bg-[#fff7ed] h-[70px] flex items-center p-2.5 ">
+      <Link className="mr-auto uppercase font-black text-xl" to="/">
         Roaddy
       </Link>
-      <nav>
+      <nav className="flex text-[15px] gap-[2px]">
         <NavLink
           to="/host"
           style={({ isActive }) => (isActive ? activeStyles : null)}
@@ -49,9 +49,9 @@ export default function Header() {
           }}
         >
           {user && (
-            <div className="login-link">
+            <div className="inline-flex items-center">
               {user.photoURL ? (
-                <img src={user.photoURL} className="login-photo" />
+                <img src={user.photoURL} className="h-[22.5px] w-[22.5px] rounded-[50%]" />
               ) : (
                 <div className="w-4 h-8 rounded-full bg-orange-500">
                   <FaUserCircle />

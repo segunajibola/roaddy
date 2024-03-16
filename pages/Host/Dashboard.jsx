@@ -33,8 +33,8 @@ export default function Dashboard() {
         </p>
         <Link to="reviews">Details</Link>
       </section>
-      <section className="host-dashboard-vans">
-        <div className="top">
+      <section className="px-[26px] py-[38px]">
+        <div className="flex justify-between items-center">
           <h2>Your listed vans {vans.length}</h2>
           <Link to="vehicles">View all</Link>
         </div>

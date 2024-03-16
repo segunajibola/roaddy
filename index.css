@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
-
 a {
   text-decoration: unset;
   color: unset;
@@ -20,33 +16,6 @@ body {
   scrollbar-width: none;
 }
 
-.site-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-header {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  padding-block: 10px;
-}
-
-header nav {
-  display: flex;
-  font-size: 15px;
-  gap: 2px;
-}
-
-header .site-logo {
-  color: black;
-  margin-right: auto;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 20px;
-}
-
 header a {
   text-decoration: none;
   color: #4d4d4d;
@@ -59,46 +28,6 @@ header a:hover {
   text-decoration: underline;
 }
 
-header .login-photo {
-  height: 22.5px;
-  width: 22.5px;
-  border-radius: 50%;
-}
-
-header .login-link {
-  display: inline-flex;
-  align-items: center;
-}
-
-main {
-  margin-bottom: 84px;
-}
-
-footer {
-  background-color: #161616;
-  color: #aaaaaa;
-  height: 74px;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-  font-weight: 500;
-}
-
-.link-button {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  padding: 0.75rem 1.375rem;
-  color: initial;
-  font-weight: 700;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.1s ease-in-out;
-}
-
 .back-button {
   display: block;
   color: black;
@@ -108,10 +37,6 @@ footer {
 
 .back-button span:hover {
   text-decoration: underline;
-}
-
-.link-button:hover {
-  transform: translate(1px, 1px);
 }
 
 /*** HOME PAGE ***/
@@ -164,172 +89,4 @@ footer {
 
 i[class*="van-type-"] {
   padding: 7px 14px;
-}
-
-.host-van-detail-nav {
-  display: flex;
-  margin-block: 25px;
-}
-
-.host-van-detail-nav a {
-  text-decoration: none;
-  color: #4d4d4d;
-  font-weight: 500;
-  padding: 5px 20px;
-}
-
-.host-van-detail-nav a:first-of-type {
-  text-decoration: none;
-  color: #4d4d4d;
-  font-weight: 500;
-  padding: 5px 15px;
-  margin-left: -15px;
-}
-
-.host-van-detail-nav a:hover {
-  color: #161616;
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-.not-found-container {
-  padding-inline: 26px;
-}
-
-.not-found-container .link-button {
-  width: 100%;
-  background-color: #161616;
-  color: white;
-}
-
-.host-dashboard-vans {
-  padding: 38px 26px;
-}
-
-.host-dashboard-vans > .top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.host-income {
-  padding-inline: 26px;
-  color: #161616;
-}
-
-.host-income > p {
-  color: #4d4d4d;
-}
-
-.host-income > p span {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.host-income > h2 {
-  font-size: 38px;
-  color: #161616;
-  font-weight: 900;
-}
-
-img.graph {
-  width: 100%;
-  max-width: 500px;
-}
-
-.host-income .info-header > p {
-  color: #4d4d4d;
-}
-
-.host-income .info-header > p span {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.host-income .info-header > h3 {
-  font-weight: 700;
-  font-size: 24px;
-  margin-top: 60px;
-}
-
-.host-income .transaction {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  margin-bottom: 31px;
-  padding: 35px 29px;
-  border-radius: 6px;
-}
-.host-income .transaction > h3 {
-  font-size: 36px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.host-income .transaction > p {
-  font-weight: 500;
-  font-size: 20px;
-  color: #4d4d4d;
-}
-
-.host-reviews {
-  padding-inline: 26px;
-  color: #161616;
-}
-
-.host-reviews .top-text {
-  display: flex;
-  align-items: center;
-  margin-bottom: 32px;
-}
-
-.host-reviews .top-text > h2 {
-  font-weight: 700;
-  font-size: 32px;
-  margin: 0;
-  margin-right: 20px;
-}
-
-.host-reviews .top-text > p {
-  margin: 0;
-  color: #4d4d4d;
-}
-
-.host-reviews .top-text > p span {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.host-reviews > img {
-  margin-bottom: 36px;
-}
-
-.host-reviews .review {
-  margin-block: 25px;
-}
-
-.host-reviews .review .info {
-  display: flex;
-}
-
-.host-reviews .review .name {
-  color: #161616;
-  margin-right: 10px;
-  font-weight: 600;
-}
-
-.host-reviews .review .date {
-  color: #8c8c8c;
-}
-
-.host-reviews hr {
-  background-color: #c7c7c7;
-  height: 1px;
-  border: 0;
-}
-
-.host-reviews .review-star {
-  color: #ff8c38;
-  margin-right: 5px;
 }
