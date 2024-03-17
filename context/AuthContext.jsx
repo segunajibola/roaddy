@@ -38,6 +38,7 @@ export const AuthContextProvider = ({ children }) => {
   const handleSignOut = () => {
     try {
       signOut(auth);
+      navigate("/auth");
       console.log("Sign Out");
     } catch (error) {
       console.log("Sign out error", error);

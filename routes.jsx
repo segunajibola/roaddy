@@ -16,6 +16,8 @@ import {
 import { HostLayout, Layout } from "./components";
 import { AuthContextProvider } from "./context/AuthContext";
 
+// should be in jsx
+
 export const AppRouter = () => {
   const router = createBrowserRouter([
     {

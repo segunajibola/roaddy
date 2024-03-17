@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { UserContext } from "../context/AuthContext";
 
 export default function Login() {
@@ -79,9 +78,14 @@ export default function Login() {
             {variant === "login" ? "Create an account" : "Login"}
           </span>
         </p>
-        <div className="text-lg">Sign in using:</div>
+        {/* <div className="text-lg">Sign in using:</div> */}
         <div>
-          <FaGoogle onClick={handleSignInWithGoogle} size={25} color="red" />
+          <img
+            src="https://github.com/segunajibola/image-host/blob/main/google/signInweb_dark_rd_SI@1x.png?raw=true"
+            alt=""
+            onClick={handleSignInWithGoogle}
+            className="w-auto h-auto"
+          />
         </div>
       </div>
     </>

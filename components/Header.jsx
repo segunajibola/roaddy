@@ -18,8 +18,11 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-[#fff7ed] h-[70px] flex items-center p-2.5 ">
-      <Link className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline" to="/">
+    <header className="bg-[#fff7ed] h-[70px] flex items-center p-2.5">
+      <Link
+        className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline"
+        to="/"
+      >
         Roaddy
       </Link>
       <nav className="flex text-[15px] gap-[2px]">
@@ -54,7 +57,10 @@ export default function Header() {
           {user && (
             <div className="inline-flex items-center">
               {user.photoURL ? (
-                <img src={user.photoURL} className="h-[22.5px] w-[22.5px] rounded-[50%]" />
+                <img
+                  src={user.photoURL}
+                  className="h-[22.5px] w-[22.5px] rounded-[50%]"
+                />
               ) : (
                 <div className="w-4 h-8 rounded-full bg-orange-500">
                   <FaUserCircle />
@@ -70,7 +76,7 @@ export default function Header() {
           <div
             className={`${
               isHidden ? "hidden" : "flex"
-            } fixed top-[70px] left-0 w-full h-full justify-center align-center`}
+            } fixed top-[70px] left-0 w-full h-full justify-center align-center z-10`}
             onClick={handleOverlayClick}
           >
             <div className="bg-white shadow-md w-2/12 absolute z-10 right-[1rem] p-1">
