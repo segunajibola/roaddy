@@ -84,7 +84,6 @@ export default function Login() {
             src="https://github.com/segunajibola/image-host/blob/main/google/signInweb_dark_rd_SI@1x.png?raw=true"
             alt=""
             onClick={handleSignInWithGoogle}
-            className="w-auto h-auto"
           />
         </div>
       </div>
