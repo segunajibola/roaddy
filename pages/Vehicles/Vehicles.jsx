@@ -91,23 +91,23 @@ export default function Vehicles() {
       <div className="flex wrap gap-2">
         <button
           onClick={() => handleFilterChange("type", "simple")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 simple ${
-            typeFilter === "simple" ? "bg-orange-900" : ""
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-[#e17654] ${
+            typeFilter === "simple" ? "bg-[#e17654]" : ""
           }`}
         >
           Simple
         </button>
         <button
           onClick={() => handleFilterChange("type", "luxury")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 luxury 
-                        ${typeFilter === "luxury" ? "bg-orange-900" : ""}`}
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-[#115e59] 
+                        ${typeFilter === "luxury" ? "bg-[#115e59]" : ""}`}
         >
           Luxury
         </button>
         <button
           onClick={() => handleFilterChange("type", "rugged")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 rugged 
-                        ${typeFilter === "rugged" ? "bg-orange-900" : ""}`}
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-[#161616] 
+                        ${typeFilter === "rugged" ? "bg-[#161616]" : ""}`}
         >
           Rugged
         </button>
@@ -115,7 +115,7 @@ export default function Vehicles() {
         {typeFilter ? (
           <button
             onClick={() => handleFilterChange("type", null)}
-            className="h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 clear-filters"
+            className="h-8 px-6 py-1.5 font-medium rounded-md border-none bg-[#ffead0] text-[#4d4d4d] underline bg-transparent transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 clear-filters"
           >
             Clear filter
           </button>

@@ -34,7 +34,7 @@ export default function Login() {
         {location.state?.message && (
           <h3 className="text-red">{location.state.message}</h3>
         )}
-        <h1>
+        <h1 className="text-xl my-5">
           {variant === "login"
             ? "Sign in to your account"
             : "Create a new account"}
@@ -71,17 +71,17 @@ export default function Login() {
               : `${variant === "login" ? "Log in" : "Sign up"}`}
           </button>
         </div>
-        <p>
+        <p className="my-5 text-xl">
           {variant === "login"
             ? `First time using Roaddy?${" "}`
             : `Already have an account?${" "}`}
-          <span onClick={toggleVariant}>
+          <span onClick={toggleVariant} className="underline">
             {variant === "login" ? "Create an account" : "Login"}
           </span>
         </p>
-        <div>Sign in using:</div>
+        <div className="text-lg">Sign in using:</div>
         <div>
-          <FaGoogle onClick={handleSignInWithGoogle} />
+          <FaGoogle onClick={handleSignInWithGoogle} size={25} color="red" />
         </div>
       </div>
     </>

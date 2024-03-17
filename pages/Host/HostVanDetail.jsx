@@ -47,7 +47,7 @@ export default function HostVanDetail() {
 
   return (
     <section>
-      <Link to=".." relative="path" className="back-button">
+      <Link to=".." relative="path" className="block text-black no-underline ml-6 hover:underline">
         &larr; <span>Back to all vans</span>
       </Link>
       {currentVan && (

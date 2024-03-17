@@ -64,7 +64,7 @@ export default function HostVehicles() {
           alt={`Photo of ${van.name}`}
           className="h-32 rounded-lg mr-4"
         />
-        <div className="host-van-info">
+        <div className="">
           <h3 className="text-lg font-semibold m-2.5">{van.name}</h3>
           <p className="m-2.5">${van.price}/day</p>
           <p>{van.description}</p>

@@ -19,25 +19,28 @@ export default function Header() {
 
   return (
     <header className="bg-[#fff7ed] h-[70px] flex items-center p-2.5 ">
-      <Link className="mr-auto uppercase font-black text-xl" to="/">
+      <Link className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline" to="/">
         Roaddy
       </Link>
       <nav className="flex text-[15px] gap-[2px]">
         <NavLink
           to="/host"
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] px-2 py-1.5 font-semibold hover:text-[#161616] hover:underline"
         >
           Host
         </NavLink>
         <NavLink
           to="/about"
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] px-2 py-1.5 font-semibold hover:text-[#161616] hover:underline"
         >
           About
         </NavLink>
         <NavLink
           to="/vehicles"
           style={({ isActive }) => (isActive ? activeStyles : null)}
+          className="no-underline text-[#4d4d4d] px-2 py-1.5 font-semibold hover:text-[#161616] hover:underline"
         >
           Vehicles
         </NavLink>
