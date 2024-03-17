@@ -48,18 +48,16 @@ export default function Vehicles() {
           src={van.imageUrl}
           className="w-full rounded-[10px] h-[50vh] object-cover object-center"
         />
-        <div className="flex justify-between items-center">
-          <h3>{van.name}</h3>
+        <div className="flex justify-between items-center mt-2">
+          <h3 className="font-medium">{van.name}</h3>
           <div className="flex justify-between items-center gap-x-1">
-            <p className="rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
+            <p className="rounded-[10px] bg-[#ffead0] px-[6px] py-1.5">
               ${van.price}
               <span>/day</span>
             </p>
-            <i
-              className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 ${van.type}`}
-            >
+            <p className="px-2 py-1.5 rounded-md bg-[#ffead0] italic">
               {van.type}
-            </i>
+            </p>
           </div>
         </div>
       </Link>
@@ -87,27 +85,35 @@ export default function Vehicles() {
 
   return (
     <div className="p-6">
-      <h1>Explore our van options</h1>
+      <h1 className="my-2">Explore our van options</h1>
       <div className="flex wrap gap-2">
         <button
           onClick={() => handleFilterChange("type", "simple")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-[#e17654] ${
-            typeFilter === "simple" ? "bg-[#e17654]" : ""
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+            typeFilter === "simple"
+              ? "text-white bg-orange-600 hover:bg-orange-700"
+              : ""
           }`}
         >
           Simple
         </button>
         <button
           onClick={() => handleFilterChange("type", "luxury")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-[#115e59] 
-                        ${typeFilter === "luxury" ? "bg-[#115e59]" : ""}`}
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+            typeFilter === "luxury"
+              ? "text-white bg-orange-600 hover:bg-orange-700"
+              : ""
+          }`}
         >
           Luxury
         </button>
         <button
           onClick={() => handleFilterChange("type", "rugged")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-[#ffead0] text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-[#161616] 
-                        ${typeFilter === "rugged" ? "bg-[#161616]" : ""}`}
+          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+            typeFilter === "rugged"
+              ? "text-white bg-orange-600 hover:bg-orange-700"
+              : ""
+          }`}
         >
           Rugged
         </button>
@@ -115,13 +121,13 @@ export default function Vehicles() {
         {typeFilter ? (
           <button
             onClick={() => handleFilterChange("type", null)}
-            className="h-8 px-6 py-1.5 font-medium rounded-md border-none bg-[#ffead0] text-[#4d4d4d] underline bg-transparent transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 clear-filters"
+            className="h-8 px-6 py-1.5 font-medium rounded-md border-none text-[#4d4d4d] underline bg-transparent"
           >
             Clear filter
           </button>
         ) : null}
       </div>
-      <div className="grid grid-cols-2 justify-items-center gap-5 mt-14">
+      <div className="grid grid-cols-2 justify-items-center gap-5 mt-10">
         {vanElements}
       </div>
     </div>

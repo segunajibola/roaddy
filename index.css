@@ -21,21 +21,3 @@ body {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
     url("./assets/images/home-hero.png") no-repeat center center;
 }
-
-/*** VAN PAGES ***/
-.van-type.clear-filters {
-  margin-left: -20px;
-  height: 34px;
-  padding: 6px 26px;
-  font-style: normal;
-  font-weight: 500;
-  border: none;
-  border-radius: 5px;
-  text-decoration: underline;
-  background-color: transparent;
-  color: #4d4d4d;
-}
-
-i[class*="van-type-"] {
-  padding: 7px 14px;
-}

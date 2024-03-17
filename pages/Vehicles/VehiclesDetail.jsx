@@ -42,21 +42,26 @@ export default function VanDetail() {
       </Link>
 
       {van && (
-        <div className="flex flex-col text-[#161616]">
-          <img src={van.imageUrl} className="rounded-[5px] m-[47px] h-[60vh] object-cover object-center"/>
+        <div className="flex flex-col text-[#161616] gap-y-3">
+          <img
+            src={van.imageUrl}
+            className="rounded-[5px] m-[47px] h-[60vh] object-cover object-center"
+          />
 
           <div className="flex items-center justify-between">
-            <h2 className="text-[2rem] mb-2.5">{van.name}</h2>
+            <h2 className="text-[2rem] mb-2">{van.name}</h2>
             <div className="flex items-center justify-between gap-x-[5px]">
-              <i className={`van-type ${van.type} selected self-start`}>{van.type}</i>
-              <p className="van-price">
+              <p className="italic rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">{van.type}</p>
+              <p className="rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
                 <span>${van.price}</span>/day
               </p>
             </div>
           </div>
 
           <p>{van.description}</p>
-          <button className="text-white text-[1.125rem] bg-[#ff8c38]">Rent this van</button>
+          <button className="text-white text-[1.125rem] bg-[#ff8c38] p-4 rounded-md">
+            Rent this van
+          </button>
         </div>
       )}
     </div>
