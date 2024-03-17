@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, Outlet, useOutletContext } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { getHostVehicle } from "../api";
 import { UserContext } from "../context/AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function HostLayout() {
   const { user } = useContext(UserContext);
@@ -74,7 +75,9 @@ export default function HostLayout() {
           Reviews
         </NavLink>
       </nav>
-      <Outlet context={contextData} />
+      <ProtectedRoute>
+        <Outlet context={contextData} />
+      </ProtectedRoute>
     </>
   );
 }
