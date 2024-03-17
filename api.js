@@ -149,9 +149,9 @@ export async function loginUser(creds) {
 }
 
 function getCollectionName(authUser) {
-  const pre = authUser.displayName
+  const pre = authUser?.displayName
     ? authUser.displayName.split(" ")[0]
-    : authUser.email?.substring(0, 6);
+    : authUser?.email?.substring(0, 6);
   return `${pre}col`;
 }
 
