@@ -11,8 +11,8 @@ export default function Footer() {
             business.
           </p>
         </div>
-        <div className="flex justify-between">
-          <div className="md:mx-4">
+        <div className="flex justify-between md:ml-20 max-md:w-[80%]">
+          <div className="md:mx-6">
             <h4 className="my-4">About</h4>
             <ul className="space-y-3">
               <li>How it works</li>
@@ -21,7 +21,7 @@ export default function Footer() {
               <li>Business Relations</li>
             </ul>
           </div>
-          <div className="md:mx-4 max-sm:mr-8">
+          <div className="md:mx-6">
             <h4 className="my-4">Social</h4>
             <ul className="space-y-3">
               <li>Discord</li>
