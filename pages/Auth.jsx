@@ -82,7 +82,7 @@ export default function Login() {
         <div>
           <img
             src="https://github.com/segunajibola/image-host/blob/main/google/signInweb_dark_rd_SI@1x.png?raw=true"
-            alt=""
+            alt="Sign In With Google"
             onClick={handleSignInWithGoogle}
           />
         </div>

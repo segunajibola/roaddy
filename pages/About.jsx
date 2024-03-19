@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function About() {
   return (
     <div className="mx-[2%]">
-      <img src={bgImg} className="max-w-full" />
+      <img src={bgImg} className="max-w-full mb-3" />
       <div className="px-6 text-[#161616] my-8">
         <h1 className="leading-6">
           Don’t squeeze in a sedan when you could relax in a van.
