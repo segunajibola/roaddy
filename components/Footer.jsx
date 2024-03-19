@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#161616] text-[#aaaaaa] p-5 flex flex-col font-normal">
+    <footer className="bg-[#ff8c38] text-gray-800 text-lg p-5 flex flex-col font-normal">
       <div className="flex flex-col md:flex-row w-full gap-y-3">
         <div className="md:w-[50%]">
           <h3>ROADDY</h3>
@@ -41,14 +41,14 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <hr className="hidden md:block my-4" />
+      <hr className="hidden md:block my-4 border-black" />
       <div className="sm:flex justify-between items-center">
         <div className="flex justify-between my-5 sm:w-[45%] md:w-[35%] order-1 sm:order-2">
           <span>Privacy & Policy</span>
           <span>Terms & Condition</span>
         </div>
         <div className="order 2 sm:order-1">
-          &#169; {new Date().getFullYear()} #VANLIFE. All right reserved
+          &#169; {new Date().getFullYear()} #ROADDY. All right reserved
         </div>
       </div>
     </footer>

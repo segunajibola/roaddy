@@ -18,7 +18,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-[#fff7ed] h-[70px] flex items-center p-2.5">
+    <header className="bg-[#ff8c38] h-[70px] flex items-center p-2.5">
       <Link
         className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline"
         to="/"
