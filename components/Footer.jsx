@@ -52,5 +52,7 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    // eaed5558-9270-4a1b-b9a3-24028e553ce4 token
+    // 3f262260f67063cc2633096cf0197d77 secret
   );
 }

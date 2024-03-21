@@ -4,7 +4,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
 import { UserContext } from "../context/AuthContext";
 
-export default function Header() {
+export default function NavBar() {
   const { user, handleSignOut } = useContext(UserContext);
   const [isHidden, setIsHidden] = useState(true);
   const activeStyles = {
