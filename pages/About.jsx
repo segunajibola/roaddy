@@ -1,11 +1,11 @@
 import React from "react";
-import bgImg from "../assets/images/about-hero.png";
+// import bgImg from "../assets/images/about-hero.png";
 import { Link } from "react-router-dom";
 
 export default function About() {
   return (
     <div className="mx-[2%]">
-      <img src="/assets/images/rent.jpg" className="max-w-full mb-3" />
+      <img src="/public/about-hero.png" className="max-w-full mb-3" />
       <div className="px-6 text-[#161616] my-8">
         <h1 className="leading-6">
           Don’t squeeze in a sedan when you could relax in a van.

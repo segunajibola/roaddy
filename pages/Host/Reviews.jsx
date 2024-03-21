@@ -29,7 +29,7 @@ export default function Reviews() {
       </div>
       <img
         className="mb-9"
-        src="/assets/images/reviews-graph.png"
+        src="/public/reviews-graph.png"
         alt="Review graph"
       />
       <h3>Reviews (2)</h3>
@@ -40,12 +40,14 @@ export default function Reviews() {
               <BsStarFill className="text-[#ff8c38] mr-1" key={i} />
             ))}
             <div className="flex">
-              <p className="text-[#161616] mr-2.5 font-semibold">{review.name}</p>
+              <p className="text-[#161616] mr-2.5 font-semibold">
+                {review.name}
+              </p>
               <p className="text-[#8c8c8c]">{review.date}</p>
             </div>
             <p>{review.text}</p>
           </div>
-          <hr className="bg-[#c7c7c7] h-[1px] border-[0]"/>
+          <hr className="bg-[#c7c7c7] h-[1px] border-[0]" />
         </div>
       ))}
     </section>
