@@ -19,7 +19,7 @@ const HomeCarousel = ({ className }) => {
     >
       <div className="">
         <img
-          src="/assets/images/signUp.png"
+          src="/signUp.png"
           alt="creating an account"
           className="h-full w-[80%] mx-auto"
         />
@@ -27,7 +27,7 @@ const HomeCarousel = ({ className }) => {
       </div>
       <div className="bg-red-5d00">
         <img
-          src="/assets/images/findACar.png"
+          src="/findACar.png"
           alt=""
           className="h-full w-[80%] mx-auto"
         />
@@ -35,7 +35,7 @@ const HomeCarousel = ({ className }) => {
       </div>
       <div className="bg-red-5d00">
         <img
-          src="/assets/images/rent.jpg"
+          src="/rent.jpg"
           alt=""
           className="h-full w-[80%] mx-auto mt-[18%]"
         />
