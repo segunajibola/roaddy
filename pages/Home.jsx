@@ -26,10 +26,10 @@ export default function Home() {
           Find out how you can rent a vehicle from anyone or partners in just
           few hours.
         </p>
-        <button className="bg-[#ff8c38] p-3 text-white rounded-2xl my-5 tracking-wider font-semibold">
+        <button className="bg-[#ff8c38] p-3 text-white rounded-2xl mt-5 tracking-wider font-semibold">
           GET STARTED
         </button>
-        <HomeCarousel className="my-4" />
+        <HomeCarousel className="mb-4" />
       </section>
     </div>
   );

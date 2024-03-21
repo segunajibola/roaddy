@@ -15,7 +15,7 @@ const HomeCarousel = ({ className }) => {
   return (
     <Slider
       {...settings}
-      className={`bg-yellowc-500 w-[90%] mx-auto ${className}`}
+      className={`w-[90%] mx-auto ${className}`}
     >
       <div className="">
         <img
