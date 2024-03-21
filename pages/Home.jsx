@@ -21,7 +21,7 @@ export default function Home() {
         </Link>
       </section>
       <section className="p-4">
-        <h2 className="text-5xl w-1/2 my-10">Three steps to rent a vehicle</h2>
+        <h2 className="text-5xl w-1/2 my-10">Three steps to <span className="text-[#ff8c38]">rent a vehicle</span></h2>
         <p className="my-5 text-lg">
           Find out how you can rent a vehicle from anyone or partners in just
           few hours.
