@@ -1,40 +1,17 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { getVans } from "../../api";
+import useFetchVehicles from "../../hooks/useFetchVehicles";
 
 export default function Vehicles() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [vans, setVans] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-
   const typeFilter = searchParams.get("type");
-
-  console.log("searchParams", searchParams);
-  console.log("typeFilter", typeFilter);
-
-  React.useEffect(() => {
-    async function loadVans() {
-      setLoading(true);
-      try {
-        const data = await getVans();
-        console.log("data", data);
-        setVans(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadVans();
-  }, []);
+  const { vans, loading, error } = useFetchVehicles();
 
   const displayedVans = typeFilter
     ? vans.filter((van) => van.type === typeFilter)
     : vans;
 
-  const vanElements = displayedVans.map((van) => (
+  const vehiclesElement = displayedVans.map((van) => (
     <div key={van.id} className="w-full">
       <Link
         to={van.id}
@@ -49,7 +26,7 @@ export default function Vehicles() {
           className="w-full rounded-[10px] h-[50vh] object-cover object-center"
         />
         <div className="flex justify-between items-center mt-2">
-          <h3 className="font-medium">{van.name}</h3>
+          <h3 className="font-semibold text-lg">{van.name}</h3>
           <div className="flex justify-between items-center gap-x-1">
             <p className="rounded-[10px] bg-[#ffead0] px-[6px] py-1.5">
               ${van.price}
@@ -76,7 +53,7 @@ export default function Vehicles() {
   }
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <h1 className="m-5">Loading...</h1>;
   }
 
   if (error) {
@@ -85,7 +62,7 @@ export default function Vehicles() {
 
   return (
     <div className="p-6">
-      <h1 className="my-2">Explore our van options</h1>
+      <h1 className="my-2">Explore vehicle options</h1>
       <div className="flex wrap gap-2">
         <button
           onClick={() => handleFilterChange("type", "simple")}
@@ -127,8 +104,8 @@ export default function Vehicles() {
           </button>
         ) : null}
       </div>
-      <div className="grid grid-cols-2 justify-items-center gap-5 mt-10">
-        {vanElements}
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 mt-10">
+        {vehiclesElement}
       </div>
     </div>
   );
