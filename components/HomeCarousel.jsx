@@ -39,7 +39,7 @@ const HomeCarousel = ({ className }) => {
           alt=""
           className="h-full w-[80%] mx-auto mt-[18%]"
         />
-        <div className="text-center text-2xl mt-[8%]">Rent</div>
+        <div className="text-center text-2xl mt-[8%]">Rent it</div>
       </div>
     </Slider>
   );
