@@ -59,7 +59,7 @@ export default function NavBar() {
               {user.photoURL ? (
                 <img
                   src={user.photoURL}
-                  className="h-[22.5px] w-[22.5px] rounded-[50%]"
+                  className="h-[22.5px] w-[22.5px] rounded-[50%] border-2 border-solid border-[#4d4d4d]"
                 />
               ) : (
                 <div className="w-4 h-8 rounded-full bg-orange-500">
