@@ -47,7 +47,7 @@ const VehicleHorizontalScroll = () => {
       return shuffledArray;
     };
 
-    setShuffledDataArray(shuffleArray(vans));
+    setShuffledDataArray(shuffleArray(vans).slice(0, 2));
   }, [vans]);
 
   return (
@@ -72,7 +72,7 @@ const VehicleHorizontalScroll = () => {
                 alt="Images"
               />
             </div>
-            <div className="flex justify-between items-center m-1">
+            <div className="flex justify-between items-center m-1 py-2">
               <h3 className="font-semibold text-lg">{van.name}</h3>
               <p className="rounded-[10px] bg-[#ffead0] px-[6px] py-1.5">
                 ${van.price}
