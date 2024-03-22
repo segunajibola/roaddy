@@ -5,6 +5,9 @@ import PopularVehicle from "../components/PopularVehicle";
 import RecommendedVehicle from "../components/RecommendedVehicle";
 
 export default function Home() {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className="">
       <section className="home-container relative h-[350px] bg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-center bg-cover text-white py-10 px-5 flex flex-col gap-y-4">
@@ -17,6 +20,7 @@ export default function Home() {
         </p>
         <Link
           to="vehicles"
+          onClick={handleLinkClick}
           className="inline-block text-center no-underline bg-[#ff8c38] border-none w-full mt-[27px] text-white font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
         >
           Find a vehicle

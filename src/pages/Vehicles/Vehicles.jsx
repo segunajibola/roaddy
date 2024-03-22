@@ -1,6 +1,20 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 import useFetchVehicles from "../../hooks/useFetchVehicles";
+
+// const ScrollToTop = () => {
+//   const { pathname } = useLocation();
+
+//   React.useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]);
+
+//   return null;
+// };
+
+// React.useLayoutEffect(() => {
+//   window.scrollTo(0, 0);
+// }, [])
 
 export default function Vehicles() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -61,52 +75,56 @@ export default function Vehicles() {
   }
 
   return (
-    <div className="p-6">
-      <h1 className="my-2">Explore vehicle options</h1>
-      <div className="flex wrap gap-2">
-        <button
-          onClick={() => handleFilterChange("type", "simple")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
-            typeFilter === "simple"
-              ? "text-white bg-orange-600 hover:bg-orange-700"
-              : ""
-          }`}
-        >
-          Simple
-        </button>
-        <button
-          onClick={() => handleFilterChange("type", "luxury")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
-            typeFilter === "luxury"
-              ? "text-white bg-orange-600 hover:bg-orange-700"
-              : ""
-          }`}
-        >
-          Luxury
-        </button>
-        <button
-          onClick={() => handleFilterChange("type", "rugged")}
-          className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
-            typeFilter === "rugged"
-              ? "text-white bg-orange-600 hover:bg-orange-700"
-              : ""
-          }`}
-        >
-          Rugged
-        </button>
+    <>
+      {/* <ScrollToTop /> */}
 
-        {typeFilter ? (
+      <div className="p-6">
+        <h1 className="my-2">Explore vehicle options</h1>
+        <div className="flex wrap gap-2">
           <button
-            onClick={() => handleFilterChange("type", null)}
-            className="h-8 px-6 py-1.5 font-medium rounded-md border-none text-[#4d4d4d] underline bg-transparent"
+            onClick={() => handleFilterChange("type", "simple")}
+            className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+              typeFilter === "simple"
+                ? "text-white bg-orange-600 hover:bg-orange-700"
+                : ""
+            }`}
           >
-            Clear filter
+            Simple
           </button>
-        ) : null}
+          <button
+            onClick={() => handleFilterChange("type", "luxury")}
+            className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+              typeFilter === "luxury"
+                ? "text-white bg-orange-600 hover:bg-orange-700"
+                : ""
+            }`}
+          >
+            Luxury
+          </button>
+          <button
+            onClick={() => handleFilterChange("type", "rugged")}
+            className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+              typeFilter === "rugged"
+                ? "text-white bg-orange-600 hover:bg-orange-700"
+                : ""
+            }`}
+          >
+            Rugged
+          </button>
+
+          {typeFilter ? (
+            <button
+              onClick={() => handleFilterChange("type", null)}
+              className="h-8 px-6 py-1.5 font-medium rounded-md border-none text-[#4d4d4d] underline bg-transparent"
+            >
+              Clear filter
+            </button>
+          ) : null}
+        </div>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 mt-10">
+          {vehiclesElement}
+        </div>
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 mt-10">
-        {vehiclesElement}
-      </div>
-    </div>
+    </>
   );
 }

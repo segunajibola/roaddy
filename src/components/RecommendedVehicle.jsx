@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 const RecommendedVehicle = () => {
   const { vans } = useFetchVehicles();
 
-  const recommendedVehicles = vans.slice(0, 3);
+  const recommendedVehicles = vans.slice(0, 2);
+
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+  
 
   return (
     <>
@@ -23,6 +28,7 @@ const RecommendedVehicle = () => {
       <div className="flex justify-center items-center">
         <Link
           to="vehicles"
+          onClick={handleLinkClick}
           className="bg-[#ff8c38] py-1 px-3 font-medium tracking-wide text-center text-lg"
         >
           Show More
