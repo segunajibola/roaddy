@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
 import VehicleHorizontalScroll from "../components/VehicleHorizontalScroll";
+import RecommendedVehicle from "../components/RecommendedVehicle";
 
 export default function Home() {
   return (
@@ -22,7 +23,9 @@ export default function Home() {
         </Link>
       </section>
       <section className="p-4">
-        <h2 className="text-5xl w-1/2 my-10">Three steps to <span className="text-[#ff8c38]">rent a vehicle</span></h2>
+        <h2 className="text-5xl w-1/2 my-10">
+          Three steps to <span className="text-[#ff8c38]">rent a vehicle</span>
+        </h2>
         <p className="my-5 text-lg">
           Find out how you can rent a vehicle from anyone or partners in just
           few hours.
@@ -33,11 +36,19 @@ export default function Home() {
         <HomeCarousel className="mb-4" />
       </section>
       <section className="p-4">
-        <div className="flex justify-between font-semibold text-xl">
+        <div className="flex justify-between font-semibold text-xl my-5">
           <p className="">Popular Vehicle</p>
-          <Link className="underline" to="vehicles">View all</Link>
+          <Link className="underline" to="vehicles">
+            View all
+          </Link>
         </div>
         <VehicleHorizontalScroll />
+      </section>
+      <section className="p-4">
+        <p className="flex justify-between font-semibold text-xl my-5">
+          Recommended Vehicle
+        </p>
+        <RecommendedVehicle />
       </section>
     </div>
   );

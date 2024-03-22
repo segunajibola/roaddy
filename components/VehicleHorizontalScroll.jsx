@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 
 const VehicleHorizontalScroll = () => {
   const [isDown, setIsDown] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [shuffledDataArray, setShuffledDataArray] = useState([]);
   const { vans } = useFetchVehicles();
 
   const handleMouseUp = () => {
@@ -33,30 +34,36 @@ const VehicleHorizontalScroll = () => {
     e.target.scrollLeft = scrollLeft - scrolling;
   };
 
-  const shuffleArray = (array) => {
-    // Create a copy of the original array
-    const shuffledArray = [...array];
-    // Shuffle the copied array
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
-    return shuffledArray;
-  };
+  useEffect(() => {
+    const shuffleArray = (array) => {
+      const shuffledArray = [...array];
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [
+          shuffledArray[j],
+          shuffledArray[i],
+        ];
+      }
+      return shuffledArray;
+    };
 
-  const shuffledDataArray = shuffleArray(vans);
+    setShuffledDataArray(shuffleArray(vans));
+  }, [vans]);
 
   return (
-    <div className="max-w-screen-xl w-full mx-auto px-2">
+    <div className="max-w-screen-xl w-full mx-auto">
       <div
-        className="relative flex flex-row flex-nowrap items-center w-full h-auto py-4 px-0 mt-5 cursor-default overflow-x-auto overscroll-x-none snap-x-mandatory snap-px-1.25 scroll active"
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
+        className="relative flex flex-row flex-nowrap items-center w-full h-auto pb-4 px-0 cursor-default overflow-x-auto overscroll-x-none snap-x-mandatory snap-px-1.25 scroll active"
+        // onMouseUp={handleMouseUp}
+        // onMouseLeave={handleMouseLeave}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
       >
         {shuffledDataArray.map((van) => (
-          <div className="w-72 h-auto flex-shrink-0 mx-3 border-none outline-none rounded-b-xl text-gray-900 bg-white shadow-md">
+          <div
+            className="w-72 h-auto flex-shrink-0 mx-3 border-none outline-none rounded-b-xl text-gray-900 bg-white shadow-md"
+            key={van.id}
+          >
             <div className="relative block w-full h-[250px] aspect-w-16 aspect-h-9">
               <img
                 src={van.imageUrl}
