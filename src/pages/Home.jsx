@@ -33,7 +33,7 @@ export default function Home() {
         <button className="bg-[#ff8c38] p-3 text-white rounded-2xl mt-5 tracking-wider font-semibold">
           GET STARTED
         </button>
-        <HomeCarousel className="mb-4" />
+        <HomeCarousel />
       </section>
       <section className="p-4">
         <div className="flex justify-between font-semibold text-xl my-5">
@@ -49,6 +49,9 @@ export default function Home() {
           Recommended Vehicle
         </p>
         <RecommendedVehicle />
+      </section>
+      <section className="p-4">
+
       </section>
     </div>
   );

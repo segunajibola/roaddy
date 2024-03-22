@@ -61,7 +61,7 @@ const VehicleHorizontalScroll = () => {
         // onMouseMove={handleMouseMove}
       >
         {shuffledDataArray.map((van) => (
-          <VehicleCard van={van} width="w-[60vw]" margin="mx-3" />
+          <VehicleCard van={van} key={van.id} width="w-[60vw]" margin="mx-3" />
         ))}
       </div>
     </div>

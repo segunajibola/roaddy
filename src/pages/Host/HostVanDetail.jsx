@@ -47,18 +47,27 @@ export default function HostVanDetail() {
 
   return (
     <section>
-      <Link to=".." relative="path" className="block text-black no-underline ml-6 hover:underline">
+      <Link
+        to=".."
+        relative="path"
+        className="block text-black no-underline ml-6 hover:underline"
+      >
         &larr; <span>Back to all vans</span>
       </Link>
       {currentVan && (
         <div className="bg-white p-6 mx-[26px] my-[30px]">
           <div className="flex items-center">
-            <img src={currentVan.imageUrl} className="h-[160px] rounded-[5px] mr-5"/>
+            <img
+              src={currentVan.imageUrl}
+              className="h-[160px] rounded-[5px] mr-5"
+            />
             <div>
               <i className={`van-type van-type-${currentVan.type}`}>
                 {currentVan.type}
               </i>
-              <h3 className="mt-6 mb-1 text-[26px] font-bold">{currentVan.name}</h3>
+              <h3 className="mt-6 mb-1 text-[26px] font-bold">
+                {currentVan.name}
+              </h3>
               <h4 className="text-lg">${currentVan.price}/day</h4>
             </div>
           </div>

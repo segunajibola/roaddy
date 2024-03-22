@@ -8,7 +8,7 @@ const RecommendedVehicle = () => {
   return (
     <div>
       {vans.map((van) => (
-        <VehicleCard van={van} width="w-auto" margin="my-5" />
+        <VehicleCard key={van.id} van={van} width="w-auto" margin="my-5" />
       ))}
     </div>
   );

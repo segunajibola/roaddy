@@ -3,9 +3,4 @@ import About from "./About";
 import Auth from "./Auth";
 import NotFound from "./NotFound";
 
-export {
-  Home,
-  About,
-  Auth,
-  NotFound
-};
+export { Home, About, Auth, NotFound };

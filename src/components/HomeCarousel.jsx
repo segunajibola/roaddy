@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const HomeCarousel = ({ className }) => {
+const HomeCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -15,7 +15,7 @@ const HomeCarousel = ({ className }) => {
   return (
     <Slider
       {...settings}
-      className={`w-[90%] mx-auto ${className}`}
+      className="w-[90%] mx-auto mb-4"
     >
       <div className="">
         <img
@@ -31,7 +31,7 @@ const HomeCarousel = ({ className }) => {
           alt=""
           className="h-full w-[80%] mx-auto"
         />
-        <div className="text-center text-2xl">Find a car</div>
+        <div className="text-center text-2xl">Find a vehicle</div>
       </div>
       <div className="bg-red-5d00">
         <img
