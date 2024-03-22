@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
+import VehicleHorizontalScroll from "../components/VehicleHorizontalScroll";
 
 export default function Home() {
   return (
@@ -30,6 +31,13 @@ export default function Home() {
           GET STARTED
         </button>
         <HomeCarousel className="mb-4" />
+      </section>
+      <section className="p-4">
+        <div className="flex justify-between font-semibold text-xl">
+          <p className="">Popular Vehicle</p>
+          <Link className="underline" to="vehicles">View all</Link>
+        </div>
+        <VehicleHorizontalScroll />
       </section>
     </div>
   );
