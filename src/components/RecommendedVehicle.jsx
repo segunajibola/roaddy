@@ -1,6 +1,7 @@
 import React from "react";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 import { VehicleCard } from "./";
+import { Link } from "react-router-dom";
 
 const RecommendedVehicle = () => {
   const { vans } = useFetchVehicles();
@@ -8,16 +9,26 @@ const RecommendedVehicle = () => {
   const recommendedVehicles = vans.slice(0, 3);
 
   return (
-    <div>
-      {recommendedVehicles.map((vehicle) => (
-        <VehicleCard
-          key={vehicle.id}
-          vehicle={vehicle}
-          width="w-auto"
-          margin="my-5"
-        />
-      ))}
-    </div>
+    <>
+      <div>
+        {recommendedVehicles.map((vehicle) => (
+          <VehicleCard
+            key={vehicle.id}
+            vehicle={vehicle}
+            width="w-auto"
+            margin="my-5"
+          />
+        ))}
+      </div>
+      <div className="flex justify-center items-center">
+        <Link
+          to="vehicles"
+          className="bg-[#ff8c38] py-1 px-3 font-medium tracking-wide text-center text-lg"
+        >
+          Show More
+        </Link>
+      </div>
+    </>
   );
 };
 

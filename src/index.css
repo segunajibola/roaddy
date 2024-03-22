@@ -2,33 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
-  text-decoration: unset;
-  color: unset;
-}
-
-body::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/*** HOME PAGE ***/
-.home-container {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
-    url("/home-hero.png") no-repeat center center;
-}
-
-html {
-  font-size: 100%;
-  font-size-adjust: 100%;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
 *,
 *::before,
 *::after {
@@ -40,9 +13,35 @@ html {
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+a {
+  text-decoration: unset;
+  color: unset;
+}
+
+/* HOME PAGE */
+.home-container {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
+    url("/home-hero.png") no-repeat center center;
+}
+
+/*  */
+
+/* POPULAR VEHICLE */
 .scroll::-webkit-scrollbar {
   display: none;
 }
@@ -51,3 +50,5 @@ html {
   cursor: grab;
   cursor: -webkit-grab;
 }
+
+/*  */
