@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchVehicles from "../hooks/useFetchVehicles";
-import { MdLocalGasStation } from "react-icons/md";
-import { IoIosPeople } from "react-icons/io";
-import { GiGearStick } from "react-icons/gi";
+import VehicleCard from "./VehicleCard";
 
 const VehicleHorizontalScroll = () => {
   const [isDown, setIsDown] = useState(false);
@@ -63,45 +61,7 @@ const VehicleHorizontalScroll = () => {
         // onMouseMove={handleMouseMove}
       >
         {shuffledDataArray.map((van) => (
-          <div
-            className="w-[60vw] h-auto flex-shrink-0 mx-3 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden"
-            key={van.id}
-          >
-            <div className="relative block w-full h-[250px] overflow-hidden">
-              <img
-                src={van.imageUrl}
-                loading="lazy"
-                className="w-full h-full object-cover "
-                alt="Images"
-              />
-            </div>
-            <div className="m-1">
-              <div className="flex justify-between my-2">
-                <div className="flex justify-center items-center gap-x-[1px]">
-                  <MdLocalGasStation className="" size={20} />
-                  <span>{van.fuel}</span>
-                </div>
-                <div className="flex justify-center items-center gap-x-[1px]">
-                  <GiGearStick className="" size={20} />
-                  <span>{van.transmission}</span>
-                </div>
-                <div className="flex justify-center items-center gap-x-[1px]">
-                  <IoIosPeople className="" size={20} />
-                  <span>{van.capacity} People</span>
-                </div>
-              </div>
-              <div className="flex justify-between items-center py-2">
-                <h3 className="font-semibold text-md">{van.name}</h3>
-                <p className="rounded-[10px] font-semibold text-lg px-[6px] py-1.5">
-                  ${van.price}
-                  <span>/day</span>
-                </p>
-                <button className="bg-[#ff8c38] py-1 px-3 rounded-lg font-medium tracking-wide text-lg">
-                  Rent
-                </button>
-              </div>
-            </div>
-          </div>
+          <VehicleCard van={van} width="w-[60vw]" margin="mx-3" />
         ))}
       </div>
     </div>
