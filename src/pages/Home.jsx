@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
-import VehicleHorizontalScroll from "../components/VehicleHorizontalScroll";
+import PopularVehicle from "../components/PopularVehicle";
 import RecommendedVehicle from "../components/RecommendedVehicle";
 
 export default function Home() {
@@ -42,7 +42,7 @@ export default function Home() {
             View all
           </Link>
         </div>
-        <VehicleHorizontalScroll />
+        <PopularVehicle />
       </section>
       <section className="p-4">
         <p className="flex justify-between font-semibold text-xl my-5">

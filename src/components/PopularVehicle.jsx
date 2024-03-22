@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useFetchVehicles from "../hooks/useFetchVehicles";
-import VehicleCard from "./VehicleCard";
+import { VehicleCard } from "./";
 
-const VehicleHorizontalScroll = () => {
+const PopularVehicle = () => {
   const [isDown, setIsDown] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -60,12 +60,17 @@ const VehicleHorizontalScroll = () => {
         // onMouseDown={handleMouseDown}
         // onMouseMove={handleMouseMove}
       >
-        {shuffledDataArray.map((van) => (
-          <VehicleCard van={van} key={van.id} width="w-[60vw]" margin="mx-3" />
+        {shuffledDataArray.map((vehicle) => (
+          <VehicleCard
+            vehicle={vehicle}
+            key={vehicle.id}
+            width="w-[60vw]"
+            margin="mx-3"
+          />
         ))}
       </div>
     </div>
   );
 };
 
-export default VehicleHorizontalScroll;
+export default PopularVehicle;

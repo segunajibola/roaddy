@@ -3,8 +3,8 @@ import { MdLocalGasStation } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { GiGearStick } from "react-icons/gi";
 
-const VehicleCard = ({ van, width, margin }) => {
-  const { imageUrl, fuel, transmission, capacity, price, id, name } = van;
+const VehicleCard = ({ vehicle, width, margin }) => {
+  const { imageUrl, fuel, transmission, capacity, price, id, name } = vehicle;
   return (
     <div
       className={`${width} ${margin}  h-auto flex-shrink-0 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden`}
