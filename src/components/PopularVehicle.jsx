@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 import { VehicleCard } from "./";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const PopularVehicle = () => {
   const [isDown, setIsDown] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [shuffledDataArray, setShuffledDataArray] = useState([]);
-  const { vans } = useFetchVehicles();
+  const { vans, loading } = useFetchVehicles();
 
   const handleMouseUp = () => {
     setIsDown(false);
@@ -50,6 +52,14 @@ const PopularVehicle = () => {
 
     setShuffledDataArray(shuffleArray(vans).slice(0, 2));
   }, [vans]);
+
+  if (loading)
+    return (
+      <div className="flex gap-x-3 overflow-hidden">
+        <Skeleton height={320} width={300} />
+        <Skeleton height={320} width={300} />
+      </div>
+    );
 
   return (
     <div className="max-w-screen-xl w-full mx-auto">

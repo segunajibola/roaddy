@@ -7,8 +7,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import useFetchVehicles from "../hooks/useFetchVehicles";
 
 export default function Home() {
+  const { vans, loading } = useFetchVehicles();
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -24,15 +26,21 @@ export default function Home() {
   return (
     <div className="">
       <section className="home-container relative h-[350px] bg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-center bg-cover text-white py-10 px-5 flex flex-col gap-y-4">
-        <h1 className="font-semibold text-2xl leading-10">
+        <h1
+          className="font-semibold text-2xl leading-10"
+          data-aos="fade-up"
+          data-aos-duration="700"
+        >
           You got a two-way trip, we got the vehicle.
         </h1>
-        <p className="leading-6" data-aos="fade-up">
+        <p className="leading-6" data-aos="fade-up" data-aos-duration="1200">
           Relive the stress of jumping on buses. Rent the perfect car for your
           perfect road trip.
         </p>
         <Link
           to="vehicles"
+          data-aos="fade-up"
+          data-aos-duration="1800"
           onClick={handleLinkClick}
           className="inline-block text-center no-underline bg-[#ff8c38] border-none w-full mt-[27px] text-white font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
         >
@@ -59,20 +67,14 @@ export default function Home() {
             View all
           </Link>
         </div>
-        {/* {<PopularVehicle /> || (
-          <div className="flex flex-col gap-y-3">
-            <Skeleton />
-            <Skeleton count={5} />
-          </div>
-        )} */}
-        {<PopularVehicle /> || <Skeleton count={5} />}
+        <PopularVehicle />
       </section>
       <section className="p-4" data-aos="fade-up">
         <p className="flex justify-between font-semibold text-xl my-5">
           Recommended Vehicle
         </p>
 
-        {<RecommendedVehicle /> || <Skeleton count={5} />}
+        <RecommendedVehicle vans={vans} loading={loading} />
       </section>
       <section className="p-4"></section>
     </div>

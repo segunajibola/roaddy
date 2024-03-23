@@ -13,7 +13,6 @@ const VehicleCard = ({ vehicle, width, margin }) => {
       <div className="relative block w-full h-[250px] overflow-hidden">
         <img
           src={imageUrl}
-          loading="lazy"
           className="w-full h-full object-cover "
           alt="Images"
         />
