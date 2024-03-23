@@ -2,7 +2,10 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#ff8c38] text-gray-800 text-lg p-5 flex flex-col font-normal">
+    <footer
+      data-aos="fade-up"
+      className="bg-[#ff8c38] text-gray-800 text-lg p-5 flex flex-col font-normal"
+    >
       <div className="flex flex-col md:flex-row w-full gap-y-3">
         <div className="md:w-[50%]">
           <h3>ROADDY</h3>

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
 import PopularVehicle from "../components/PopularVehicle";
 import RecommendedVehicle from "../components/RecommendedVehicle";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+    });
+    return () => {
+      AOS.refreshHard();
+    };
+  }, []);
+
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
@@ -14,7 +25,7 @@ export default function Home() {
         <h1 className="font-semibold text-2xl leading-10">
           You got a two-way trip, we got the vehicle.
         </h1>
-        <p className="leading-6">
+        <p className="leading-6" data-aos="fade-up">
           Relive the stress of jumping on buses. Rent the perfect car for your
           perfect road trip.
         </p>
@@ -26,7 +37,7 @@ export default function Home() {
           Find a vehicle
         </Link>
       </section>
-      <section className="p-4">
+      <section className="p-4" data-aos="fade-right">
         <h2 className="text-5xl w-1/2 my-10">
           Three steps to <span className="text-[#ff8c38]">rent a vehicle</span>
         </h2>
@@ -39,7 +50,7 @@ export default function Home() {
         </button>
         <HomeCarousel />
       </section>
-      <section className="p-4">
+      <section className="p-4" data-aos="fade-up">
         <div className="flex justify-between font-semibold text-xl my-5">
           <p className="">Popular Vehicle</p>
           <Link className="underline" to="vehicles">
@@ -48,15 +59,13 @@ export default function Home() {
         </div>
         <PopularVehicle />
       </section>
-      <section className="p-4">
+      <section className="p-4" data-aos="fade-up">
         <p className="flex justify-between font-semibold text-xl my-5">
           Recommended Vehicle
         </p>
         <RecommendedVehicle />
       </section>
-      <section className="p-4">
-
-      </section>
+      <section className="p-4"></section>
     </div>
   );
 }
