@@ -5,6 +5,8 @@ import PopularVehicle from "../components/PopularVehicle";
 import RecommendedVehicle from "../components/RecommendedVehicle";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Home() {
   useEffect(() => {
@@ -57,13 +59,20 @@ export default function Home() {
             View all
           </Link>
         </div>
-        <PopularVehicle />
+        {/* {<PopularVehicle /> || (
+          <div className="flex flex-col gap-y-3">
+            <Skeleton />
+            <Skeleton count={5} />
+          </div>
+        )} */}
+        {<PopularVehicle /> || <Skeleton count={5} />}
       </section>
       <section className="p-4" data-aos="fade-up">
         <p className="flex justify-between font-semibold text-xl my-5">
           Recommended Vehicle
         </p>
-        <RecommendedVehicle />
+
+        {<RecommendedVehicle /> || <Skeleton count={5} />}
       </section>
       <section className="p-4"></section>
     </div>
