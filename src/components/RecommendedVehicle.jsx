@@ -29,7 +29,7 @@ const RecommendedVehicle = () => {
         <Link
           to="vehicles"
           onClick={handleLinkClick}
-          className="bg-[#ff8c38] py-1 px-3 font-medium tracking-wide text-center text-lg"
+          className="bg-[#ff8c38] py-1 px-3 font-medium tracking-wide text-center text-lg hover:bg-[#e97f33]"
         >
           Show More
         </Link>

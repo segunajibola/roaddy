@@ -18,7 +18,7 @@ export const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  console.log("user in auth before signing in", user);
+  // console.log("user in auth before signing in", user);
   // const createUser = (email, password) => {
   //   return createUserWithEmailAndPassword(auth, email, password);
   // };
@@ -102,13 +102,13 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     try {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        console.log(currentUser);
+        // console.log(currentUser);
         setUser(currentUser);
       });
 
       setPersistence(auth, browserLocalPersistence)
         .then(() => {
-          console.log("Persistence set to LOCAL");
+          // console.log("Persistence set to LOCAL");
         })
         .catch((error) => {
           console.error("Error setting persistence:", error);

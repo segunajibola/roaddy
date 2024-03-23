@@ -63,7 +63,7 @@ export async function getVans() {
     ...doc.data(),
     id: doc.id,
   }));
-  console.log(vehicles);
+  // console.log(vehicles);
   return vehicles;
 }
 
