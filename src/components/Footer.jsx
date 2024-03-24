@@ -8,10 +8,9 @@ export default function Footer() {
     >
       <div className="flex flex-col md:flex-row w-full gap-y-3">
         <div className="md:w-[50%]">
-          <h3>ROADDY</h3>
+          <h3 className="font-semibold text-xl">ROADDY</h3>
           <p className="md:mt-7">
-            Our vision is to provide convenience and help increase your sales
-            business.
+            Our vision is to provide convenience to you as you move.
           </p>
         </div>
         <div className="flex justify-between md:ml-20 max-md:w-[80%]">
