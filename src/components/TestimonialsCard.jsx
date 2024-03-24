@@ -10,7 +10,7 @@ const TestimonialsCard = ({ data }) => {
         src={image}
         alt=""
       />
-      <div className="pt-3 text-center space-y-2">
+      <div className="py-3 text-center space-y-2">
         <p className="text-lg">{desc}</p>
         <figcaption className="">
           <div className="">{name}</div>
