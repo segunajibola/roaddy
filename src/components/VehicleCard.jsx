@@ -7,7 +7,7 @@ const VehicleCard = ({ vehicle, width, margin }) => {
   const { imageUrl, fuel, transmission, capacity, price, id, name } = vehicle;
   return (
     <div
-      className={`${width} ${margin}  h-auto flex-shrink-0 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden`}
+      className={`${width} ${margin} h-auto flex-shrink-0 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden`}
       key={id}
     >
       <div className="relative block w-full h-[250px] overflow-hidden">

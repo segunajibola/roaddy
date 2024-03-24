@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
-import PopularVehicle from "../components/PopularVehicle";
-import RecommendedVehicle from "../components/RecommendedVehicle";
+import {
+  PopularVehicle,
+  RecommendedVehicle,
+  Testimonials,
+} from "../components/";
 import AOS from "aos";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 
@@ -58,7 +61,7 @@ export default function Home() {
           data-aos="fade-up"
           data-aos-duration="1800"
           onClick={handleLinkClick}
-          className="inline-block text-center no-underline bg-[#ff8c38] border-none w-full mt-[27px] text-white font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
+          className="inline-block text-center no-underline bg-[#ff8c38] border-none mt-[27px] text-white font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
         >
           Find a vehicle
         </Link>
@@ -86,18 +89,29 @@ export default function Home() {
         <PopularVehicle />
       </section>
       <section className="px-4 py-6" data-aos="fade-up">
-        <p className="font-semibold text-xl my-5">
-          Recommended Vehicle
-        </p>
+        <p className="font-semibold text-xl my-5">Recommended Vehicle</p>
         <RecommendedVehicle vans={vans} loading={loading} />
       </section>
       <section className="px-4 py-28 bg-gray-800 text-[#ff8c38]">
-        <h3 className="font-semibold text-2xl my-5 text-center">Brands that trust us</h3>
+        <h3 className="font-semibold text-2xl my-5 text-center">
+          Brands that trust us
+        </h3>
         <div className="flex gap-x-3 justify-center items-center my-12">
           {brandLogo.map((logo) => (
-            <img src={logo.link} alt="" srcset="" className="w-10 h-10 shadow-md shadow-[#ff8c38] p-1 rounded-md bg-gray-50" />
+            <img
+              src={logo.link}
+              alt=""
+              srcset=""
+              className="w-10 h-10 shadow-md shadow-[#ff8c38] p-1 rounded-md bg-gray-50"
+            />
           ))}
         </div>
+      </section>
+      <section className="px-4 py-28">
+        <h3 className="font-semibold text-2xl my-5 text-center">
+          What people are saying about us
+        </h3>
+        <Testimonials />
       </section>
     </div>
   );

@@ -8,6 +8,7 @@ import HomeCarousel from "./HomeCarousel";
 import PopularVehicle from "./PopularVehicle";
 import RecommendedVehicle from "./RecommendedVehicle";
 import VehicleCard from "./VehicleCard";
+import Testimonials from "./Testimonials";
 
 export {
   AddVehicle,
@@ -19,5 +20,6 @@ export {
   HomeCarousel,
   PopularVehicle,
   RecommendedVehicle,
-  VehicleCard
+  VehicleCard,
+  Testimonials
 };
