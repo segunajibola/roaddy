@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
 import {
@@ -8,7 +8,7 @@ import {
 } from "../components/";
 import AOS from "aos";
 import useFetchVehicles from "../hooks/useFetchVehicles";
-import { brandLogo } from "../../utils/data"
+import { brandLogo } from "../../utils/data";
 export default function Home() {
   const { vans, loading } = useFetchVehicles();
   useEffect(() => {
@@ -24,9 +24,34 @@ export default function Home() {
     window.scrollTo(0, 0);
   };
 
+  const backgroundImageUrlsArray = [
+    'url("https://images.unsplash.com/photo-1572023165258-a0d4007f0b98")',
+    'url("https://images.unsplash.com/photo-1600832782030-4e31b02c8a98")',
+    'url("https://images.unsplash.com/photo-1631682824839-0447cfcb2f93")',
+    // Add more image URLs as needed
+  ];
+  const randomIndex = Math.floor(Math.random() * backgroundImageUrlsArray.length);
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState(
+    backgroundImageUrlsArray[randomIndex]
+  );
+
+  const changeBackgroundImage = () => {
+    setBackgroundImageUrl(backgroundImageUrlsArray[randomIndex]);
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(changeBackgroundImage, 5000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="">
-      <section className="home-container relative h-[70vh] bfg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-top bg-cover text-xl text-white py-10 px-5 flex flex-col text-center items-center justify-center gap-y-4">
+      <section
+        className="homde-container relative h-[70vh] bfg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-top bg-cover text-xl py-10 px-5 flex flex-col text-center items-center justify-center gap-y-4 transition-all duration-1000 ease-in-out"
+        style={{
+          backgroundImage: backgroundImageUrl,
+        }}
+      >
         <h1
           className="font-semibold text-4xl leading-10 mt-12"
           data-aos="fade-up"
@@ -34,7 +59,11 @@ export default function Home() {
         >
           You got a two-way trip, we got the vehicle.
         </h1>
-        <p className="leading-6" data-aos="fade-up" data-aos-duration="1200">
+        <p
+          className="leading-6 text-shadow text-gray-900 text-xl"
+          data-aos="fade-up"
+          data-aos-duration="1200"
+        >
           Relive the stress of jumping on buses. Rent the perfect car for your
           perfect road trip.
         </p>
@@ -43,7 +72,7 @@ export default function Home() {
           data-aos="fade-up"
           data-aos-duration="1800"
           onClick={handleLinkClick}
-          className="inline-block text-center no-underline bg-[#ff8c38] border-none mt-[27px] text-white px-8 font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:bg-[#da7731] hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
+          className="flex justify-center items-center text-center no-underline bg-[#ff8c38] border-none mt-[27px] text-white px-6 py-3 font-semibold rounded-full cursor-pointer transition-transform duration-100 ease-in-out hover:bg-[#da7731] hover:transform hover:translate-x-.5 hover:translate-y-.5 uppercase"
         >
           Find a vehicle
         </Link>
