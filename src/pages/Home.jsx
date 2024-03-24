@@ -26,9 +26,9 @@ export default function Home() {
 
   return (
     <div className="">
-      <section className="home-container relative h-[350px] bg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-center bg-cover text-white py-10 px-5 flex flex-col gap-y-4">
+      <section className="home-container relative h-[70vh] bfg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-top bg-cover text-xl text-white py-10 px-5 flex flex-col text-center items-center justify-center gap-y-4">
         <h1
-          className="font-semibold text-2xl leading-10"
+          className="font-semibold text-4xl leading-10 mt-12"
           data-aos="fade-up"
           data-aos-duration="700"
         >
@@ -43,7 +43,7 @@ export default function Home() {
           data-aos="fade-up"
           data-aos-duration="1800"
           onClick={handleLinkClick}
-          className="inline-block text-center no-underline bg-[#ff8c38] border-none mt-[27px] text-white font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
+          className="inline-block text-center no-underline bg-[#ff8c38] border-none mt-[27px] text-white px-8 font-semibold rounded-md cursor-pointer transition-transform duration-100 ease-in-out hover:bg-[#da7731] hover:transform hover:translate-x-.5 hover:translate-y-.5 p-[0.75rem] uppercase"
         >
           Find a vehicle
         </Link>

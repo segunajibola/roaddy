@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BiChevronDown } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
 import { UserContext } from "../context/AuthContext";
 
 export default function NavBar() {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
   const { user, handleSignOut } = useContext(UserContext);
   const [isHidden, setIsHidden] = useState(true);
   const activeStyles = {
@@ -13,13 +15,28 @@ export default function NavBar() {
     color: "#161616",
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos, visible]);
+
+
   const handleOverlayClick = () => {
     !isHidden ? setIsHidden(true) : null;
   };
 
   return (
     <header
-      className="bg-[#ff8c38] flex items-center p-2.5"
+      className={`fixed z-10 bg-[#ff8c38] w-full ${visible ? '' : '-translate-y-full'} transition-transform duration-300 ease-in-out flex items-center p-3`}
     >
       <Link
         className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline"

@@ -35,8 +35,7 @@ a {
 
 /* HOME PAGE */
 .home-container {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
-    url("/home-hero.png") no-repeat center center;
+  background: url("https://images.unsplash.com/photo-1514053514818-a89e7ce304e9");
 }
 
 /*  */
