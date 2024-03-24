@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 import { VehicleCard } from "./";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const PopularVehicle = () => {
   const [isDown, setIsDown] = useState(false);

@@ -19,8 +19,7 @@ export default function NavBar() {
 
   return (
     <header
-      data-aos="fade-up"
-      className="bg-[#ff8c38] h-[70px] flex items-center p-2.5"
+      className="bg-[#ff8c38] flex items-center p-2.5"
     >
       <Link
         className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline"
