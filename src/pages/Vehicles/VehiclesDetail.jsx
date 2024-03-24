@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
-import { getVan } from "../../api";
+import { getVan } from "../../../utils/api";
 
 export default function VanDetail() {
   const [van, setVan] = useState(null);
@@ -51,7 +51,9 @@ export default function VanDetail() {
           <div className="flex items-center justify-between">
             <h2 className="text-[2rem] mb-2">{van.name}</h2>
             <div className="flex items-center justify-between gap-x-[5px]">
-              <p className="italic rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">{van.type}</p>
+              <p className="italic rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
+                {van.type}
+              </p>
               <p className="rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
                 <span>${van.price}</span>/day
               </p>

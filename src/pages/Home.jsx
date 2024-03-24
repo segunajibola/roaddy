@@ -8,7 +8,7 @@ import {
 } from "../components/";
 import AOS from "aos";
 import useFetchVehicles from "../hooks/useFetchVehicles";
-
+import { brandLogo } from "../../utils/data"
 export default function Home() {
   const { vans, loading } = useFetchVehicles();
   useEffect(() => {
@@ -23,24 +23,6 @@ export default function Home() {
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
-
-  const brandLogo = [
-    {
-      link: "https://img.icons8.com/ios/icon/24749/amphibious-vehicle",
-    },
-    {
-      link: "https://img.icons8.com/ios/icon/54502/logo",
-    },
-    {
-      link: "https://img.icons8.com/ios/icon/24748/ski-vehicle",
-    },
-    {
-      link: "https://img.icons8.com/ios/icon/UZPl1KrcP3q9/vehicle-tax",
-    },
-    {
-      link: "https://img.icons8.com/ios/icon/54502/logo",
-    },
-  ];
 
   return (
     <div className="">
@@ -107,8 +89,8 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="px-4 py-28">
-        <h3 className="font-semibold text-2xl my-5 text-center">
+      <section className="px-4 py-8">
+        <h3 className="font-semibold text-2xl my-8 text-center">
           What people are saying about us
         </h3>
         <Testimonials />

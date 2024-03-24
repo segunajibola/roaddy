@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getVans } from "../api"
+import { getVans } from "../../utils/api";
 
 const useFetchVehicles = () => {
   const [vans, setVans] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
-import { getHostVehicle, deleteDocument } from "../../api";
+import { getHostVehicle, deleteDocument } from "../../../utils/api";
 import AddVehicle from "../../components/AddVehicle";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { FcEmptyTrash } from "react-icons/fc";

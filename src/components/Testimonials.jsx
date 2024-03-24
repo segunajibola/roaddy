@@ -1,18 +1,14 @@
 import React from "react";
 import TestimonialsCard from "./TestimonialsCard";
-
+import { testimonialsData } from "../../utils/data"
 const Testimonials = () => {
-    const testimonialsData = [
-        {
-            image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6",
-            desc: "“Tailwind CSS is the only framework that I've seen scale on large teams. It\’s easy to customize, adapts to any design, and the build size is tiny.”",
-            name: "Sarah Dayan",
-            title: "Staff Engineer, Algolia",
-        }
-    ]
+    
   return (
-    {testimonialsData.map(data => (
-    <TestimonialsCard data={data}/>))}
+    <div className="relative flex flex-row flex-nowrap items-center w-full h-auto pb-4 px-0 cursor-default overflow-x-auto overscroll-x-none snap-x-mandatory snap-px-1.25 scroll active">
+      {testimonialsData.map((data) => (
+        <TestimonialsCard data={data} />
+      ))}
+    </div>
   );
 };
 

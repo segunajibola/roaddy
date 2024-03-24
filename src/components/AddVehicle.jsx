@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createCollection } from "../api";
+import { createCollection } from "../../utils/api";
 import { useOutletContext } from "react-router-dom";
 
 const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
@@ -41,9 +41,9 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
       console.error("Error creating collection:", error);
     }
   };
-const [red, setRed] = useState(false)
+  const [red, setRed] = useState(false);
   const getRandomPixabayImage = async () => {
-    setRed(!red)
+    setRed(!red);
     const PIXABAY_API_URL = `https://pixabay.com/api/?key=${
       import.meta.env.VITE_PIXABAY_API_KEY
     }&q=vehicle&image_type=photo`;
@@ -54,7 +54,7 @@ const [red, setRed] = useState(false)
       const num = Math.floor(Math.random() * (data.hits.length + 1));
 
       if (data.hits && data.hits.length > 0) {
-        console.log(data)
+        console.log(data);
         setCollection((prev) => ({
           ...prev,
           imageUrl: `${data.hits[num].largeImageURL}`,
@@ -134,7 +134,9 @@ const [red, setRed] = useState(false)
             Image Link
             <span
               onClick={() => getRandomPixabayImage()}
-              className={`cursor-pointer ml-2 p-.5 rounded-lg ${red? "text-red-500" : ""}  bg-gray-300`}
+              className={`cursor-pointer ml-2 p-.5 rounded-lg ${
+                red ? "text-red-500" : ""
+              }  bg-gray-300`}
             >
               generate link
             </span>

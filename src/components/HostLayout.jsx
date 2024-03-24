@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { getHostVehicle } from "../api";
+import { getHostVehicle } from "../../utils/api";
 import { UserContext } from "../context/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 
