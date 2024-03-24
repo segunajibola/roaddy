@@ -81,18 +81,18 @@ export default function Home() {
         <h2 className="text-5xl w-1/2 my-10">
           Three steps to <span className="text-[#ff8c38]">rent a vehicle</span>
         </h2>
-        <p className="my-5 text-lg">
+        <p className="mt-5 text-lg">
           Find out how you can rent a vehicle from anyone or partners in just
           few hours.
         </p>
-        <button className="bg-[#ff8c38] p-3 text-white rounded-2xl mt-5 tracking-wider font-semibold">
+        <HomeCarousel />
+        <button className="bg-[#ff8c38] p-4 text-white rounded-2xl mt-14 tracking-wider font-semibold block w-32 mx-auto">
           GET STARTED
         </button>
-        <HomeCarousel />
       </section>
       <section className="p-4" data-aos="fade-up">
         <div className="flex justify-between font-semibold text-xl my-5">
-          <p className="">Popular Vehicle</p>
+          <p className="">Popular Vehicles</p>
           <Link className="underline" to="vehicles">
             View all
           </Link>
@@ -100,7 +100,7 @@ export default function Home() {
         <PopularVehicle />
       </section>
       <section className="px-4 py-6" data-aos="fade-up">
-        <p className="font-semibold text-xl my-5">Recommended Vehicle</p>
+        <p className="font-semibold text-xl my-5">Recommended Vehicles</p>
         <RecommendedVehicle vans={vans} loading={loading} />
       </section>
       <section className="px-4 py-28 bg-gray-800 text-[#ff8c38]">
