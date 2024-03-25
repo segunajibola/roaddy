@@ -19,14 +19,17 @@ const VehicleCard = ({ vehicle, width, margin }) => {
       className={`${width} ${margin} h-auto flex-shrink-0 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden`}
       key={id}
     >
-      <Link to={`/vehicles/${id}`} onClick={handleLinkClick}>
+      <div>
         <div className="relative block w-full h-[250px] overflow-hidden">
           <img
             src={imageUrl}
             className="w-full h-full object-cover "
             alt={name}
           />
-          <div className="absolute top-0 right-0 p-2" onClick={handleFavourite}>
+          <div
+            className="absolute top-0 right-0 p-2"
+            onClick={handleFavourite}
+          >
             {isFavourite ? (
               <IoMdHeart className="text-[#ff8c38]" size={30} />
             ) : (
@@ -55,12 +58,12 @@ const VehicleCard = ({ vehicle, width, margin }) => {
               ${price}
               <span>/day</span>
             </p>
-            <button className="bg-[#ff8c38] py-1 px-3 rounded-lg font-medium tracking-wide text-lg">
+            <Link  to={`/vehicles/${id}`} onClick={handleLinkClick} className="bg-[#ff8c38] py-1 px-3 rounded-lg font-medium tracking-wide text-lg">
               Rent
-            </button>
+            </Link>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

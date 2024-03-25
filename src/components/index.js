@@ -9,6 +9,7 @@ import PopularVehicle from "./PopularVehicle";
 import RecommendedVehicle from "./RecommendedVehicle";
 import VehicleCard from "./VehicleCard";
 import Testimonials from "./Testimonials";
+import Loading from "./Loading";
 
 export {
   AddVehicle,
@@ -21,5 +22,6 @@ export {
   PopularVehicle,
   RecommendedVehicle,
   VehicleCard,
-  Testimonials
+  Testimonials,
+  Loading
 };

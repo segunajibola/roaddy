@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { getVan } from "../../../utils/api";
-import { PopularVehicle, RecommendedVehicle } from "../../components";
+import { PopularVehicle, Loading } from "../../components";
 import useFetchVehicles from "../../hooks/useFetchVehicles";
 
 export default function VanDetail() {
@@ -21,7 +21,7 @@ export default function VanDetail() {
   } = van || {};
   const { vans, loading, setLoading } = useFetchVehicles();
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function loadVans() {
       setLoading(true);
       try {
@@ -37,11 +37,11 @@ export default function VanDetail() {
   }, [id]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />
   }
 
   if (error) {
-    return <h1>There was ane error: {error.message}</h1>;
+    return <h1>There was an error: {error.message}</h1>;
   }
 
   const search = location.state?.search || "";
@@ -98,25 +98,23 @@ export default function VanDetail() {
           </div>
           <div className="flex justify-between items-center w-full my-5">
             <div className="text-[2rem]">${price}/day</div>
-            <button className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-5 rounded-md w-[35%]">
+            <Link to="rent" className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-5 rounded-md w-[35%]">
               Rent this van
-            </button>
+            </Link>
           </div>
         </div>
       )}
 
-      <section className="p-4" data-aos="fade-up">
+      {/* Vehicles Reviews */}
+
+     <section className="" data-aocs="fade-up">
         <div className="flex justify-between font-semibold text-xl my-5">
-          <p className="">Popular Vehicles</p>
+          <p className="">Browse Vehicles</p>
           <Link className="underline" to="vehicles">
             View all
           </Link>
         </div>
         <PopularVehicle vans={vans} loading={loading} />
-      </section>
-      <section className="px-4 py-6" data-aos="fade-up">
-        <p className="font-semibold text-xl my-5">Recommended Vehicles</p>
-        <RecommendedVehicle vans={vans} loading={loading} />
       </section>
     </div>
   );

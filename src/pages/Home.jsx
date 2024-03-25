@@ -92,7 +92,10 @@ export default function Home() {
           few hours.
         </p>
         <HomeCarousel />
-        <div onClick={handleLinkClick} className="flex justify-center items-center text-center tracking-wider mt-14 font-semibold text-white">
+        <div
+          onClick={handleLinkClick}
+          className="flex justify-center items-center text-center tracking-wider mt-14 font-semibold text-white"
+        >
           {!user ? (
             <Link
               to="host"
@@ -103,10 +106,12 @@ export default function Home() {
             </Link>
           ) : (
             <Link
-            to="host"
-            className="bg-[#ff8c38] p-4 rounded-xl w-40"
-            data-aos="fade-up"
-          >View Dashboard</Link>
+              to="host"
+              className="bg-[#ff8c38] p-4 rounded-xl w-40"
+              data-aos="fade-up"
+            >
+              View Dashboard
+            </Link>
           )}
         </div>
       </section>
@@ -129,12 +134,13 @@ export default function Home() {
         </h3>
         <div className="flex gap-x-3 justify-center items-center my-12">
           {brandLogo.map((logo) => (
-            <img
-              src={logo.link}
-              alt=""
-              srcset=""
-              className="w-10 h-10 shadow-md shadow-[#ff8c38] p-1 rounded-md bg-gray-50"
-            />
+            <div key={logo.id}>
+              <img
+                src={logo.link}
+                alt=""
+                className="w-10 h-10 shadow-md shadow-[#ff8c38] p-1 rounded-md bg-gray-50"
+              />
+            </div>
           ))}
         </div>
       </section>

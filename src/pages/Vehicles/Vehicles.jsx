@@ -1,20 +1,7 @@
 import React from "react";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import useFetchVehicles from "../../hooks/useFetchVehicles";
-
-// const ScrollToTop = () => {
-//   const { pathname } = useLocation();
-
-//   React.useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, [pathname]);
-
-//   return null;
-// };
-
-// React.useLayoutEffect(() => {
-//   window.scrollTo(0, 0);
-// }, [])
+import { Loading } from "../../components";
 
 export default function Vehicles() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,7 +54,7 @@ export default function Vehicles() {
   }
 
   if (loading) {
-    return <h1 className="m-5">Loading...</h1>;
+    return <Loading />;
   }
 
   if (error) {

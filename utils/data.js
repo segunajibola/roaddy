@@ -33,15 +33,19 @@ export const testimonialsData = [
 
 export const brandLogo = [
     {
+      id: 1,
       link: "https://img.icons8.com/ios/icon/24749/amphibious-vehicle",
     },
     {
+      id: 2,
       link: "https://img.icons8.com/ios/icon/54502/logo",
     },
     {
+      id: 3,
       link: "https://img.icons8.com/ios/icon/24748/ski-vehicle",
     },
     {
+      id: 4,
       link: "https://img.icons8.com/ios/icon/UZPl1KrcP3q9/vehicle-tax",
     },
     {
