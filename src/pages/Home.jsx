@@ -53,14 +53,14 @@ export default function Home() {
         }}
       >
         <h1
-          className="font-semibold text-4xl leading-10 mt-12"
+          className="font-semibold text-6xl mt-12 text-shadow"
           data-aos="fade-up"
           data-aos-duration="700"
         >
           You got a two-way trip, we got the vehicle.
         </h1>
         <p
-          className="leading-6 text-shadow text-gray-900 text-xl"
+          className="leading-6 bg-[#f4e9e1] py-3 text-shadow text-gray-900 text-2xl shadow-xl"
           data-aos="fade-up"
           data-aos-duration="1200"
         >
@@ -86,7 +86,7 @@ export default function Home() {
           few hours.
         </p>
         <HomeCarousel />
-        <button className="bg-[#ff8c38] p-4 text-white rounded-2xl mt-14 tracking-wider font-semibold block w-32 mx-auto">
+        <button className="bg-[#ff8c38] p-4 text-white rounded-2xl mt-14 tracking-wider font-semibold block w-32 mx-auto" data-aos="fade-up">
           GET STARTED
         </button>
       </section>
