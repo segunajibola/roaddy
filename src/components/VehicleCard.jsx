@@ -59,7 +59,7 @@ const VehicleCard = ({ vehicle, width, margin }) => {
               <span>/day</span>
             </p>
             <Link  to={`/vehicles/${id}`} onClick={handleLinkClick} className="bg-[#ff8c38] py-1 px-3 rounded-lg font-medium tracking-wide text-lg">
-              Rent
+              View
             </Link>
           </div>
         </div>
