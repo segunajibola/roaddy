@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { getVans } from "../../utils/api";
+import { getVans, getVan } from "../../utils/api";
 
 const useFetchVehicles = () => {
   const [vans, setVans] = useState([]);
+  const [oneVan, setOneVan] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
