@@ -10,8 +10,8 @@ const VehicleCard = ({ vehicle, width, margin }) => {
   const { imageUrl, fuel, transmission, capacity, price, id, name } = vehicle;
 
   const handleFavourite = () => {
-    setIsFavourite(!isFavourite)
-  }
+    setIsFavourite(!isFavourite);
+  };
   return (
     <div
       className={`${width} ${margin} h-auto flex-shrink-0 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden`}
@@ -25,7 +25,7 @@ const VehicleCard = ({ vehicle, width, margin }) => {
         />
         <div className="absolute top-0 right-0 p-2" onClick={handleFavourite}>
           {isFavourite ? (
-            <IoMdHeart className="" size={30} />
+            <IoMdHeart className="text-[#ff8c38]" size={30} />
           ) : (
             <IoIosHeartEmpty size={30} />
           )}
