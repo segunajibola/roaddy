@@ -39,7 +39,7 @@ export default function VanDetail() {
   return (
     <div className="px-4 pt-20">
       <Link to={`..${search}`} relative="path" className="no-underline">
-        &larr; <span className="underline">Back to {vehicleType} vans</span>
+        &larr; <span className="underline text-[1.25rem]">Back to {vehicleType} vans</span>
       </Link>
 
       {van && (
@@ -52,36 +52,40 @@ export default function VanDetail() {
           <div className="flex items-center justify-between">
             <h2 className="text-[2rem] mb-2">{name}</h2>
             <div className="flex items-center justify-between gap-x-[5px]">
-              <p className="italic rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
+              <p className="italic rounded-[10px] bg-[#ff8c38] text-white px-[6px] py-[5px]">
                 {type}
               </p>
-              <p className="rounded-[10px] bg-[#bd3737] text-white px-[6px] py-[5px]">
+              <p className="rounded-[10px] bg-[#ff8c38] text-white px-[6px] py-[5px]">
                 <span>${price}</span>/day
               </p>
             </div>
           </div>
           <p className="text-lg">{description}</p>
-          <div className="grid grid-cols-2">
-            <div className="flex justify-between gap-x-6">
-              <span>Type Car</span>
-              <span className="capitalize">{type}</span>
+          <div className="grid grid-cols-2 gap-x-3">
+            <div className="flex justify-between gap-x-6 items-center">
+              <span className="text-[1.25rem]">Type Car</span>
+              <span className="capitalize font-semibold">{type}</span>
             </div>
-            <div className="flex justify-between gap-x-6">
-              <span>Capacity</span>
-              <span className="capitalize">{capacity}{capacity > 1 ? " Persons" : " Person"} </span>
+            <div className="flex justify-between gap-x-6 items-center">
+              <span className="text-[1.25rem]">Capacity</span>
+              <span className="capitalize font-semibold">{capacity}{capacity > 1 ? " Persons" : " Person"} </span>
             </div>
-            <div className="flex justify-between gap-x-6">
-              <span>Steering</span>
-              <span className="capitalize">{transmission}</span>
+            <div className="flex justify-between gap-x-6 items-center">
+              <span className="text-[1.25rem]">Steering</span>
+              <span className="capitalize font-semibold">{transmission}</span>
             </div>
-            <div className="flex justify-between gap-x-6">
-              <span>Fuel</span>
-              <span className="capitalize">{fuel} Liters</span>
+            <div className="flex justify-between gap-x-6 items-center">
+              <span className="text-[1.25rem]">Fuel</span>
+              <span className="capitalize font-semibold">{fuel} Liters</span>
             </div>
           </div>
-          <button className="text-white text-[1.125rem] bg-[#ff8c38] p-4 rounded-md">
+          <div className="flex justify-between items-center w-full my-5">
+            <div className="text-[2rem]">${price}/day</div>
+            <button className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-5 rounded-md w-[35%]">
             Rent this van
           </button>
+          </div>
+          
         </div>
       )}
     </div>
