@@ -107,7 +107,7 @@ export default function VanDetail() {
 
       {/* Vehicles Reviews */}
 
-     <section className="" data-aocs="fade-up">
+     <section className="mb-5" data-aods="fade-up">
         <div className="flex justify-between font-semibold text-xl my-5">
           <p className="">Browse Vehicles</p>
           <Link className="underline" to="vehicles">

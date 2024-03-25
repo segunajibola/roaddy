@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div className="">
       <section
-        className="homde-container relative h-[70vh] bfg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-top bg-cover text-xl py-10 px-5 flex flex-col text-center items-center justify-center gap-y-4 transition-all duration-1000 ease-in-out"
+        className="homde-container relative h-[70vh] bfg-[#fff7ed] bg-gradient-to-b from-black via-transparent to-transparefnt bg-no-repeat bg-top bg-cover text-xl py-10 flex flex-col text-center items-center justify-center gap-y-4 transition-all duration-1000 ease-in-out"
         style={{
           backgroundImage: backgroundImageUrl,
         }}
@@ -66,7 +66,7 @@ export default function Home() {
           You got a two-way trip, we got the vehicle.
         </h1>
         <p
-          className="leading-6 bg-[#f4e9e1] py-3 text-shadow text-gray-900 text-2xl shadow-xl"
+          className="bg-[#f4e9e1] py-3 px-0.5 text-shadow text-gray-900 text-2xl shadow-xl"
           data-aos="fade-up"
           data-aos-duration="1200"
         >

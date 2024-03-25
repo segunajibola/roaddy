@@ -54,11 +54,11 @@ const VehicleCard = ({ vehicle, width, margin }) => {
           </div>
           <div className="flex justify-between items-center py-2">
             <h3 className="font-semibold text-md">{name}</h3>
-            <p className="rounded-[10px] font-semibold text-lg px-[6px] py-1.5">
+            <p className="rounded-[10px] font-semibold text-lg px-[4px] py-1.5">
               ${price}
               <span>/day</span>
             </p>
-            <Link  to={`/vehicles/${id}`} onClick={handleLinkClick} className="bg-[#ff8c38] py-1 px-3 rounded-lg font-medium tracking-wide text-lg">
+            <Link  to={`/vehicles/${id}`} onClick={handleLinkClick} className="bg-[#ff8c38] py-1 px-2.5 rounded-lg font-medium tracking-wide text-lg">
               View
             </Link>
           </div>
