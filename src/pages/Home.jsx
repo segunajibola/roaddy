@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { HomeCarousel } from "../components";
 import {
@@ -9,8 +9,12 @@ import {
 import AOS from "aos";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 import { brandLogo } from "../../utils/data";
+import { UserContext } from "../context/AuthContext";
+import { handleLinkClick } from "../../utils/funcs";
+
 export default function Home() {
   const { vans, loading } = useFetchVehicles();
+  const { user } = useContext(UserContext);
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -30,7 +34,9 @@ export default function Home() {
     'url("https://images.unsplash.com/photo-1631682824839-0447cfcb2f93")',
     // Add more image URLs as needed
   ];
-  const randomIndex = Math.floor(Math.random() * backgroundImageUrlsArray.length);
+  const randomIndex = Math.floor(
+    Math.random() * backgroundImageUrlsArray.length
+  );
   const [backgroundImageUrl, setBackgroundImageUrl] = useState(
     backgroundImageUrlsArray[randomIndex]
   );
@@ -86,9 +92,23 @@ export default function Home() {
           few hours.
         </p>
         <HomeCarousel />
-        <button className="bg-[#ff8c38] p-4 text-white rounded-2xl mt-14 tracking-wider font-semibold block w-32 mx-auto" data-aos="fade-up">
-          GET STARTED
-        </button>
+        <div onClick={handleLinkClick} className="flex justify-center items-center text-center tracking-wider mt-14 font-semibold text-white">
+          {!user ? (
+            <Link
+              to="host"
+              className="bg-[#ff8c38] p-4 rounded-xl w-40"
+              data-aos="fade-up"
+            >
+              GET STARTED
+            </Link>
+          ) : (
+            <Link
+            to="host"
+            className="bg-[#ff8c38] p-4 rounded-xl w-40"
+            data-aos="fade-up"
+          >View Dashboard</Link>
+          )}
+        </div>
       </section>
       <section className="p-4" data-aos="fade-up">
         <div className="flex justify-between font-semibold text-xl my-5">

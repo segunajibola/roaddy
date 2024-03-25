@@ -4,6 +4,7 @@ export default function Footer() {
   return (
     <footer
       data-aos="fade-up"
+      data-aos-duration="200"
       className="bg-[#ff8c38] text-gray-800 text-lg p-5 flex flex-col font-normal"
     >
       <div className="flex flex-col md:flex-row w-full gap-y-3">
