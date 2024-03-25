@@ -2,7 +2,7 @@ import AddVehicle from "./AddVehicle";
 import Footer from "./Footer";
 import Header from "./NavBar";
 import HostLayout from "./HostLayout";
-import Layout from "./Layout";
+import PageLayout from "./PageLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import HomeCarousel from "./HomeCarousel";
 import PopularVehicle from "./PopularVehicle";
@@ -15,7 +15,7 @@ export {
   Footer,
   Header,
   HostLayout,
-  Layout,
+  PageLayout,
   ProtectedRoute,
   HomeCarousel,
   PopularVehicle,

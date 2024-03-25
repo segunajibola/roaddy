@@ -13,7 +13,7 @@ import {
   HostVanPricing,
   HostVanPhotos,
 } from "./pages/Host";
-import { HostLayout, Layout } from "./components";
+import { HostLayout, PageLayout } from "./components";
 import { AuthContextProvider } from "./context/AuthContext";
 
 // should be in jsx
@@ -24,7 +24,7 @@ export const AppRouter = () => {
       path: "/",
       element: (
         <AuthContextProvider>
-          <Layout />
+          <PageLayout />
         </AuthContextProvider>
       ),
       children: [

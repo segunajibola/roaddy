@@ -104,7 +104,7 @@ export default function Home() {
         <RecommendedVehicle vans={vans} loading={loading} />
       </section>
       <section className="px-4 py-28 bg-gray-800 text-[#ff8c38]">
-        <h3 className="font-semibold text-2xl my-5 text-center">
+        <h3 className="font-semibold text-3xl my-5 text-center">
           Brands that trust us
         </h3>
         <div className="flex gap-x-3 justify-center items-center my-12">
@@ -119,7 +119,7 @@ export default function Home() {
         </div>
       </section>
       <section className="px-4 py-8">
-        <h3 className="font-semibold text-2xl my-8 text-center">
+        <h3 className="font-semibold text-3xl my-8 text-center">
           What people are saying about us
         </h3>
         <Testimonials />
