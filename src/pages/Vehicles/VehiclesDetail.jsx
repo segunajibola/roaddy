@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { getVan } from "../../../utils/api";
+import { PopularVehicle, RecommendedVehicle } from "../../components";
+import useFetchVehicles from "../../hooks/useFetchVehicles";
 
 export default function VanDetail() {
   const [van, setVan] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
   const location = useLocation();
-  const { imageUrl, name, price, type, description, capacity, transmission, fuel } = van || {};
+  const {
+    imageUrl,
+    name,
+    price,
+    type,
+    description,
+    capacity,
+    transmission,
+    fuel,
+  } = van || {};
+  const { vans, loading, setLoading } = useFetchVehicles();
 
   React.useEffect(() => {
     async function loadVans() {
@@ -39,7 +50,10 @@ export default function VanDetail() {
   return (
     <div className="px-4 pt-20">
       <Link to={`..${search}`} relative="path" className="no-underline">
-        &larr; <span className="underline text-[1.25rem]">Back to {vehicleType} vans</span>
+        &larr;{" "}
+        <span className="underline text-[1.25rem]">
+          Back to {vehicleType} vehicles
+        </span>
       </Link>
 
       {van && (
@@ -68,7 +82,10 @@ export default function VanDetail() {
             </div>
             <div className="flex justify-between gap-x-6 items-center">
               <span className="text-[1.25rem]">Capacity</span>
-              <span className="capitalize font-semibold">{capacity}{capacity > 1 ? " Persons" : " Person"} </span>
+              <span className="capitalize font-semibold">
+                {capacity}
+                {capacity > 1 ? " Persons" : " Person"}{" "}
+              </span>
             </div>
             <div className="flex justify-between gap-x-6 items-center">
               <span className="text-[1.25rem]">Steering</span>
@@ -82,12 +99,25 @@ export default function VanDetail() {
           <div className="flex justify-between items-center w-full my-5">
             <div className="text-[2rem]">${price}/day</div>
             <button className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-5 rounded-md w-[35%]">
-            Rent this van
-          </button>
+              Rent this van
+            </button>
           </div>
-          
         </div>
       )}
+
+      <section className="p-4" data-aos="fade-up">
+        <div className="flex justify-between font-semibold text-xl my-5">
+          <p className="">Popular Vehicles</p>
+          <Link className="underline" to="vehicles">
+            View all
+          </Link>
+        </div>
+        <PopularVehicle vans={vans} loading={loading} />
+      </section>
+      <section className="px-4 py-6" data-aos="fade-up">
+        <p className="font-semibold text-xl my-5">Recommended Vehicles</p>
+        <RecommendedVehicle vans={vans} loading={loading} />
+      </section>
     </div>
   );
 }

@@ -78,7 +78,7 @@ export default function Vehicles() {
     <>
       {/* <ScrollToTop /> */}
 
-      <div className="p-6">
+      <div className="p-6 pt-16">
         <h1 className="my-2">Explore vehicle options</h1>
         <div className="flex wrap gap-2">
           <button

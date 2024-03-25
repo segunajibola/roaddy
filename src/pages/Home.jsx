@@ -117,7 +117,7 @@ export default function Home() {
             View all
           </Link>
         </div>
-        <PopularVehicle />
+        <PopularVehicle vans={vans} loading={loading} />
       </section>
       <section className="px-4 py-6" data-aos="fade-up">
         <p className="font-semibold text-xl my-5">Recommended Vehicles</p>

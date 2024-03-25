@@ -19,7 +19,7 @@ const VehicleCard = ({ vehicle, width, margin }) => {
       className={`${width} ${margin} h-auto flex-shrink-0 border-none outline-none text-gray-900 bg-white shadow-md rounded-xl overflow-hidden`}
       key={id}
     >
-      <Link to={`vehicles/${id}`} onClick={handleLinkClick}>
+      <Link to={`/vehicles/${id}`} onClick={handleLinkClick}>
         <div className="relative block w-full h-[250px] overflow-hidden">
           <img
             src={imageUrl}

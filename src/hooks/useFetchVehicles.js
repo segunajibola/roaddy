@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { getVans, getVan } from "../../utils/api";
+import { getVans } from "../../utils/api";
 
 const useFetchVehicles = () => {
   const [vans, setVans] = useState([]);
-  const [oneVan, setOneVan] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -22,7 +21,7 @@ const useFetchVehicles = () => {
     loadVans();
   }, []);
 
-  return { vans, loading, error };
+  return { vans, loading, setLoading, error };
 };
 
 export default useFetchVehicles;

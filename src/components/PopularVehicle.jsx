@@ -3,12 +3,11 @@ import useFetchVehicles from "../hooks/useFetchVehicles";
 import { VehicleCard } from "./";
 import Skeleton from "react-loading-skeleton";
 
-const PopularVehicle = () => {
+const PopularVehicle = ({vans, loading}) => {
   const [isDown, setIsDown] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [shuffledDataArray, setShuffledDataArray] = useState([]);
-  const { vans, loading } = useFetchVehicles();
 
   const handleMouseUp = () => {
     setIsDown(false);
