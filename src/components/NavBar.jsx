@@ -36,10 +36,10 @@ export default function NavBar() {
 
   return (
     <header
-      className={`fixed z-10 bg-[#ff8c38] w-full ${visible ? '' : '-translate-y-full'} transition-transform duration-300 ease-in-out flex items-center p-3`}
+      className={`fixed z-10 bg-[#ff8c38] w-full ${visible ? '' : '-translate-y-full'} transition-transform duration-300 ease-in-out flex items-center p-3 text-gray-100 font-semibold`}
     >
       <Link
-        className="mr-auto uppercase font-black text-xl no-underline text-[#4d4d4d] px-2 py-1.5 hover:text-[#161616] hover:underline"
+        className="mr-auto uppercase font-black text-xl no-underline px-2 py-1.5 hover:text-gray-200 hover:underline"
         to="/"
       >
         Roaddy
@@ -48,21 +48,21 @@ export default function NavBar() {
         <NavLink
           to="/host"
           style={({ isActive }) => (isActive ? activeStyles : null)}
-          className="no-underline text-[#4d4d4d] px-2 py-1.5 font-semibold hover:text-[#161616] hover:underline"
+          className="no-underline px-2 py-1.5 hover:text-gray-200 hover:underline"
         >
           Host
         </NavLink>
         <NavLink
           to="/about"
           style={({ isActive }) => (isActive ? activeStyles : null)}
-          className="no-underline text-[#4d4d4d] px-2 py-1.5 font-semibold hover:text-[#161616] hover:underline"
+          className="no-underline px-2 py-1.5 hover:text-gray-200 hover:underline"
         >
           About
         </NavLink>
         <NavLink
           to="/vehicles"
           style={({ isActive }) => (isActive ? activeStyles : null)}
-          className="no-underline text-[#4d4d4d] px-2 py-1.5 font-semibold hover:text-[#161616] hover:underline"
+          className="no-underline px-2 py-1.5 hover:text-gray-200 hover:underline"
         >
           Vehicles
         </NavLink>
