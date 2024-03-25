@@ -175,11 +175,11 @@ export default function Rental() {
       <div className="flex justify-between">
           <div className="flex flex-col">
             <h3 className="font-semibold text-2xl">Payment Method</h3>
-            <span>Please select your rental date</span>
+            <span>Please enter your payment method</span>
           </div>
-          <span>Step 2 of 4</span>
+          <span>Step 3 of 4</span>
         </div>
-
+        
       </div>
     </div>
   );
