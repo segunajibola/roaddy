@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="flex flex-col items-center p-[27px]">
+      <div className="mt-10 flex flex-col items-center p-[27px]">
         {location.state?.message && (
           <h3 className="text-red">{location.state.message}</h3>
         )}
