@@ -66,7 +66,7 @@ export default function Home() {
           You got a two-way trip, we got the vehicle.
         </h1>
         <p
-          className="bg-[#f4e9e1] py-3 px-0.5 text-shadow text-gray-900 text-2xl shadow-xl"
+          className="bg-[#f4e9e1] py-3 px-1.5 text-shadow text-gray-900 text-2xl shadow-xl"
           data-aos="fade-up"
           data-aos-duration="1200"
         >

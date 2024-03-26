@@ -6,10 +6,11 @@ import { IoMdHeart } from "react-icons/io";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { handleLinkClick } from "../../utils/funcs";
+import { FaCarAlt } from "react-icons/fa";
 
 const VehicleCard = ({ vehicle, width, margin }) => {
   const [isFavourite, setIsFavourite] = useState(false);
-  const { imageUrl, fuel, transmission, capacity, price, id, name } = vehicle;
+  const { imageUrl, fuel, transmission, capacity, price, id, name, type } = vehicle;
 
   const handleFavourite = () => {
     setIsFavourite(!isFavourite);
@@ -46,6 +47,10 @@ const VehicleCard = ({ vehicle, width, margin }) => {
             <div className="flex justify-center items-center gap-x-[1px]">
               <GiGearStick className="" size={20} />
               <span>{transmission}</span>
+            </div>
+            <div className="flex justify-center items-center gap-x-[1px]">
+              <FaCarAlt className="" size={20} />
+              <span>{type}</span>
             </div>
             <div className="flex justify-center items-center gap-x-[1px]">
               <IoIosPeople className="" size={20} />

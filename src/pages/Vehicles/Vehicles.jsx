@@ -1,43 +1,28 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import useFetchVehicles from "../../hooks/useFetchVehicles";
-import { Loading } from "../../components";
+import { Loading, VehicleCard } from "../../components";
 
 export default function Vehicles() {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const { vans, loading, error } = useFetchVehicles();
 
-  const displayedVans = typeFilter
+  const displayedVehicle = typeFilter
     ? vans.filter((van) => van.type === typeFilter)
     : vans;
 
-  const vehiclesElement = displayedVans.map((van) => (
-    <div key={van.id} className="w-full">
+  const vehiclesElement = displayedVehicle.map((vehicle) => (
+    <div key={vehicle.id} className="w-full">
       <Link
-        to={van.id}
+        to={vehicle.id}
         state={{
           search: `?${searchParams.toString()}`,
           type: typeFilter,
         }}
         className="text-[#161616]  text-decoration: none"
       >
-        <img
-          src={van.imageUrl}
-          className="w-full rounded-[10px] h-[50vh] object-cover object-center"
-        />
-        <div className="flex justify-between items-center mt-2">
-          <h3 className="font-semibold text-lg">{van.name}</h3>
-          <div className="flex justify-between items-center gap-x-1">
-            <p className="rounded-[10px] bg-[#ffead0] px-[6px] py-1.5">
-              ${van.price}
-              <span>/day</span>
-            </p>
-            <p className="px-2 py-1.5 rounded-md bg-[#ffead0] italic">
-              {van.type}
-            </p>
-          </div>
-        </div>
+        <VehicleCard vehicle={vehicle} />
       </Link>
     </div>
   ));
@@ -63,14 +48,12 @@ export default function Vehicles() {
 
   return (
     <>
-      {/* <ScrollToTop /> */}
-
       <div className="p-6 pt-16">
-        <h1 className="my-2">Explore vehicle options</h1>
+        <h1 className="text-3xl my-2 font-semibold mb-4">Explore vehicle options</h1>
         <div className="flex wrap gap-2">
           <button
             onClick={() => handleFilterChange("type", "simple")}
-            className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+            className={`h-8 px-3 py-1 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
               typeFilter === "simple"
                 ? "text-white bg-orange-600 hover:bg-orange-700"
                 : ""
@@ -80,7 +63,7 @@ export default function Vehicles() {
           </button>
           <button
             onClick={() => handleFilterChange("type", "luxury")}
-            className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+            className={`h-8 px-3 py-1 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
               typeFilter === "luxury"
                 ? "text-white bg-orange-600 hover:bg-orange-700"
                 : ""
@@ -90,7 +73,7 @@ export default function Vehicles() {
           </button>
           <button
             onClick={() => handleFilterChange("type", "rugged")}
-            className={`h-8 px-6 py-1.5 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
+            className={`h-8 px-3 py-1 font-medium rounded-md bg-orange-200 text-[#4d4d4d] transition duration-200 ease-in-out focus:outline-none focus:ring focus:border-orange-800 hover:bg-orange-400 ${
               typeFilter === "rugged"
                 ? "text-white bg-orange-600 hover:bg-orange-700"
                 : ""
@@ -102,7 +85,7 @@ export default function Vehicles() {
           {typeFilter ? (
             <button
               onClick={() => handleFilterChange("type", null)}
-              className="h-8 px-6 py-1.5 font-medium rounded-md border-none text-[#4d4d4d] underline bg-transparent"
+              className="h-8 px-2 py-1 font-medium rounded-md border-none text-[#4d4d4d] underline bg-transparent"
             >
               Clear filter
             </button>
