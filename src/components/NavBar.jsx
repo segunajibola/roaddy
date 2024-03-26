@@ -44,7 +44,7 @@ export default function NavBar() {
       >
         Roaddy
       </Link>
-      <nav className="flex text-[15px] gap-[2px]">
+      <nav className="flex text-[16px] gap-[2px]">
         <NavLink
           to="/host"
           style={({ isActive }) => (isActive ? activeStyles : null)}

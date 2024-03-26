@@ -59,7 +59,7 @@ export default function Home() {
         }}
       >
         <h1
-          className="font-semibold text-6xl mt-12 text-shadow"
+          className="font-semibold text-5xl mt-12 text-shadow p-2"
           data-aos="fade-up"
           data-aos-duration="700"
         >

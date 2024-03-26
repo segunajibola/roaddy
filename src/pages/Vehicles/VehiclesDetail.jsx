@@ -98,7 +98,7 @@ export default function VanDetail() {
           </div>
           <div className="flex justify-between items-center w-full my-5">
             <div className="text-[2rem]">${price}/day</div>
-            <Link to="rent" className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-5 rounded-md w-[35%]">
+            <Link to="rent" className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-2 rounded-md w-[40%]">
               Rent this van
             </Link>
           </div>

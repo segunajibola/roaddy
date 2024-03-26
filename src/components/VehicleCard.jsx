@@ -31,9 +31,9 @@ const VehicleCard = ({ vehicle, width, margin }) => {
             onClick={handleFavourite}
           >
             {isFavourite ? (
-              <IoMdHeart className="text-[#ff8c38]" size={30} />
+              <IoMdHeart className="text-[#ff8c38]" size={35} />
             ) : (
-              <IoIosHeartEmpty size={30} />
+              <IoIosHeartEmpty size={35} />
             )}
           </div>
         </div>
