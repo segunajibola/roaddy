@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { getVan } from "../../utils/api";
-import { PopularVehicle, Loading } from "../components";
+import { Loading } from "../components";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 
 export default function Rental() {
@@ -46,9 +46,9 @@ export default function Rental() {
 
   return (
     <div className="pt-20 px-4">
-      <div className="my-3">
-        <h1 className="text-2xl my-3">Rental Summary</h1>
-        <p className="text-xl">
+      <div className="my-2">
+        <h1 className="text-3xl my-2 font-semibold">Rental Summary</h1>
+        <p>
           Prices may change depending on the duration of the rented vehicle.
         </p>
         <div className="flex gap-3 my-10">
@@ -60,7 +60,7 @@ export default function Rental() {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <h2 className="text-4xl">{name}</h2>
+            <h2 className="text-2xl">{name}</h2>
             <span className="text-[1.10rem]">440+ Reviewers</span>
           </div>
         </div>

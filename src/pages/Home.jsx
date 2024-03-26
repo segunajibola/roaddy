@@ -101,6 +101,7 @@ export default function Home() {
               to="host"
               className="bg-[#ff8c38] p-4 rounded-xl w-40"
               data-aos="fade-up"
+              data-aos-duration="200"
             >
               GET STARTED
             </Link>
