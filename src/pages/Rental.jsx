@@ -49,7 +49,7 @@ export default function Rental() {
       <div className="my-2">
         <h1 className="text-3xl my-2 font-semibold">Rental Summary</h1>
         <p>
-          Prices may change depending on the duration of the rented vehicle.
+          Prices may change depending on the duration of the rented vehicle
         </p>
         <div className="flex gap-3 my-10">
           <div className="w-[50%]">
