@@ -27,9 +27,9 @@ export default function About() {
         </h2>
         <Link
           className="py-4 px-5 bg-[#ff8c38] uppercase font-semibold tracking-wider text-white rounded-[10px]"
-          to="/vans"
+          to="/vehicles"
         >
-          Explore our vans
+          Explore our vehicles
         </Link>
       </div>
     </div>
