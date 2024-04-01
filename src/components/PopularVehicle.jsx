@@ -72,7 +72,7 @@ const PopularVehicle = ({vans, loading}) => {
           <VehicleCard
             vehicle={vehicle}
             key={vehicle.id}
-            width="w-[60vw]"
+            width="w-[70vw]"
             margin="mx-3"
           />
         ))}

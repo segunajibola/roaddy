@@ -22,13 +22,12 @@ export default function NavBar() {
       setPrevScrollPos(currentScrollPos);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos, visible]);
-
 
   const handleOverlayClick = () => {
     !isHidden ? setIsHidden(true) : null;
@@ -36,7 +35,9 @@ export default function NavBar() {
 
   return (
     <header
-      className={`fixed z-10 bg-[#ff8c38] w-full ${visible ? '' : '-translate-y-full'} transition-transform duration-300 ease-in-out flex items-center p-3 text-gray-100 font-semibold`}
+      className={`fixed z-10 bg-[#ff8c38] w-full ${
+        visible ? "" : "-translate-y-full"
+      } transition-transform duration-300 ease-in-out flex items-center p-3 text-gray-100 font-semibold`}
     >
       <Link
         className="mr-auto uppercase font-black text-xl no-underline px-2 py-1.5 hover:text-gray-200 hover:underline"
@@ -75,19 +76,19 @@ export default function NavBar() {
         >
           {user && (
             <div className="inline-flex items-center">
-              {user.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  className="h-[22.5px] w-[22.5px] rounded-[50%] border-2 border-solid border-[#4d4d4d]"
-                />
-              ) : (
+              {/* {user.photoURL ? ( */}
+              <img
+                src={user.photoURL}
+                className="h-[22.5px] w-[22.5px] rounded-[50%] border-2 border-solid border-[#4d4d4d]"
+              />
+              {/* ) : (
                 <div className="w-4 h-8 rounded-full bg-orange-500">
                   <FaUserCircle />
                 </div>
-              )}
+              )} */}
               <BiChevronDown
                 size={20}
-                className={`${isHidden ? "rotate-0" : "rotate-180"}`}
+                className={`mr-2 ${isHidden ? "rotate-0" : "rotate-180"}`}
               />
             </div>
           )}
@@ -98,7 +99,7 @@ export default function NavBar() {
             } fixed top-[70px] left-0 w-full h-full justify-center align-center z-10`}
             onClick={handleOverlayClick}
           >
-            <div className="bg-white shadow-md w-2/12 absolute z-10 right-[1rem] p-1">
+            <div className="bg-[#ff8c38] shadow-md w-2/12 absolute z-10 right-[1rem] p-1">
               <span
                 className="flex justify-end cursor-pointer"
                 onClick={() => setIsHidden(true)}
@@ -108,7 +109,7 @@ export default function NavBar() {
               <div
                 className={`${
                   isHidden ? "hidden" : "flex"
-                } flex-col justify-center items-start px-1 text-base text-left`}
+                } flex-col justify-center items-start p-2 text-lg text-left`}
               >
                 {/* <Link
                   to="/profile"

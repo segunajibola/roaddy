@@ -11,6 +11,7 @@ import useFetchVehicles from "../hooks/useFetchVehicles";
 import { brandLogo } from "../../utils/data";
 import { UserContext } from "../context/AuthContext";
 import { handleLinkClick } from "../../utils/funcs";
+import FAQ from "../components/FAQs";
 
 export default function Home() {
   const { vans, loading } = useFetchVehicles();
@@ -150,6 +151,12 @@ export default function Home() {
           What people are saying about us
         </h3>
         <Testimonials />
+      </section>
+      <section className="px-4 py-8">
+        <h3 className="font-semibold text-3xl my-8 text-center">
+          Frequently Asked Questions
+        </h3>
+        <FAQ />
       </section>
     </div>
   );

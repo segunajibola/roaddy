@@ -10,9 +10,12 @@ import { FaCarAlt } from "react-icons/fa";
 
 const VehicleCard = ({ vehicle, width, margin }) => {
   const [isFavourite, setIsFavourite] = useState(false);
-  const { imageUrl, fuel, transmission, capacity, price, id, name, type } = vehicle;
+  const { imageUrl, fuel, transmission, capacity, price, id, name, type } =
+    vehicle;
 
-  const handleFavourite = () => {
+  const handleFavourite = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsFavourite(!isFavourite);
   };
   return (
@@ -27,10 +30,7 @@ const VehicleCard = ({ vehicle, width, margin }) => {
             className="w-full h-full object-cover "
             alt={name}
           />
-          <div
-            className="absolute top-0 right-0 p-2"
-            onClick={handleFavourite}
-          >
+          <div className="absolute top-0 right-0 p-2" onClick={(e) => handleFavourite(e)}>
             {isFavourite ? (
               <IoMdHeart className="text-[#ff8c38]" size={35} />
             ) : (
@@ -63,7 +63,11 @@ const VehicleCard = ({ vehicle, width, margin }) => {
               ${price}
               <span>/day</span>
             </p>
-            <Link  to={`/vehicles/${id}`} onClick={handleLinkClick} className="bg-[#ff8c38] py-1 px-2.5 rounded-lg font-medium tracking-wide text-lg">
+            <Link
+              to={`/vehicles/${id}`}
+              onClick={handleLinkClick}
+              className="bg-[#ff8c38] py-1 px-2.5 rounded-lg font-medium tracking-wide text-lg"
+            >
               View
             </Link>
           </div>
