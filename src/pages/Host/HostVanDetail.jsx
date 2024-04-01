@@ -7,6 +7,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import { getVan } from "../../utils/api";
+import { Loading } from "../../components";
 
 export default function HostVanDetail() {
   const [currentVan, setCurrentVan] = React.useState(null);
@@ -32,7 +33,7 @@ export default function HostVanDetail() {
   }, [id]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   if (error) {

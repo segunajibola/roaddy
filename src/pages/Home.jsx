@@ -147,6 +147,28 @@ export default function Home() {
         </h3>
         <Testimonials />
       </section>
+      <section className="px-4 py-8 h-[50vh] bg-[#ff8c38] flex flex-col justify-center">
+        <h3 className="font-semibold text-5xl my-8 text-center">
+          Ready to rent a vehicle?
+        </h3>
+        <div className="py-4 flex justify-center text-white text-lg font-semibold items-center">
+          <Link
+            to="/vehicles"
+            onClick={handleLinkClick}
+            className="p-4 bg-gray-800 hover:bg-gray-200 hover:text-gray-900 rounded-3xl m-2 tracking-wide transform transition-transform duration-300 hover:-translate-y-1"
+          >
+            Find vehicles to rent
+          </Link>
+          <Link
+            to="/host/vehicles"
+            onClick={handleLinkClick}
+            className="p-4 bg-gray-800 hover:bg-gray-200 hover:text-gray-900 rounded-3xl m-2 tracking-wide transform transition-transform duration-300 hover:-translate-y-1"
+          >
+            Rent your car
+          </Link>
+        </div>
+        {/* Ready to rent a vehicle? Find vehicles. Rent out your vehicle button 1 big 1 small */}
+      </section>
       <section className="px-4 py-8">
         <h3 className="font-semibold text-3xl my-8 text-center">
           Frequently Asked Questions

@@ -15,7 +15,7 @@ export default function Income() {
       <h2 className="text-[38px] text-[#161616] font-black">$2,260</h2>
       <img
         className="w-full max-w-[500px]"
-        src="/assets/images/income-graph.png"
+        src="/income-graph.png"
         alt="Income graph"
       />
       <div>
@@ -28,7 +28,10 @@ export default function Income() {
       </div>
       <div className="">
         {transactionsData.map((item) => (
-          <div key={item.id} className="flex justify-between items-center bg-white mb-[31px] px-7 py-9 rounded-md">
+          <div
+            key={item.id}
+            className="flex justify-between items-center bg-white mb-[31px] px-7 py-9 rounded-md"
+          >
             <h3 className="text-4xl font-semibold">${item.amount}</h3>
             <p className="font-medium text-xl text-[#4d4dd4d]">{item.date}</p>
           </div>

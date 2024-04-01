@@ -68,8 +68,16 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Add new vehicle</h2>
+    <div className="p-4 py-8">
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-bold mb-4">Add new vehicle</h2>
+        <div
+          className="text-center bg-[#ff8c38] text-white px-4 py-2 rounded-md hover:bg-[#7d6649]"
+          onClick={() => setAddVehicleVisible(false)}
+        >
+          Hide form
+        </div>
+      </div>
 
       <form
         onSubmit={handleCreateCollection}
@@ -188,15 +196,9 @@ const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {
             placeholder="Enter vehicle type"
           />
         </div>
-        <button className="col-span-full bg-[#645d53] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1">
+        <button className="bg-[#ff8c38] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1">
           Add
         </button>
-        <div
-          className="text-center col-span-full bg-[#8e775b] text-white px-4 py-2 rounded-md hover:bg-[#7d6649] md:col-start-2 md:col-span-1"
-          onClick={() => setAddVehicleVisible(false)}
-        >
-          Hide form
-        </div>
       </form>
     </div>
   );

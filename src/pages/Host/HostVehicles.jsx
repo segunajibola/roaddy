@@ -5,6 +5,7 @@ import AddVehicle from "../../components/AddVehicle";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { FcEmptyTrash } from "react-icons/fc";
 import { IoMdRefresh } from "react-icons/io";
+import { Loading } from "../../components";
 
 export default function HostVehicles() {
   const { user, vans, setVans, loading, error, setError } = useOutletContext();
@@ -36,6 +37,7 @@ export default function HostVehicles() {
   useEffect(() => {
     // loadVans();
     updateLocalStorage(vans);
+    // handleRefresh();
   }, [vans]);
 
   const handleRefresh = () => {
@@ -80,7 +82,7 @@ export default function HostVehicles() {
   ));
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   if (error) {
@@ -95,7 +97,7 @@ export default function HostVehicles() {
             Your hosted vehicles
           </h1>
           <span
-            className="mr-5 bg-[#8e775b] p-1 text-white rounded-md flex items-center justify-center"
+            className="mr-5 bg-[#ff8c38] p-1 text-white rounded-md flex items-center justify-center"
             onClick={handleRefresh}
           >
             Refresh database{" "}
@@ -124,7 +126,7 @@ export default function HostVehicles() {
         {!addVehicleVisible && (
           <button
             onClick={() => setAddVehicleVisible(true)}
-            className="p-2 bg-[#8e775b] text-white rounded-md ml-4 mt-5"
+            className="p-2 bg-[#ff8c38] text-white rounded-md ml-4 my-5"
           >
             Add Vehicle
           </button>

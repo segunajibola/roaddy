@@ -41,7 +41,7 @@ export default function HostLayout() {
 
   return (
     <>
-      <nav className="flex mb-[30px]">
+      <nav className="flex mt-16 mb-[10px] text-lg">
         <NavLink
           to="."
           end

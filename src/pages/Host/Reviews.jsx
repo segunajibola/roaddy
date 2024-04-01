@@ -27,18 +27,16 @@ export default function Reviews() {
           Last <span className="underline font-bold">30 days</span>
         </p>
       </div>
-      <img
-        className="mb-9"
-        src="/reviews-graph.png"
-        alt="Review graph"
-      />
-      <h3>Reviews (2)</h3>
+      <img className="mb-9" src="/reviews-graph.png" alt="Review graph" />
+      <h3 className="text-xl font-medium">Reviews ({reviewsData.length})</h3>
       {reviewsData.map((review) => (
         <div key={review.id}>
-          <div className="m-6">
-            {[...Array(review.rating)].map((_, i) => (
-              <BsStarFill className="text-[#ff8c38] mr-1" key={i} />
-            ))}
+          <div className="my-6">
+            <div className="flex my-3">
+              {[...Array(review.rating)].map((_, i) => (
+                <BsStarFill className="text-[#ff8c38] mr-1" key={i} />
+              ))}
+            </div>
             <div className="flex">
               <p className="text-[#161616] mr-2.5 font-semibold">
                 {review.name}
