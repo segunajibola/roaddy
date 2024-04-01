@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import { ClipLoader } from "react-spinners";
 
-const Loading = () => {
+const Loading = ({ loading }) => {
   return (
-    <h1 className="h-screen mt-24 flex justify-center items-center text-3xl">Loading...</h1>
-  )
-}
+    <div className="h-screen flex justify-center items-center">
+      <ClipLoader
+        color="orange"
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        className="text-3xl"
+      />
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

@@ -49,12 +49,51 @@ export const brandLogo = [
       link: "https://img.icons8.com/ios/icon/UZPl1KrcP3q9/vehicle-tax",
     },
     {
+      id: 5,
       link: "https://img.icons8.com/ios/icon/54502/logo",
     },
   ];
 
   export const faqs = [
-    { title: "Question 1", answer: "Answer to question 1." },
-    { title: "Question 2", answer: "Answer to question 2." },
-    { title: "Question 3", answer: "Answer to question 3." },
+    {
+      title: "How do I make a reservation?",
+      answer:
+        "You can make a reservation by using our website or mobile app. Simply select the location, dates, and type of vehicle you need, and follow the instructions to complete your reservation."
+    },
+    {
+      title: "What documents do I need to rent a car?",
+      answer:
+        "To rent a car with Roaddy, you will need a valid driver's license, a credit card in your name for payment and security deposit, and a form of identification such as a passport or national ID card."
+    },
+    {
+      title: "Can I modify or cancel my reservation?",
+      answer:
+        "Yes, you can modify or cancel your reservation through our website or mobile app. Just log in to your account, find your reservation, and follow the prompts to make changes or cancel."
+    },
+    {
+      title: "What is the minimum age to rent a car?",
+      answer:
+        "The minimum age to rent a car with Roaddy is 21 years old. However, drivers under 25 may be subject to a young driver surcharge."
+    },
+    {
+      title: "Do you offer insurance?",
+      answer:
+        "Yes, we offer insurance options for our rental vehicles. You can choose from various coverage options to suit your needs, including collision damage waiver, liability coverage, and roadside assistance."
+    },
+    {
+      title: "Can I return the car early?",
+      answer:
+        "Yes, you can return the car early. However, please note that early returns may be subject to an early return fee, and any unused rental days will not be refunded."
+    },
+    {
+      title: "Do you offer long-term rentals?",
+      answer:
+        "Yes, we offer long-term rental options for customers who need a vehicle for an extended period. Contact our customer service team for more information and special rates for long-term rentals."
+    },
+    {
+      title: "What types of vehicles do you offer?",
+      answer:
+        "We offer a wide range of vehicles to suit different needs and preferences, including compact cars, sedans, SUVs, vans, and luxury vehicles. You can select the type of vehicle that best fits your requirements when making a reservation."
+    }
   ];
+  

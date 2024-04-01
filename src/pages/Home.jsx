@@ -25,15 +25,10 @@ export default function Home() {
     };
   }, []);
 
-  const handleLinkClick = () => {
-    window.scrollTo(0, 0);
-  };
-
   const backgroundImageUrlsArray = [
     'url("https://images.unsplash.com/photo-1572023165258-a0d4007f0b98")',
     'url("https://images.unsplash.com/photo-1600832782030-4e31b02c8a98")',
     'url("https://images.unsplash.com/photo-1631682824839-0447cfcb2f93")',
-    // Add more image URLs as needed
   ];
   const randomIndex = Math.floor(
     Math.random() * backgroundImageUrlsArray.length

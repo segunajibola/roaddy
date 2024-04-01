@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { handleLinkClick } from "../utils/funcs";
 
 export default function Footer() {
   return (
@@ -16,12 +18,15 @@ export default function Footer() {
         </div>
         <div className="flex justify-between md:ml-20 max-md:w-[80%]">
           <div className="md:mx-6">
-            <h4 className="my-4">About</h4>
+            <h4 className="my-4">Company</h4>
             <ul className="space-y-3">
               <li>How it works</li>
               <li>Featured</li>
               <li>Partnership</li>
               <li>Business Relations</li>
+              <li>Mission & Vision</li>
+              <li>Team</li>
+              <li>Careers</li>
             </ul>
           </div>
           <div className="md:mx-6">
@@ -34,14 +39,33 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="md:mx-4">
-          <h4 className="my-4">Community</h4>
-          <ul className="space-y-3">
-            <li>Events</li>
-            <li>Blogs</li>
-            <li>Podcast</li>
-            <li>Invite a friend</li>
-          </ul>
+        <div className="flex justify-between md:ml-20 max-md:w-[80%]">
+          <div className="md:mx-4">
+            <h4 className="my-4">Community</h4>
+            <ul className="space-y-3">
+              <li>Events</li>
+              <li>Blogs</li>
+              <li>Podcast</li>
+              <li>Invite a friend</li>
+            </ul>
+          </div>
+          <div className="md:mx-4">
+            <h4 className="my-4">Quick Links</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/" onClick={handleLinkClick}>Home</Link>
+              </li>
+              <li>
+                <Link to="/about" onClick={handleLinkClick}>About</Link>
+              </li>
+              <li>
+                <Link to="/vehicles" onClick={handleLinkClick}>Vehicles</Link>
+              </li>
+              <li>
+                <Link to="/host" onClick={handleLinkClick}>Dashboard</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <hr className="hidden md:block my-4 border-black" />

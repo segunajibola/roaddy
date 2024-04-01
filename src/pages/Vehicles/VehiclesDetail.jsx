@@ -102,7 +102,7 @@ export default function VanDetail() {
             <Link
               to="rent"
               onClick={handleLinkClick}
-              className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold p-2 rounded-md w-[40%]"
+              className="text-white text-[1.2rem] bg-[#ff8c38] uppercase font-bold text-center p-2 rounded-md w-[40%]"
             >
               Rent vehicle
             </Link>
