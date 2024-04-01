@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import useFetchVehicles from "../../hooks/useFetchVehicles";
 import { Loading, VehicleCard } from "../../components";
+import { ClipLoader } from "react-spinners";
 
 export default function Vehicles() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -39,7 +40,18 @@ export default function Vehicles() {
   }
 
   if (loading) {
-    return <Loading />;
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <ClipLoader
+          color="orange"
+          loading={loading}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          className="text-3xl"
+        />
+      </div>
+    );
   }
 
   if (error) {
@@ -49,7 +61,9 @@ export default function Vehicles() {
   return (
     <>
       <div className="p-6 pt-16">
-        <h1 className="text-3xl my-2 font-semibold mb-4">Explore vehicle options</h1>
+        <h1 className="text-3xl my-2 font-semibold mb-4">
+          Explore vehicle options
+        </h1>
         <div className="flex wrap gap-2">
           <button
             onClick={() => handleFilterChange("type", "simple")}

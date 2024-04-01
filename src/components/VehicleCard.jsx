@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { MdLocalGasStation } from "react-icons/md";
-import { IoIosPeople } from "react-icons/io";
 import { GiGearStick } from "react-icons/gi";
-import { IoMdHeart } from "react-icons/io";
-import { IoIosHeartEmpty } from "react-icons/io";
+import { IoMdHeart, IoIosHeartEmpty, IoIosPeople } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { handleLinkClick } from "../../utils/funcs";
+import { handleLinkClick } from "../utils/funcs";
 import { FaCarAlt } from "react-icons/fa";
 
 const VehicleCard = ({ vehicle, width, margin }) => {
@@ -30,7 +28,10 @@ const VehicleCard = ({ vehicle, width, margin }) => {
             className="w-full h-full object-cover "
             alt={name}
           />
-          <div className="absolute top-0 right-0 p-2" onClick={(e) => handleFavourite(e)}>
+          <div
+            className="absolute top-0 right-0 p-2"
+            onClick={(e) => handleFavourite(e)}
+          >
             {isFavourite ? (
               <IoMdHeart className="text-[#ff8c38]" size={35} />
             ) : (

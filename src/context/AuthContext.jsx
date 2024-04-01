@@ -10,7 +10,7 @@ import {
   browserSessionPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
-import { auth } from "../../utils/api";
+import { auth } from "../utils/api";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();

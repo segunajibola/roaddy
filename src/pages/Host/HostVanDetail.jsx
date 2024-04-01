@@ -6,7 +6,7 @@ import {
   NavLink,
   Outlet,
 } from "react-router-dom";
-import { getVan } from "../../../utils/api";
+import { getVan } from "../../utils/api";
 
 export default function HostVanDetail() {
   const [currentVan, setCurrentVan] = React.useState(null);

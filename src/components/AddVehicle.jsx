@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createCollection } from "../../utils/api";
+import { createCollection } from "../utils/api";
 import { useOutletContext } from "react-router-dom";
 
 const AddVehicle = ({ loadVans, setAddVehicleVisible }) => {

@@ -8,9 +8,9 @@ import {
 } from "../components/";
 import AOS from "aos";
 import useFetchVehicles from "../hooks/useFetchVehicles";
-import { brandLogo } from "../../utils/data";
+import { brandLogo } from "../utils/data";
 import { UserContext } from "../context/AuthContext";
-import { handleLinkClick } from "../../utils/funcs";
+import { handleLinkClick } from "../utils/funcs";
 import FAQ from "../components/FAQs";
 
 export default function Home() {

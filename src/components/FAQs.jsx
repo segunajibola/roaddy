@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { faqs } from "../utils/data";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -7,12 +8,6 @@ const FAQ = () => {
   const toggleAccordion = (index) => {
     setOpenIndex(index === openIndex ? null : index);
   };
-
-  const faqs = [
-    { title: "Question 1", answer: "Answer to question 1." },
-    { title: "Question 2", answer: "Answer to question 2." },
-    { title: "Question 3", answer: "Answer to question 3." },
-  ];
 
   return (
     <div className="max-w-lg mx-auto">

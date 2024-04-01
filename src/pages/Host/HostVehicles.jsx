@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
-import { getHostVehicle, deleteDocument } from "../../../utils/api";
+import { getHostVehicle, deleteDocument } from "../../utils/api";
 import AddVehicle from "../../components/AddVehicle";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { FcEmptyTrash } from "react-icons/fc";
 import { IoMdRefresh } from "react-icons/io";
-// import { LuFuel } from "react-icons/lu";
 
 export default function HostVehicles() {
   const { user, vans, setVans, loading, error, setError } = useOutletContext();

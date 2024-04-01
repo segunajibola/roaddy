@@ -52,3 +52,9 @@ export const brandLogo = [
       link: "https://img.icons8.com/ios/icon/54502/logo",
     },
   ];
+
+  export const faqs = [
+    { title: "Question 1", answer: "Answer to question 1." },
+    { title: "Question 2", answer: "Answer to question 2." },
+    { title: "Question 3", answer: "Answer to question 3." },
+  ];

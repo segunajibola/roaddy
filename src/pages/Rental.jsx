@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
-import { getVan } from "../../utils/api";
+import { getVan } from "../utils/api";
 import { Loading } from "../components";
 import useFetchVehicles from "../hooks/useFetchVehicles";
 

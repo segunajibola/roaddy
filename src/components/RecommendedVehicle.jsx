@@ -2,7 +2,7 @@ import React from "react";
 import { VehicleCard } from "./";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import { handleLinkClick } from "../../utils/funcs";
+import { handleLinkClick } from "../utils/funcs";
 
 const RecommendedVehicle = ({ vans, loading }) => {
   const recommendedVehicles = vans.slice(0, 2);
